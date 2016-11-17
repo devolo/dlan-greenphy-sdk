@@ -1,32 +1,10 @@
 /*
- * @brief NXP LPC1769 LPCXpresso Sysinit file
+ * @brief devolo LPC1769 dlAN Green PHY Sysinit file
  *
  * @note
- * Copyright(C) NXP Semiconductors, 2013
+ * Copyright(C) devolo AG, 2016
  * All rights reserved.
  *
- * @par
- * Software that is described herein is for illustrative purposes only
- * which provides customers with programming information regarding the
- * LPC products.  This software is supplied "AS IS" without any warranties of
- * any kind, and NXP Semiconductors and its licensor disclaim any and
- * all warranties, express or implied, including all implied warranties of
- * merchantability, fitness for a particular purpose and non-infringement of
- * intellectual property rights.  NXP Semiconductors assumes no responsibility
- * or liability for the use of the software, conveys no license or rights under any
- * patent, copyright, mask work right, or any other intellectual property rights in
- * or to any products. NXP Semiconductors reserves the right to make changes
- * in the software without notification. NXP Semiconductors also makes no
- * representation or warranty that such application will be suitable for the
- * specified use without further testing or modification.
- *
- * @par
- * Permission to use, copy, modify, and distribute this software and its
- * documentation is hereby granted, under NXP Semiconductors' and its
- * licensor's relevant copyrights in the software, without fee, provided that it
- * is used in conjunction with NXP Semiconductors microcontrollers.  This
- * copyright, permission, and disclaimer notice must appear in all copies of
- * this code.
  */
 
 #include "board.h"
@@ -41,15 +19,25 @@
 
 /* Pin muxing configuration */
 STATIC const PINMUX_GRP_T pinmuxing[] = {
-	{0,  0,   IOCON_MODE_INACT | IOCON_FUNC2},	/* TXD3 */
-	{0,  1,   IOCON_MODE_INACT | IOCON_FUNC2},	/* RXD3 */
-	{0,  4,   IOCON_MODE_INACT | IOCON_FUNC2},	/* CAN-RD2 */
-	{0,  5,   IOCON_MODE_INACT | IOCON_FUNC2},	/* CAN-TD2 */
-	{0,  22,  IOCON_MODE_INACT | IOCON_FUNC0},	/* Led 0 */
-	{0,  23,  IOCON_MODE_INACT | IOCON_FUNC1},	/* ADC 0 */
-	{0,  26,  IOCON_MODE_INACT | IOCON_FUNC2},	/* DAC */
+		/*  PORT0   */
+    {0,  0,   IOCON_MODE_INACT | IOCON_FUNC3},	/* I2C SDA1 */
+	{0,  1,   IOCON_MODE_INACT | IOCON_FUNC3},	/* I2C SCL1 */
+	{0,  2,   IOCON_MODE_INACT | IOCON_FUNC1},	/* TXD0 UART pinheader */
+	{0,  3,   IOCON_MODE_INACT | IOCON_FUNC1},	/* RXD0 UART pinheader */
+	{0,  4,   IOCON_MODE_INACT | IOCON_FUNC2},	/* CAN-RD2 NOT USED */
+	{0,  5,   IOCON_MODE_INACT | IOCON_FUNC2},	/* CAN-TD2 NOT USED */
+	{0,  6,   IOCON_MODE_INACT | IOCON_FUNC0},	/* on board LED */
+	{0,  7,   IOCON_MODE_INACT | IOCON_FUNC2},	/* SPI SCK1 */
+	{0,  8,   IOCON_MODE_INACT | IOCON_FUNC2},	/* SPI MISO1 */
+	{0,  9,   IOCON_MODE_INACT | IOCON_FUNC2},	/* SPI MOSI1 */
+	{0, 10,   IOCON_MODE_INACT | IOCON_FUNC0},	/* GPIO or TXD2 UART mikrobus2 */
+	{0, 11,   IOCON_MODE_INACT | IOCON_FUNC0},	/* GPIO or RXD2 UART mikrobus2 */
+	{0, 25,   IOCON_MODE_INACT | IOCON_FUNC0},	/* ANA mikrobus2  */
+	{0, 26,   IOCON_MODE_INACT | IOCON_FUNC0},	/* GPP PIN2 J12 */
+	{0, 29,   IOCON_MODE_INACT | IOCON_FUNC1},	/* USB+ */
+	{0, 30,   IOCON_MODE_INACT | IOCON_FUNC1},	/* USB- */
 
-	/* ENET */
+    	/*  PORT1   */
 	{0x1, 0,  IOCON_MODE_INACT | IOCON_FUNC1},	/* ENET_TXD0 */
 	{0x1, 1,  IOCON_MODE_INACT | IOCON_FUNC1},	/* ENET_TXD1 */
 	{0x1, 4,  IOCON_MODE_INACT | IOCON_FUNC1},	/* ENET_TX_EN */
@@ -60,14 +48,23 @@ STATIC const PINMUX_GRP_T pinmuxing[] = {
 	{0x1, 15, IOCON_MODE_INACT | IOCON_FUNC1},	/* ENET_REF_CLK */
 	{0x1, 16, IOCON_MODE_INACT | IOCON_FUNC1},	/* ENET_MDC */
 	{0x1, 17, IOCON_MODE_INACT | IOCON_FUNC1},	/* ENET_MDIO */
-	{0x1, 27, IOCON_MODE_INACT | IOCON_FUNC1},	/* CLKOUT */
+	{0x1, 26, IOCON_MODE_INACT | IOCON_FUNC0},	/* RST mikrobus1 */
+	{0x1, 27, IOCON_MODE_INACT | IOCON_FUNC1},	/* CLKOUT*/
+	{0x1, 28, IOCON_MODE_INACT | IOCON_FUNC0},	/* RST mikrobus2 */
+	{0x1, 31, IOCON_MODE_INACT | IOCON_FUNC0},	/* ANA mikrobus1 */
 
-	/* Joystick buttons. */
-	{2, 3,  IOCON_MODE_INACT | IOCON_FUNC0},	/* JOYSTICK_UP */
-	{0, 15, IOCON_MODE_INACT | IOCON_FUNC0},	/* JOYSTICK_DOWN */
-	{2, 4,  IOCON_MODE_INACT | IOCON_FUNC0},	/* JOYSTICK_LEFT */
-	{0, 16, IOCON_MODE_INACT | IOCON_FUNC0},	/* JOYSTICK_RIGHT */
-	{0, 17, IOCON_MODE_INACT | IOCON_FUNC0},	/* JOYSTICK_PRESS */
+
+	   /*  PORT2   */
+	{2, 0,  IOCON_MODE_INACT | IOCON_FUNC0},	/* GPIO or TXD2 UART mikrobus1 */
+	{2, 1,  IOCON_MODE_INACT | IOCON_FUNC0},	/* GPIO or RXD2 UART mikrobus1 */
+	{2, 2,  IOCON_MODE_INACT | IOCON_FUNC0},	/* CS mikrobus1 */
+	{2, 3,  IOCON_MODE_INACT | IOCON_FUNC0},	/* INT mikrobus1 */
+	{2, 4,  IOCON_MODE_INACT | IOCON_FUNC0},	/* PWM mikrobus1 */
+	{2, 5,  IOCON_MODE_INACT | IOCON_FUNC0},	/* PWM mikrobus2 */
+	{2, 6,  IOCON_MODE_INACT | IOCON_FUNC0},	/* int mikrobus2 */
+	{2, 7,  IOCON_MODE_INACT | IOCON_FUNC0},	/* CS mikrobus2 */
+	{2,10,  IOCON_MODE_INACT | IOCON_FUNC0},	/* MINT onboard Button */
+
 
 };
 

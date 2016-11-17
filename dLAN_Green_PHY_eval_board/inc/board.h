@@ -38,15 +38,15 @@
 extern "C" {
 #endif
 
-/** @defgroup BOARD_NXP_LPCXPRESSO_1769 NXP LPC1769 LPCXpresso board software API functions
- * @ingroup LPCOPEN_17XX_BOARD_LPCXPRESSO_1769
+/** @defgroup BOARD_dLAN_Green_PHY_Module devolo LPC1769 board software API functions
+ * @ingroup BOARD_dLAN_Green_PHY_Module
  * The board support software API functions provide some simple abstracted
  * functions used across multiple LPCOpen board examples. See @ref BOARD_COMMON_API
  * for the functions defined by this board support layer.<br>
  * @{
  */
 
-/** @defgroup BOARD_NXP_LPCXPRESSO_1769_OPTIONS BOARD: NXP LPC1769 LPCXpresso board build options
+/** @defgroup BOARD_dLAN_Green_PHY_Module BOARD: devolo LPC1769 board build options
  * This board has options that configure its operation at build-time.<br>
  * @{
  */
@@ -67,14 +67,14 @@ extern "C" {
     is also the port used for Board_UARTPutChar, Board_UARTGetChar, and
     Board_UARTPutSTR functions.
  */
-#define DEBUG_UART LPC_UART3
+#define DEBUG_UART LPC_UART0
 
 /**
  * @}
  */
 
 /* Board name */
-#define BOARD_NXP_LPCXPRESSO_1769
+#define BOARD_dLAN_Green_PHY_Module
 
 #define USE_RMII
 
