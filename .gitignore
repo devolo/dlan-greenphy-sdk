@@ -31,3 +31,6 @@ Release/
 
 #Mac
 .DS_Store
+
+#don't ignore debug.c
+!HardwareSupport/src/debug/

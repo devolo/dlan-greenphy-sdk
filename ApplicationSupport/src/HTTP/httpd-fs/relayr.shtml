@@ -1,0 +1,20 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <title>uIP WEB server demo based on FreeRTOS</title>
+  </head>
+  <body>
+<font face="arial">
+<a href="http://www.devolo.com/">devolo AG</a> <b>|</b> <a href="clickconfig.shtml">Clickboard Config</a> <b>|</b> <a href="relayr.shtml">Relayr Config</a> <b>|</b> <a href="index.shtml">Task Stats</a> <b>|</b> <a href="runtime.shtml">Run Time Stats</a> <b>|</b> <a href="stats.shtml">TCP Stats</a> <b>|</b> <a href="tcp.shtml">Connections</a> <b>|</b> <a href="http://www.freertos.org/">FreeRTOS</a> <b>|</b> <a href="io.shtml">IO</a> <b>|</b> <a href="sensors.shtml">Sensors</a><b>|</b> <a href="dali.shtml">DALI</a><b>|</b> <a href="relay.shtml">Relay</a>
+<br><p>
+<hr>
+<br><p>
+<h2>relayr Configuration</h2>
+<br>
+Activate relayr Cloud Communication?<br><br>
+<form>
+Yes<input type="radio" name="activate_mqtt" value="yes"
+%! cloud_config
+<br>
+</body>
+</html>

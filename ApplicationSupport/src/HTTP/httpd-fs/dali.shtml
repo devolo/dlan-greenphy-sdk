@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <title>uIP WEB server demo based on FreeRTOS</title>
+  </head>
+  <BODY>
+<font face="arial">
+<a href="http://www.devolo.com/">devolo AG</a> <b>|</b> <a href="clickconfig.shtml">Clickboard Config</a> <b>|</b> <a href="relayr.shtml">Relayr Config</a> <b>|</b> <a href="index.shtml">Task Stats</a> <b>|</b> <a href="runtime.shtml">Run Time Stats</a> <b>|</b> <a href="stats.shtml">TCP Stats</a> <b>|</b> <a href="tcp.shtml">Connections</a> <b>|</b> <a href="http://www.freertos.org/">FreeRTOS</a> <b>|</b> <a href="io.shtml">IO</a> <b>|</b> <a href="sensors.shtml">Sensors</a><b>|</b> <a href="dali.shtml">DALI</a><b>|</b> <a href="relay.shtml">Relay</a>
+<br><p>
+<hr>
+<br><p>
+<h2>DALI</h2>
+<p>
+<form>
+<tr>
+<td><button type="submit" name="action" value="allon">All ON</button></td>  <td><button type="submit" name="action" value="alloff">All OFF</button></td>
+</tr>
+</form>
+<table width="800" border="1">
+<tr>
+<font face="courier">
+<pre>
+<th>Address</th>
+<th>Command</th>
+<th>Submit</th>
+<th>Answer</th>
+</pre>
+</tr>
+<tr align="center">
+<td>
+<form>
+<pre>
+<select name="address-select">
+<option>00</option>
+<option>01</option>
+<option>02</option>
+<option>03</option>
+<option>04</option>
+</select>
+<pre>
+</td>
+<td>
+<select name="command-select">
+<option value="08">Step Up</option>
+<option value="07">Step Down</option>
+</select>
+</td>
+<td>
+<input type="submit" value="Submit">
+</td>
+</form>
+<td rowspan="3" width="33%">
+%! dali_io
+</pre>
+</td>
+</tr>
+<tr align="center">
+<form>
+<td>
+<pre>
+0x<input type="text" id="shortaddress" name="shortaddress">
+</td>
+<td>
+</td>
+<td>
+<input type="submit" value="Assign">
+</td>
+</form>
+</pre>
+</tr>
+<tr  align="center" width="200">
+<form>
+<td>
+<pre>
+0x<input type="text" id="address" name="address">
+</pre></td>
+<td><pre>
+0x<input type="text" id="command" name="command">
+</pre>
+</td>
+<td>
+<input type="submit" value="Submit">
+</form>
+</td>
+</tr>
+<tr align="center">
+<td colspan="4">
+<br>
+<form>
+<button type="submit" name="action" value="findslaves">Find Slaves</button>
+</form>
+<br>
+%! slaves_data
+</td>
+</tr>
+</font>
+
+</table>
+</font>
+</body>
+</html>

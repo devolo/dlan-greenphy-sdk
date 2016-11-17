@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <title>uIP WEB server demo based on FreeRTOS</title>
+  </head>
+  <BODY>
+<font face="arial">
+<a href="http://www.devolo.com/">devolo AG</a> <b>|</b> <a href="clickconfig.shtml">Clickboard Config</a> <b>|</b> <a href="relayr.shtml">Relayr Config</a> <b>|</b> <a href="index.shtml">Task Stats</a> <b>|</b> <a href="runtime.shtml">Run Time Stats</a> <b>|</b> <a href="stats.shtml">TCP Stats</a> <b>|</b> <a href="tcp.shtml">Connections</a> <b>|</b> <a href="http://www.freertos.org/">FreeRTOS</a> <b>|</b> <a href="io.shtml">IO</a> <b>|</b> <a href="sensors.shtml">Sensors</a><b>|</b> <a href="dali.shtml">DALI</a><b>|</b> <a href="relay.shtml">Relay</a>
+<br><p>
+<hr>
+<br><p>
+<h2>Sensor Data</h2>
+Page will refresh every 10 seconds.<p>
+<table width="300" border="1">
+<tr>
+<font face="courier">
+<th width="45%">Sensor</th>
+<th width="30%">Data</th>
+<th>Unit</th>
+</tr>
+<tr>
+<td colspan="3">
+<table border="0" width="300">
+<td width="45%">Temperature<br>Humidity<br>UV</td>
+<td width="30%" align="center">
+%! sensor_data
+</td>
+<td align="center">&deg;C<br>&#037;<br>W/cm&#178;</td>
+</td>
+</tr>
+</table>
+</font>
+</table>
+</font>
+</body>
+</html>
+
