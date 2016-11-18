@@ -3,6 +3,8 @@
 	<name>lpc_chip_175x_6x</name>
 	<comment></comment>
 	<projects>
+		<project>CMSIS_CORE_LPC17xx</project>
+		<project>dLAN_Green_PHY_eval_board</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

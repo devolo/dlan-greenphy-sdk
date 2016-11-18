@@ -3,7 +3,10 @@
 	<name>FreeRTOS-Plus-TCP</name>
 	<comment></comment>
 	<projects>
+		<project>CMSIS_CORE_LPC17xx</project>
+		<project>dLAN_Green_PHY_eval_board</project>
 		<project>FreeRTOSv9.0.0</project>
+		<project>lpc_chip_175x_6x</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
