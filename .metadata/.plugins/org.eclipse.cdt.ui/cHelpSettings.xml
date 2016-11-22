@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<cHelpSettings>
+<project name="Configuration">
+<provider id="org.eclipse.cdt.ui.provider1"/>
+</project>
+<project name="FirmwareStandalone">
+<provider id="org.eclipse.cdt.ui.provider1"/>
+</project>
+<project name="ApplicationSupport">
+<provider id="org.eclipse.cdt.ui.provider1"/>
+</project>
+<project name="FreeRTOSv9.0.0">
+<provider id="org.eclipse.cdt.ui.provider1"/>
+</project>
+<project name="lpc_chip_175x_6x">
+<provider id="org.eclipse.cdt.ui.provider1"/>
+</project>
+<project name="webserver_freertos">
+<provider id="org.eclipse.cdt.ui.provider1"/>
+</project>
+</cHelpSettings>

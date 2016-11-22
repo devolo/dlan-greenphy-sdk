@@ -1,0 +1,18 @@
+18:12:50 **** Incremental Build of configuration Debug for project ApplicationSupport ****
+make -r all 
+Building file: ../src/HTTP/httpd-fs.c
+Invoking: MCU C Compiler
+../bin/makefsdata ../src/HTTP/httpd-fs -e -f:../src/HTTP/httpd-fsdata.c.generated; arm-none-eabi-gcc -D__REDLIB__ -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0\include" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0\portable\GCC\ARM_CM3" -I"C:\nxp\WS\CMSIS_LPC1758\Configuration" -I"C:\nxp\WS\CMSIS_LPC1758\HardwareSupport\include" -I"C:\nxp\WS\CMSIS_LPC1758\ApplicationSupport\inc" -I"C:\nxp\WS\CMSIS_LPC1758\ApplicationSupport\src\HTTP" -I"C:\nxp\WS\CMSIS_LPC1758\ApplicationSupport\src\IP" -I"C:\nxp\WS\CMSIS_LPC1758\ApplicationSupport\src\TFTP_IAP" -I"C:\nxp\WS\CMSIS_LPC1758\ApplicationSupport\src\CLI\include" -I"C:\nxp\WS\CMSIS_LPC1758\ApplicationSupport\src\MQTT\MQTTPacket\src" -I"C:\nxp\WS\CMSIS_LPC1758\ApplicationSupport\src\MQTT\MQTTClient-C\src" -O0 -g3 -Wall -c -fmessage-length=0 -mcpu=cortex-m3 -mthumb -D__REDLIB__ -specs=redlib.specs -MMD -MP -MF"src/HTTP/httpd-fs.d" -MT"src/HTTP/httpd-fs.d" -o "src/HTTP/httpd-fs.o" "../src/HTTP/httpd-fs.c"
+/bin/sh: ../bin/makefsdata: No such file or directory
+In file included from C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0\include/FreeRTOS.h:98:0,
+                 from C:\nxp\WS\CMSIS_LPC1758\ApplicationSupport\src\IP/clock-arch.h:37,
+                 from C:\nxp\WS\CMSIS_LPC1758\ApplicationSupport\src\IP/clock.h:55,
+                 from C:\nxp\WS\CMSIS_LPC1758\ApplicationSupport\src\IP/timer.h:64,
+                 from ../src/HTTP/httpd.h:40,
+                 from ../src/HTTP/httpd-fs.c:36:
+C:\nxp\WS\CMSIS_LPC1758\Configuration/FreeRTOSConfig.h:57:21: fatal error: LPC17xx.h: No such file or directory
+compilation terminated.
+make: *** [src/HTTP/httpd-fs.o] Error 1
+
+18:12:50 Build Finished (took 297ms)
+

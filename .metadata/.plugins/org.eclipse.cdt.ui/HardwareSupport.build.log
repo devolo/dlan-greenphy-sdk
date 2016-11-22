@@ -1,0 +1,241 @@
+18:12:45 **** Incremental Build of configuration Debug for project HardwareSupport ****
+make -r all 
+Building file: ../src/watchdog/wwdt_001.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DDEBUG -I"C:\nxp\WS\CMSIS_LPC1758\Configuration" -I"C:\nxp\WS\CMSIS_LPC1758\CMSIS_CORE_LPC17xx\inc" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0\include" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0\portable\GCC\ARM_CM3" -I"C:\nxp\WS\CMSIS_LPC1758\HardwareSupport\include" -I"C:\nxp\WS\CMSIS_LPC1758\HardwareSupport\src\netdevice\GreenPHY" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\debugConfig.h" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\FreeRTOSConfig.h" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\greenPhyModuleConfig.h" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -D__REDLIB__ -specs=redlib.specs -MMD -MP -MF"src/watchdog/wwdt_001.d" -MT"src/watchdog/wwdt_001.o" -MT"src/watchdog/wwdt_001.d" -o "src/watchdog/wwdt_001.o" "../src/watchdog/wwdt_001.c"
+Finished building: ../src/watchdog/wwdt_001.c
+ 
+Building file: ../src/watchdog/wwdt_17xx_40xx.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DDEBUG -I"C:\nxp\WS\CMSIS_LPC1758\Configuration" -I"C:\nxp\WS\CMSIS_LPC1758\CMSIS_CORE_LPC17xx\inc" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0\include" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0\portable\GCC\ARM_CM3" -I"C:\nxp\WS\CMSIS_LPC1758\HardwareSupport\include" -I"C:\nxp\WS\CMSIS_LPC1758\HardwareSupport\src\netdevice\GreenPHY" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\debugConfig.h" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\FreeRTOSConfig.h" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\greenPhyModuleConfig.h" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -D__REDLIB__ -specs=redlib.specs -MMD -MP -MF"src/watchdog/wwdt_17xx_40xx.d" -MT"src/watchdog/wwdt_17xx_40xx.o" -MT"src/watchdog/wwdt_17xx_40xx.d" -o "src/watchdog/wwdt_17xx_40xx.o" "../src/watchdog/wwdt_17xx_40xx.c"
+Finished building: ../src/watchdog/wwdt_17xx_40xx.c
+ 
+Building file: ../src/netdevice/GreenPHY/GreenPHY.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DDEBUG -I"C:\nxp\WS\CMSIS_LPC1758\Configuration" -I"C:\nxp\WS\CMSIS_LPC1758\CMSIS_CORE_LPC17xx\inc" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0\include" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0\portable\GCC\ARM_CM3" -I"C:\nxp\WS\CMSIS_LPC1758\HardwareSupport\include" -I"C:\nxp\WS\CMSIS_LPC1758\HardwareSupport\src\netdevice\GreenPHY" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\debugConfig.h" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\FreeRTOSConfig.h" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\greenPhyModuleConfig.h" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -D__REDLIB__ -specs=redlib.specs -MMD -MP -MF"src/netdevice/GreenPHY/GreenPHY.d" -MT"src/netdevice/GreenPHY/GreenPHY.o" -MT"src/netdevice/GreenPHY/GreenPHY.d" -o "src/netdevice/GreenPHY/GreenPHY.o" "../src/netdevice/GreenPHY/GreenPHY.c"
+../src/netdevice/GreenPHY/GreenPHY.c: In function 'greenPhyNetdeviceInit':
+../src/netdevice/GreenPHY/GreenPHY.c:227:48: warning: pointer targets in passing argument 2 of 'xTaskCreate' differ in signedness [-Wpointer-sign]
+     xTaskCreate( greenPhyInterruptHandlerTask, name, 240, greenPhy, tskIDLE_PRIORITY+4, NULL);
+                                                ^
+In file included from ../src/netdevice/GreenPHY/GreenPHY.c:38:0:
+C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0\include/task.h:360:13: note: expected 'const char * const' but argument is of type 'const signed char * const'
+  BaseType_t xTaskCreate( TaskFunction_t pxTaskCode,
+             ^
+Finished building: ../src/netdevice/GreenPHY/GreenPHY.c
+ 
+Building file: ../src/netdevice/GreenPHY/framingGreenPHY.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DDEBUG -I"C:\nxp\WS\CMSIS_LPC1758\Configuration" -I"C:\nxp\WS\CMSIS_LPC1758\CMSIS_CORE_LPC17xx\inc" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0\include" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0\portable\GCC\ARM_CM3" -I"C:\nxp\WS\CMSIS_LPC1758\HardwareSupport\include" -I"C:\nxp\WS\CMSIS_LPC1758\HardwareSupport\src\netdevice\GreenPHY" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\debugConfig.h" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\FreeRTOSConfig.h" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\greenPhyModuleConfig.h" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -D__REDLIB__ -specs=redlib.specs -MMD -MP -MF"src/netdevice/GreenPHY/framingGreenPHY.d" -MT"src/netdevice/GreenPHY/framingGreenPHY.o" -MT"src/netdevice/GreenPHY/framingGreenPHY.d" -o "src/netdevice/GreenPHY/framingGreenPHY.o" "../src/netdevice/GreenPHY/framingGreenPHY.c"
+Finished building: ../src/netdevice/GreenPHY/framingGreenPHY.c
+ 
+Building file: ../src/netdevice/GreenPHY/mmeHandling.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DDEBUG -I"C:\nxp\WS\CMSIS_LPC1758\Configuration" -I"C:\nxp\WS\CMSIS_LPC1758\CMSIS_CORE_LPC17xx\inc" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0\include" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0\portable\GCC\ARM_CM3" -I"C:\nxp\WS\CMSIS_LPC1758\HardwareSupport\include" -I"C:\nxp\WS\CMSIS_LPC1758\HardwareSupport\src\netdevice\GreenPHY" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\debugConfig.h" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\FreeRTOSConfig.h" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\greenPhyModuleConfig.h" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -D__REDLIB__ -specs=redlib.specs -MMD -MP -MF"src/netdevice/GreenPHY/mmeHandling.d" -MT"src/netdevice/GreenPHY/mmeHandling.o" -MT"src/netdevice/GreenPHY/mmeHandling.d" -o "src/netdevice/GreenPHY/mmeHandling.o" "../src/netdevice/GreenPHY/mmeHandling.c"
+Finished building: ../src/netdevice/GreenPHY/mmeHandling.c
+ 
+Building file: ../src/netdevice/GreenPHY/registerGreenPHY.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DDEBUG -I"C:\nxp\WS\CMSIS_LPC1758\Configuration" -I"C:\nxp\WS\CMSIS_LPC1758\CMSIS_CORE_LPC17xx\inc" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0\include" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0\portable\GCC\ARM_CM3" -I"C:\nxp\WS\CMSIS_LPC1758\HardwareSupport\include" -I"C:\nxp\WS\CMSIS_LPC1758\HardwareSupport\src\netdevice\GreenPHY" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\debugConfig.h" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\FreeRTOSConfig.h" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\greenPhyModuleConfig.h" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -D__REDLIB__ -specs=redlib.specs -MMD -MP -MF"src/netdevice/GreenPHY/registerGreenPHY.d" -MT"src/netdevice/GreenPHY/registerGreenPHY.o" -MT"src/netdevice/GreenPHY/registerGreenPHY.d" -o "src/netdevice/GreenPHY/registerGreenPHY.o" "../src/netdevice/GreenPHY/registerGreenPHY.c"
+Finished building: ../src/netdevice/GreenPHY/registerGreenPHY.c
+ 
+Building file: ../src/netdevice/GreenPHY/spiGreenPHY.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DDEBUG -I"C:\nxp\WS\CMSIS_LPC1758\Configuration" -I"C:\nxp\WS\CMSIS_LPC1758\CMSIS_CORE_LPC17xx\inc" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0\include" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0\portable\GCC\ARM_CM3" -I"C:\nxp\WS\CMSIS_LPC1758\HardwareSupport\include" -I"C:\nxp\WS\CMSIS_LPC1758\HardwareSupport\src\netdevice\GreenPHY" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\debugConfig.h" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\FreeRTOSConfig.h" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\greenPhyModuleConfig.h" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -D__REDLIB__ -specs=redlib.specs -MMD -MP -MF"src/netdevice/GreenPHY/spiGreenPHY.d" -MT"src/netdevice/GreenPHY/spiGreenPHY.o" -MT"src/netdevice/GreenPHY/spiGreenPHY.d" -o "src/netdevice/GreenPHY/spiGreenPHY.o" "../src/netdevice/GreenPHY/spiGreenPHY.c"
+../src/netdevice/GreenPHY/spiGreenPHY.c: In function 'startSyncGuard':
+../src/netdevice/GreenPHY/spiGreenPHY.c:154:38: warning: pointer targets in passing argument 1 of 'xTimerCreate' differ in signedness [-Wpointer-sign]
+   xTimerHandle xTimer = xTimerCreate(greenPhySyncName, qca->syncGardTimeout * 1000, FALSE, qca, greenPhyNetdeviceSyncCheck);
+                                      ^
+In file included from ../src/netdevice/GreenPHY/spiGreenPHY.c:45:0:
+C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0\include/timers.h:269:16: note: expected 'const char * const' but argument is of type 'const signed char * const'
+  TimerHandle_t xTimerCreate( const char * const pcTimerName,
+                ^
+Finished building: ../src/netdevice/GreenPHY/spiGreenPHY.c
+ 
+Building file: ../src/netdevice/ETH/emac.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DDEBUG -I"C:\nxp\WS\CMSIS_LPC1758\Configuration" -I"C:\nxp\WS\CMSIS_LPC1758\CMSIS_CORE_LPC17xx\inc" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0\include" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0\portable\GCC\ARM_CM3" -I"C:\nxp\WS\CMSIS_LPC1758\HardwareSupport\include" -I"C:\nxp\WS\CMSIS_LPC1758\HardwareSupport\src\netdevice\GreenPHY" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\debugConfig.h" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\FreeRTOSConfig.h" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\greenPhyModuleConfig.h" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -D__REDLIB__ -specs=redlib.specs -MMD -MP -MF"src/netdevice/ETH/emac.d" -MT"src/netdevice/ETH/emac.o" -MT"src/netdevice/ETH/emac.d" -o "src/netdevice/ETH/emac.o" "../src/netdevice/ETH/emac.c"
+../src/netdevice/ETH/emac.c: In function 'ethAutoNegCheck':
+../src/netdevice/ETH/emac.c:729:5: warning: implicit declaration of function 'uxTaskIsSchedulerRunning' [-Wimplicit-function-declaration]
+  if(uxTaskIsSchedulerRunning())
+     ^
+../src/netdevice/ETH/emac.c: In function 'startEthAutoNegGuard':
+../src/netdevice/ETH/emac.c:747:38: warning: pointer targets in passing argument 1 of 'xTimerCreate' differ in signedness [-Wpointer-sign]
+   xTimerHandle xTimer = xTimerCreate(ethAutoNegCheckName, 3000, FALSE, emacNetdevice, ethAutoNegCheck);
+                                      ^
+In file included from ../src/netdevice/ETH/emac.c:96:0:
+C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0\include/timers.h:269:16: note: expected 'const char * const' but argument is of type 'const signed char * const'
+  TimerHandle_t xTimerCreate( const char * const pcTimerName,
+                ^
+../src/netdevice/ETH/emac.c: In function 'ethInitNetdevice':
+../src/netdevice/ETH/emac.c:1070:42: warning: pointer targets in passing argument 2 of 'xTaskCreate' differ in signedness [-Wpointer-sign]
+   if ( pdPASS == xTaskCreate( ethTxTask, name, 250, emacNetdevice, tskIDLE_PRIORITY+4, NULL))
+                                          ^
+In file included from ../src/netdevice/ETH/emac.c:94:0:
+C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0\include/task.h:360:13: note: expected 'const char * const' but argument is of type 'const signed char * const'
+  BaseType_t xTaskCreate( TaskFunction_t pxTaskCode,
+             ^
+Finished building: ../src/netdevice/ETH/emac.c
+ 
+Building file: ../src/netdevice/buffer.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DDEBUG -I"C:\nxp\WS\CMSIS_LPC1758\Configuration" -I"C:\nxp\WS\CMSIS_LPC1758\CMSIS_CORE_LPC17xx\inc" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0\include" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0\portable\GCC\ARM_CM3" -I"C:\nxp\WS\CMSIS_LPC1758\HardwareSupport\include" -I"C:\nxp\WS\CMSIS_LPC1758\HardwareSupport\src\netdevice\GreenPHY" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\debugConfig.h" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\FreeRTOSConfig.h" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\greenPhyModuleConfig.h" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -D__REDLIB__ -specs=redlib.specs -MMD -MP -MF"src/netdevice/buffer.d" -MT"src/netdevice/buffer.o" -MT"src/netdevice/buffer.d" -o "src/netdevice/buffer.o" "../src/netdevice/buffer.c"
+Finished building: ../src/netdevice/buffer.c
+ 
+Building file: ../src/netdevice/netdevice.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DDEBUG -I"C:\nxp\WS\CMSIS_LPC1758\Configuration" -I"C:\nxp\WS\CMSIS_LPC1758\CMSIS_CORE_LPC17xx\inc" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0\include" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0\portable\GCC\ARM_CM3" -I"C:\nxp\WS\CMSIS_LPC1758\HardwareSupport\include" -I"C:\nxp\WS\CMSIS_LPC1758\HardwareSupport\src\netdevice\GreenPHY" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\debugConfig.h" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\FreeRTOSConfig.h" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\greenPhyModuleConfig.h" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -D__REDLIB__ -specs=redlib.specs -MMD -MP -MF"src/netdevice/netdevice.d" -MT"src/netdevice/netdevice.o" -MT"src/netdevice/netdevice.d" -o "src/netdevice/netdevice.o" "../src/netdevice/netdevice.c"
+Finished building: ../src/netdevice/netdevice.c
+ 
+Building file: ../src/interuptHandlerGPIO/interuptHandlerGPIO.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DDEBUG -I"C:\nxp\WS\CMSIS_LPC1758\Configuration" -I"C:\nxp\WS\CMSIS_LPC1758\CMSIS_CORE_LPC17xx\inc" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0\include" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0\portable\GCC\ARM_CM3" -I"C:\nxp\WS\CMSIS_LPC1758\HardwareSupport\include" -I"C:\nxp\WS\CMSIS_LPC1758\HardwareSupport\src\netdevice\GreenPHY" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\debugConfig.h" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\FreeRTOSConfig.h" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\greenPhyModuleConfig.h" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -D__REDLIB__ -specs=redlib.specs -MMD -MP -MF"src/interuptHandlerGPIO/interuptHandlerGPIO.d" -MT"src/interuptHandlerGPIO/interuptHandlerGPIO.o" -MT"src/interuptHandlerGPIO/interuptHandlerGPIO.d" -o "src/interuptHandlerGPIO/interuptHandlerGPIO.o" "../src/interuptHandlerGPIO/interuptHandlerGPIO.c"
+Finished building: ../src/interuptHandlerGPIO/interuptHandlerGPIO.c
+ 
+Building file: ../src/debug/debug.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DDEBUG -I"C:\nxp\WS\CMSIS_LPC1758\Configuration" -I"C:\nxp\WS\CMSIS_LPC1758\CMSIS_CORE_LPC17xx\inc" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0\include" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0\portable\GCC\ARM_CM3" -I"C:\nxp\WS\CMSIS_LPC1758\HardwareSupport\include" -I"C:\nxp\WS\CMSIS_LPC1758\HardwareSupport\src\netdevice\GreenPHY" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\debugConfig.h" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\FreeRTOSConfig.h" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\greenPhyModuleConfig.h" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -D__REDLIB__ -specs=redlib.specs -MMD -MP -MF"src/debug/debug.d" -MT"src/debug/debug.o" -MT"src/debug/debug.d" -o "src/debug/debug.o" "../src/debug/debug.c"
+Finished building: ../src/debug/debug.c
+ 
+Building file: ../src/clocking/clocking.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DDEBUG -I"C:\nxp\WS\CMSIS_LPC1758\Configuration" -I"C:\nxp\WS\CMSIS_LPC1758\CMSIS_CORE_LPC17xx\inc" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0\include" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0\portable\GCC\ARM_CM3" -I"C:\nxp\WS\CMSIS_LPC1758\HardwareSupport\include" -I"C:\nxp\WS\CMSIS_LPC1758\HardwareSupport\src\netdevice\GreenPHY" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\debugConfig.h" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\FreeRTOSConfig.h" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\greenPhyModuleConfig.h" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -D__REDLIB__ -specs=redlib.specs -MMD -MP -MF"src/clocking/clocking.d" -MT"src/clocking/clocking.o" -MT"src/clocking/clocking.d" -o "src/clocking/clocking.o" "../src/clocking/clocking.c"
+Finished building: ../src/clocking/clocking.c
+ 
+Building file: ../src/busyWait/busyWait.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DDEBUG -I"C:\nxp\WS\CMSIS_LPC1758\Configuration" -I"C:\nxp\WS\CMSIS_LPC1758\CMSIS_CORE_LPC17xx\inc" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0\include" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0\portable\GCC\ARM_CM3" -I"C:\nxp\WS\CMSIS_LPC1758\HardwareSupport\include" -I"C:\nxp\WS\CMSIS_LPC1758\HardwareSupport\src\netdevice\GreenPHY" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\debugConfig.h" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\FreeRTOSConfig.h" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\greenPhyModuleConfig.h" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -D__REDLIB__ -specs=redlib.specs -MMD -MP -MF"src/busyWait/busyWait.d" -MT"src/busyWait/busyWait.o" -MT"src/busyWait/busyWait.d" -o "src/busyWait/busyWait.o" "../src/busyWait/busyWait.c"
+Finished building: ../src/busyWait/busyWait.c
+ 
+Building file: ../src/UART/uart.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DDEBUG -I"C:\nxp\WS\CMSIS_LPC1758\Configuration" -I"C:\nxp\WS\CMSIS_LPC1758\CMSIS_CORE_LPC17xx\inc" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0\include" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0\portable\GCC\ARM_CM3" -I"C:\nxp\WS\CMSIS_LPC1758\HardwareSupport\include" -I"C:\nxp\WS\CMSIS_LPC1758\HardwareSupport\src\netdevice\GreenPHY" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\debugConfig.h" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\FreeRTOSConfig.h" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\greenPhyModuleConfig.h" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -D__REDLIB__ -specs=redlib.specs -MMD -MP -MF"src/UART/uart.d" -MT"src/UART/uart.o" -MT"src/UART/uart.d" -o "src/UART/uart.o" "../src/UART/uart.c"
+../src/UART/uart.c: In function 'UARTReceive':
+../src/UART/uart.c:637:5: warning: implicit declaration of function 'uxTaskIsSchedulerRunning' [-Wimplicit-function-declaration]
+  if(uxTaskIsSchedulerRunning())
+     ^
+Finished building: ../src/UART/uart.c
+ 
+Building file: ../src/SSP/dma.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DDEBUG -I"C:\nxp\WS\CMSIS_LPC1758\Configuration" -I"C:\nxp\WS\CMSIS_LPC1758\CMSIS_CORE_LPC17xx\inc" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0\include" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0\portable\GCC\ARM_CM3" -I"C:\nxp\WS\CMSIS_LPC1758\HardwareSupport\include" -I"C:\nxp\WS\CMSIS_LPC1758\HardwareSupport\src\netdevice\GreenPHY" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\debugConfig.h" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\FreeRTOSConfig.h" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\greenPhyModuleConfig.h" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -D__REDLIB__ -specs=redlib.specs -MMD -MP -MF"src/SSP/dma.d" -MT"src/SSP/dma.o" -MT"src/SSP/dma.d" -o "src/SSP/dma.o" "../src/SSP/dma.c"
+../src/SSP/dma.c: In function 'DMA_IRQHandler':
+../src/SSP/dma.c:86:21: error: 'LPC_GPDMA_TypeDef {aka struct <anonymous>}' has no member named 'IntTCStat'
+   regVal = LPC_GPDMA->IntTCStat;
+                     ^
+../src/SSP/dma.c:94:11: error: 'LPC_GPDMA_TypeDef {aka struct <anonymous>}' has no member named 'IntTCClear'
+  LPC_GPDMA->IntTCClear = regVal;
+           ^
+../src/SSP/dma.c:149:21: error: 'LPC_GPDMA_TypeDef {aka struct <anonymous>}' has no member named 'IntErrStat'
+   regVal = LPC_GPDMA->IntErrStat;
+                     ^
+../src/SSP/dma.c:154:11: error: 'LPC_GPDMA_TypeDef {aka struct <anonymous>}' has no member named 'IntErrClr'
+  LPC_GPDMA->IntErrClr = regVal;
+           ^
+../src/SSP/dma.c: In function 'DMA_Init':
+../src/SSP/dma.c:187:12: error: 'LPC_GPDMA_TypeDef {aka struct <anonymous>}' has no member named 'IntTCClear'
+   LPC_GPDMA->IntTCClear = 0x0F;
+            ^
+../src/SSP/dma.c:188:12: error: 'LPC_GPDMA_TypeDef {aka struct <anonymous>}' has no member named 'IntErrClr'
+   LPC_GPDMA->IntErrClr = 0x0F;
+            ^
+../src/SSP/dma.c:190:12: error: 'LPC_GPDMA_TypeDef {aka struct <anonymous>}' has no member named 'Config'
+   LPC_GPDMA->Config = 0x01; /* Enable DMA channels, little endian */
+            ^
+../src/SSP/dma.c:191:22: error: 'LPC_GPDMA_TypeDef {aka struct <anonymous>}' has no member named 'Config'
+   while ( !(LPC_GPDMA->Config & 0x01) );
+                      ^
+../src/SSP/dma.c: In function 'DMAChannel_Init':
+../src/SSP/dma.c:245:16: error: 'LPC_GPDMACH_TypeDef {aka struct <anonymous>}' has no member named 'CSrcAddr'
+    LPC_GPDMACH0->CSrcAddr = data;
+                ^
+../src/SSP/dma.c:247:16: error: 'LPC_GPDMACH_TypeDef {aka struct <anonymous>}' has no member named 'CDestAddr'
+    LPC_GPDMACH0->CDestAddr = SSP0_DMA_TX_DST;
+                ^
+../src/SSP/dma.c:249:16: error: 'LPC_GPDMACH_TypeDef {aka struct <anonymous>}' has no member named 'CLLI'
+    LPC_GPDMACH0->CLLI = 0x0;
+                ^
+../src/SSP/dma.c:251:16: error: 'LPC_GPDMACH_TypeDef {aka struct <anonymous>}' has no member named 'CControl'
+    LPC_GPDMACH0->CControl = (size & 0x07FF) |
+                ^
+../src/SSP/dma.c:260:16: error: 'LPC_GPDMACH_TypeDef {aka struct <anonymous>}' has no member named 'CConfig'
+    LPC_GPDMACH0->CConfig = ( ON ) |
+                ^
+../src/SSP/dma.c:273:17: error: 'LPC_GPDMACH_TypeDef {aka struct <anonymous>}' has no member named 'CSrcAddr'
+     LPC_GPDMACH0->CSrcAddr = (uint32_t)&singleData;
+                 ^
+../src/SSP/dma.c:275:17: error: 'LPC_GPDMACH_TypeDef {aka struct <anonymous>}' has no member named 'CDestAddr'
+     LPC_GPDMACH0->CDestAddr = SSP0_DMA_TX_DST;
+                 ^
+../src/SSP/dma.c:277:17: error: 'LPC_GPDMACH_TypeDef {aka struct <anonymous>}' has no member named 'CLLI'
+     LPC_GPDMACH0->CLLI = 0x0;
+                 ^
+../src/SSP/dma.c:279:17: error: 'LPC_GPDMACH_TypeDef {aka struct <anonymous>}' has no member named 'CControl'
+     LPC_GPDMACH0->CControl = (size & 0x07FF) |
+                 ^
+../src/SSP/dma.c:288:17: error: 'LPC_GPDMACH_TypeDef {aka struct <anonymous>}' has no member named 'CConfig'
+     LPC_GPDMACH0->CConfig = ( ON ) |
+                 ^
+../src/SSP/dma.c:301:16: error: 'LPC_GPDMACH_TypeDef {aka struct <anonymous>}' has no member named 'CSrcAddr'
+    LPC_GPDMACH0->CSrcAddr = SSP0_DMA_RX_SRC;
+                ^
+../src/SSP/dma.c:303:16: error: 'LPC_GPDMACH_TypeDef {aka struct <anonymous>}' has no member named 'CDestAddr'
+    LPC_GPDMACH0->CDestAddr = data;
+                ^
+../src/SSP/dma.c:306:16: error: 'LPC_GPDMACH_TypeDef {aka struct <anonymous>}' has no member named 'CLLI'
+    LPC_GPDMACH0->CLLI = 0x0;
+                ^
+../src/SSP/dma.c:309:16: error: 'LPC_GPDMACH_TypeDef {aka struct <anonymous>}' has no member named 'CControl'
+    LPC_GPDMACH0->CControl = (size & 0x07FF) |
+                ^
+../src/SSP/dma.c:318:16: error: 'LPC_GPDMACH_TypeDef {aka struct <anonymous>}' has no member named 'CConfig'
+    LPC_GPDMACH0->CConfig = ( ON ) |
+                ^
+../src/SSP/dma.c:339:16: error: 'LPC_GPDMACH_TypeDef {aka struct <anonymous>}' has no member named 'CSrcAddr'
+    LPC_GPDMACH1->CSrcAddr = data;
+                ^
+../src/SSP/dma.c:341:16: error: 'LPC_GPDMACH_TypeDef {aka struct <anonymous>}' has no member named 'CDestAddr'
+    LPC_GPDMACH1->CDestAddr = SSP0_DMA_TX_DST;
+                ^
+../src/SSP/dma.c:343:16: error: 'LPC_GPDMACH_TypeDef {aka struct <anonymous>}' has no member named 'CLLI'
+    LPC_GPDMACH1->CLLI = 0x0;
+                ^
+../src/SSP/dma.c:345:16: error: 'LPC_GPDMACH_TypeDef {aka struct <anonymous>}' has no member named 'CControl'
+    LPC_GPDMACH1->CControl = (size & 0x07FF) |
+                ^
+../src/SSP/dma.c:354:16: error: 'LPC_GPDMACH_TypeDef {aka struct <anonymous>}' has no member named 'CConfig'
+    LPC_GPDMACH1->CConfig = ( ON ) |
+                ^
+../src/SSP/dma.c:367:17: error: 'LPC_GPDMACH_TypeDef {aka struct <anonymous>}' has no member named 'CSrcAddr'
+     LPC_GPDMACH0->CSrcAddr = (uint32_t)&singleData;
+                 ^
+../src/SSP/dma.c:369:17: error: 'LPC_GPDMACH_TypeDef {aka struct <anonymous>}' has no member named 'CDestAddr'
+     LPC_GPDMACH1->CDestAddr = SSP0_DMA_TX_DST;
+                 ^
+../src/SSP/dma.c:371:17: error: 'LPC_GPDMACH_TypeDef {aka struct <anonymous>}' has no member named 'CLLI'
+     LPC_GPDMACH1->CLLI = 0x0;
+                 ^
+../src/SSP/dma.c:373:17: error: 'LPC_GPDMACH_TypeDef {aka struct <anonymous>}' has no member named 'CControl'
+     LPC_GPDMACH1->CControl = (size & 0x07FF) |
+                 ^
+../src/SSP/dma.c:382:17: error: 'LPC_GPDMACH_TypeDef {aka struct <anonymous>}' has no member named 'CConfig'
+     LPC_GPDMACH1->CConfig = ( ON ) |
+                 ^
+../src/SSP/dma.c:395:16: error: 'LPC_GPDMACH_TypeDef {aka struct <anonymous>}' has no member named 'CSrcAddr'
+    LPC_GPDMACH1->CSrcAddr = SSP0_DMA_RX_SRC;
+                ^
+../src/SSP/dma.c:397:16: error: 'LPC_GPDMACH_TypeDef {aka struct <anonymous>}' has no member named 'CDestAddr'
+    LPC_GPDMACH1->CDestAddr = data;
+                ^
+../src/SSP/dma.c:400:16: error: 'LPC_GPDMACH_TypeDef {aka struct <anonymous>}' has no member named 'CLLI'
+    LPC_GPDMACH1->CLLI = 0x0;
+                ^
+../src/SSP/dma.c:402:16: error: 'LPC_GPDMACH_TypeDef {aka struct <anonymous>}' has no member named 'CControl'
+    LPC_GPDMACH1->CControl = (size & 0x07FF) |
+                ^
+../src/SSP/dma.c:411:16: error: 'LPC_GPDMACH_TypeDef {aka struct <anonymous>}' has no member named 'CConfig'
+    LPC_GPDMACH1->CConfig = ( ON ) |
+                ^
+make: *** [src/SSP/dma.o] Error 1
+
+18:12:49 Build Finished (took 4s.226ms)
+

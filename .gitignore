@@ -27,7 +27,6 @@ Release/
 *.axf
 
 #Eclipse
-.metadata
 
 #Mac
 .DS_Store

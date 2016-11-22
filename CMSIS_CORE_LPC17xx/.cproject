@@ -6,6 +6,7 @@
 				<externalSettings>
 					<externalSetting>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/CMSIS_CORE_LPC17xx"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="includePath" name="/CMSIS_CORE_LPC17xx/inc"/>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/CMSIS_CORE_LPC17xx/Debug"/>
 						<entry flags="RESOLVED" kind="libraryFile" name="CMSIS_CORE_LPC17xx" srcPrefixMapping="" srcRootPath=""/>
 					</externalSetting>
@@ -129,9 +130,6 @@
 	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
 		<project id="CMSIS_CORE_LPC17xx.com.crt.advproject.projecttype.lib.1132436677" name="Static Library" projectType="com.crt.advproject.projecttype.lib"/>
 	</storageModule>
-	<storageModule moduleId="scannerConfiguration">
-		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
-	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 	<storageModule moduleId="com.crt.config">
 		<projectStorage>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#13;
@@ -208,4 +206,13 @@
 &lt;/TargetConfig&gt;</projectStorage>
 	</storageModule>
 	<storageModule moduleId="refreshScope"/>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="com.crt.advproject.config.lib.debug.1991456843;com.crt.advproject.config.lib.debug.1991456843.;com.crt.advproject.gas.lib.debug.1423951452;com.crt.advproject.assembler.input.938720165">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.crt.advproject.GCCManagedMakePerProjectProfile"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="com.crt.advproject.config.lib.debug.1991456843;com.crt.advproject.config.lib.debug.1991456843.;com.crt.advproject.gcc.lib.debug.1973900125;com.crt.advproject.compiler.input.730029437">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.crt.advproject.GCCManagedMakePerProjectProfile"/>
+		</scannerConfigBuildInfo>
+	</storageModule>
 </cproject>

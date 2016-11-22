@@ -1,0 +1,13 @@
+11:46:00 **** Incremental Build of configuration Debug for project FirmwareStandalone ****
+make -r clean all 
+rm -rf  ./src/cr_startup_lpc17.o ./src/main.o  ./src/cr_startup_lpc17.d ./src/main.d  FirmwareStandalone.axf
+ 
+Building file: ../src/cr_startup_lpc17.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -I"C:\nxp\WS\CMSIS_LPC1758\Configuration" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0\include" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOSv9.0.0\portable\GCC\ARM_CM3" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -D__REDLIB__ -specs=redlib.specs -MMD -MP -MF"src/cr_startup_lpc17.d" -MT"src/cr_startup_lpc17.o" -MT"src/cr_startup_lpc17.d" -o "src/cr_startup_lpc17.o" "../src/cr_startup_lpc17.c"
+../src/cr_startup_lpc17.c:52:21: fatal error: LPC17xx.h: No such file or directory
+compilation terminated.
+make: *** [src/cr_startup_lpc17.o] Error 1
+
+11:46:01 Build Finished (took 392ms)
+

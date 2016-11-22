@@ -1,0 +1,16 @@
+15:30:52 **** Incremental Build of configuration Debug for project webserver_freertos ****
+make -r all 
+Building target: webserver_freertos.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -L"C:\nxp\WS\CMSIS_LPC1758\dLAN_Green_PHY_eval_board\Debug" -L"C:\nxp\WS\CMSIS_LPC1758\lpc_chip_175x_6x\Debug" -Xlinker -Map="webserver_freertos.map" -Xlinker --gc-sections -mcpu=cortex-m3 -mthumb -T "webserver_freertos_Debug.ld" -o "webserver_freertos.axf"  ./lwip/src/netif/etharp.o ./lwip/src/netif/ethernetif.o  ./lwip/src/core/ipv4/autoip.o ./lwip/src/core/ipv4/icmp.o ./lwip/src/core/ipv4/igmp.o ./lwip/src/core/ipv4/inet.o ./lwip/src/core/ipv4/inet_chksum.o ./lwip/src/core/ipv4/ip.o ./lwip/src/core/ipv4/ip_addr.o ./lwip/src/core/ipv4/ip_frag.o  ./lwip/src/core/def.o ./lwip/src/core/dhcp.o ./lwip/src/core/dns.o ./lwip/src/core/init.o ./lwip/src/core/mem.o ./lwip/src/core/memp.o ./lwip/src/core/netif.o ./lwip/src/core/pbuf.o ./lwip/src/core/raw.o ./lwip/src/core/stats.o ./lwip/src/core/sys.o ./lwip/src/core/tcp.o ./lwip/src/core/tcp_in.o ./lwip/src/core/tcp_out.o ./lwip/src/core/timers.o ./lwip/src/core/udp.o  ./lwip/src/arch/lpc17xx_40xx_emac.o ./lwip/src/arch/lpc_debug.o ./lwip/src/arch/sys_arch_freertos.o  ./lwip/src/api/api_lib.o ./lwip/src/api/api_msg.o ./lwip/src/api/err.o ./lwip/src/api/netbuf.o ./lwip/src/api/netdb.o ./lwip/src/api/netifapi.o ./lwip/src/api/sockets.o ./lwip/src/api/tcpip.o  ./freertos/src/FreeRTOSCommonHooks.o ./freertos/src/heap_3.o ./freertos/src/list.o ./freertos/src/port.o ./freertos/src/queue.o ./freertos/src/tasks.o  ./example/src/cr_redlib_heap_fix.o ./example/src/cr_startup_lpc177x_8x.o ./example/src/lwip_fs.o ./example/src/netconn_fs.o ./example/src/sysinit.o ./example/src/webserver_freertos.o   -ldLAN_Green_PHY_eval_board -llpc_chip_175x_6x
+Finished building target: webserver_freertos.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "webserver_freertos.axf"; # arm-none-eabi-objcopy -v -O binary "webserver_freertos.axf" "webserver_freertos.bin" ; # checksum -p LPC1758 -d "webserver_freertos.bin";
+   text	   data	    bss	    dec	    hex	filename
+  83120	     32	   2384	  85536	  14e20	webserver_freertos.axf
+ 
+
+15:31:14 Build Finished (took 21s.759ms)
+

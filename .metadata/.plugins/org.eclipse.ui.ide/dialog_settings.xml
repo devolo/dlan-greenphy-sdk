@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<list key="installedFeatures">
+		<item value="com.crt.lpcxpresso.feature:8.2.0.201607221326"/>
+		<item value="org.eclipse.cdt.debug.gdbjtag:8.8.1.201602051005"/>
+		<item value="org.eclipse.cdt.gdb:8.8.1.201602051005"/>
+		<item value="org.eclipse.cdt:8.8.1.201602051005"/>
+		<item value="org.eclipse.cvs:1.4.201.v20160212-1500"/>
+		<item value="org.eclipse.draw2d:3.10.1.201508170204"/>
+		<item value="org.eclipse.emf.common:2.11.1.v20160208-0816"/>
+		<item value="org.eclipse.emf.ecore:2.11.2.v20160208-0816"/>
+		<item value="org.eclipse.gef:3.10.1.201508170204"/>
+		<item value="org.eclipse.help:2.1.2.v20160212-1500"/>
+		<item value="org.eclipse.platform:4.5.2.v20160212-1500"/>
+		<item value="org.eclipse.rcp:4.5.2.v20160212-1500"/>
+	</list>
+	<section name="ExternalProjectImportWizard">
+	</section>
+	<section name="WORKBENCH_SETTINGS">
+		<list key="ENABLED_TRANSFERS">
+		</list>
+	</section>
+	<section name="ChooseWorkspaceDialogSettings">
+		<item value="202" key="DIALOG_X_ORIGIN"/>
+		<item value="197" key="DIALOG_Y_ORIGIN"/>
+	</section>
+</section>

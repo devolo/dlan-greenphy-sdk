@@ -1,0 +1,457 @@
+/****************************************************************************
+ *   $Id:: dma.c 5804 2010-12-04 00:32:12Z usb00423                         $
+ *   Project: NXP LPC17xx SSP DMA example
+ *
+ *   Description:
+ *     This file contains DMA code example which include DMA
+ *     initialization, DMA interrupt handler, and APIs for DMA
+ *     transfer.
+ *
+ ****************************************************************************
+ * Software that is described herein is for illustrative purposes only
+ * which provides customers with programming information regarding the
+ * products. This software is supplied "AS IS" without any warranties.
+ * NXP Semiconductors assumes no responsibility or liability for the
+ * use of the software, conveys no license or title under any patent,
+ * copyright, or mask work right to the product. NXP Semiconductors
+ * reserves the right to make changes in the software without
+ * notification. NXP Semiconductors also make no representation or
+ * warranty that such application will be suitable for the specified
+ * use without further testing or modification.
+****************************************************************************/
+#include "C:\nxp\WS\CMSIS_LPC1758\CMSIS_CORE_LPC17xx\inc\LPC17xx.h"
+#include "lpc_sc.h"
+#include "dma.h"
+#include "ssp.h"
+//#include "debug.h"
+#include "task.h"
+
+#define ON 1
+#define OFF 0
+
+#define BURST_SIZE_1   0
+#define BURST_SIZE_4   1
+#define BURST_SIZE_8   2
+#define BURST_SIZE_16  3
+#define BURST_SIZE_32  4
+#define BURST_SIZE_64  5
+#define BURST_SIZE_128 6
+#define BURST_SIZE_256 7
+
+#define TRANSFER_WIDTH_8_BIT  0
+#define TRANSFER_WIDTH_16_BIT 1
+#define TRANSFER_WIDTH_32_BIT 2
+
+#define SOURCE_BURST_SIZE_OFFSET 12
+#define DESTINATION_BURST_SIZE_OFFSET 15
+#define SOURCE_WIDTH_OFFSET 18
+#define DESTINATION_WIDTH_OFFSET 21
+#define SOURCE_INCREMENT_OFFSET 26
+#define DESTINATION_INCREMENT_OFFSET 27
+#define TERMINAL_COUNT_INTERRUPT_OFFSET 31
+
+#define SOURCE_PERIPHERAL_OFFSET 1
+#define DESTINATION_PERIPHERAL_OFFSET 6
+#define TRANSFER_TYPE_OFFSET 11
+#define INTERRUPT_ERROR_OFFSET 14
+#define INTERRUPT_TERMINAL_COUNT_OFFSET 15
+#define LOCK_OFFSET 16
+#define ACTIVE_OFFSET 16
+#define HALT_OFFSET 18
+
+volatile uint32_t DMATCCount = 0;
+volatile uint32_t DMAErrCount = 0;
+volatile uint32_t SSP0DMADone = 0;
+volatile uint32_t SSP1DMADone = 0;
+volatile uint32_t SSP2DMADone = 0;
+volatile uint32_t SSP3DMADone = 0;
+
+static xSemaphoreHandle SSP0DMADoneSemaphore = NULL;;
+static xSemaphoreHandle SSP1DMADoneSemaphore = NULL;;
+static xSemaphoreHandle SSP2DMADoneSemaphore = NULL;;
+static xSemaphoreHandle SSP3DMADoneSemaphore = NULL;;
+
+/******************************************************************************
+** Function name:		DMA_IRQHandler
+**
+** Descriptions:		DMA interrupt handler
+**
+** parameters:		None
+** Returned value:	None
+**
+******************************************************************************/
+void DMA_IRQHandler(void)
+{
+  uint32_t regVal;
+  regVal = LPC_GPDMA->IntTCStat;
+
+  long lHigherPriorityTaskWoken = pdFALSE;
+
+  DEBUG_PRINT(DMA_INTERUPT,"<");
+  if ( regVal )
+  {
+	DMATCCount++;
+	LPC_GPDMA->IntTCClear = regVal;
+	if ( regVal & (0x01<<0) )
+	{
+		DEBUG_PRINT(DMA_INTERUPT,"0");
+	  SSP0DMADone = 1;
+		if(xTaskGetSchedulerState() == taskSCHEDULER_RUNNING)
+		{
+			xSemaphoreGiveFromISR( SSP0DMADoneSemaphore, &lHigherPriorityTaskWoken );
+		}
+		else
+		{
+			DEBUG_PRINT(DEBUG_ALL,"Scheduler not running:(1)%s\r\n",__func__);
+		}
+	}
+	if ( regVal & (0x01<<1) )
+	{
+		DEBUG_PRINT(DMA_INTERUPT,"1");
+	  SSP1DMADone = 1;
+		if(xTaskGetSchedulerState() == taskSCHEDULER_RUNNING)
+		{
+			xSemaphoreGiveFromISR( SSP1DMADoneSemaphore, &lHigherPriorityTaskWoken );
+		}
+		else
+		{
+			DEBUG_PRINT(DEBUG_ALL,"Scheduler not running:(2)%s\r\n",__func__);
+		}
+	}
+	if ( regVal & (0x01<<2) )
+	{
+		DEBUG_PRINT(DMA_INTERUPT,"2");
+	  SSP2DMADone = 1;
+		if(xTaskGetSchedulerState() == taskSCHEDULER_RUNNING)
+		{
+			xSemaphoreGiveFromISR( SSP2DMADoneSemaphore, &lHigherPriorityTaskWoken );
+		}
+		else
+		{
+			DEBUG_PRINT(DEBUG_ALL,"Scheduler not running:(3)%s\r\n",__func__);
+		}
+	}
+	if ( regVal & (0x01<<3) )
+	{
+		DEBUG_PRINT(DMA_INTERUPT,"3");
+	  SSP3DMADone = 1;
+		if(xTaskGetSchedulerState() == taskSCHEDULER_RUNNING)
+		{
+			xSemaphoreGiveFromISR( SSP3DMADoneSemaphore, &lHigherPriorityTaskWoken );
+		}
+		else
+		{
+			DEBUG_PRINT(DEBUG_ALL,"Scheduler not running:(4)%s\r\n",__func__);
+		}
+	}
+  }
+
+  regVal = LPC_GPDMA->IntErrStat;
+  if ( regVal )
+  {
+		DEBUG_PRINT(DMA_INTERUPT,"E");
+	DMAErrCount++;
+	LPC_GPDMA->IntErrClr = regVal;
+  }
+
+	if(lHigherPriorityTaskWoken)
+	{
+		DEBUG_PRINT(DMA_INTERUPT,"W");
+	}
+
+  DEBUG_PRINT(DMA_INTERUPT,">\r\n");
+
+	portEND_SWITCHING_ISR( lHigherPriorityTaskWoken );
+}
+
+/******************************************************************************
+** Function name:		DMA_Init
+**
+** Descriptions:		clock to GPDMA in PCONP, GPDMA init before channel init
+**
+** parameters:			None
+** Returned value:		None
+**
+******************************************************************************/
+void DMA_Init( void )
+{
+	/* Enable POWER to GPDMA controller */
+  LPC_SC->PCONP |= PCGPDMA;
+
+  /* Clocking setup is done in main.c */
+
+  /* Select primary function(SSP0/1/2) in DMA channels */
+  LPC_SC->DMAREQSEL = 0x0000;
+
+  /* Clear DMA channel 0~3 interrupts. */
+  LPC_GPDMA->IntTCClear = 0x0F;
+  LPC_GPDMA->IntErrClr = 0x0F;
+
+  LPC_GPDMA->Config = 0x01;	/* Enable DMA channels, little endian */
+  while ( !(LPC_GPDMA->Config & 0x01) );
+
+	if(xTaskGetSchedulerState() != taskSCHEDULER_RUNNING)
+	{
+		DEBUG_PRINT(DEBUG_ALL,"Scheduler not running: %s\r\n",__func__);
+	}
+
+	if(SSP0DMADoneSemaphore==NULL)
+	{
+		vSemaphoreCreateBinary( SSP0DMADoneSemaphore );
+		xSemaphoreTake( SSP0DMADoneSemaphore,0 );
+	}
+	if(SSP1DMADoneSemaphore==NULL)
+	{
+		vSemaphoreCreateBinary( SSP1DMADoneSemaphore );
+		xSemaphoreTake( SSP1DMADoneSemaphore,0 );
+	}
+	if(SSP2DMADoneSemaphore==NULL)
+	{
+		vSemaphoreCreateBinary( SSP2DMADoneSemaphore );
+		xSemaphoreTake( SSP2DMADoneSemaphore,0 );
+	}
+	if(SSP3DMADoneSemaphore==NULL)
+	{
+		vSemaphoreCreateBinary( SSP3DMADoneSemaphore );
+		xSemaphoreTake( SSP3DMADoneSemaphore,0 );
+	}
+  /* DMA interrupt enable */
+	NVIC_SetPriority( DMA_IRQn, configDMA_INTERRUPT_PRIORITY );
+	NVIC_EnableIRQ(DMA_IRQn);
+
+  return;
+}
+
+/******************************************************************************
+** Function name:		DMAChannel_Init
+**
+** Descriptions:
+**
+** parameters:			Channel number, DMA mode: M2P, P2M, M2M, P2P
+** Returned value:		TRUE or FALSE
+**
+******************************************************************************/
+static uint32_t singleData = 0x12345678;
+
+uint32_t DMAChannel_Init( uint32_t ChannelNum, uint32_t DMAMode , uint8_t* pData, uint32_t size)
+{
+	uint32_t data = (uint32_t) pData;
+  if ( ChannelNum == 0 )
+  {
+	SSP0DMADone = 0;
+	if ( DMAMode == M2P )
+	{
+	  /* Ch0 set for M2P transfer from memory to peripheral. */
+	  LPC_GPDMACH0->CSrcAddr = data;
+	  /* write data to SSP0 */
+	  LPC_GPDMACH0->CDestAddr = SSP0_DMA_TX_DST;
+	  /* don't use a linked list */
+	  LPC_GPDMACH0->CLLI = 0x0;
+	  /* Control set up */
+	  LPC_GPDMACH0->CControl = (size & 0x07FF) |
+			  ( BURST_SIZE_1 << SOURCE_BURST_SIZE_OFFSET ) |
+			  ( BURST_SIZE_1 << DESTINATION_BURST_SIZE_OFFSET ) |
+			  ( TRANSFER_WIDTH_8_BIT << SOURCE_WIDTH_OFFSET ) |
+			  ( TRANSFER_WIDTH_8_BIT << DESTINATION_WIDTH_OFFSET ) |
+			  ( OFF << DESTINATION_INCREMENT_OFFSET ) |
+			  ( ON << SOURCE_INCREMENT_OFFSET ) |
+			  ( ON << TERMINAL_COUNT_INTERRUPT_OFFSET );
+
+	  LPC_GPDMACH0->CConfig = ( ON ) |
+			  0x0C001 |
+			  ( OFF << SOURCE_PERIPHERAL_OFFSET ) |
+			  ( DMA_SSP0_TX << DESTINATION_PERIPHERAL_OFFSET ) |
+			  ( M2P << TRANSFER_TYPE_OFFSET ) |
+			  ( ON << INTERRUPT_ERROR_OFFSET ) |
+			  ( ON << INTERRUPT_TERMINAL_COUNT_OFFSET ) |
+			  ( OFF << LOCK_OFFSET ) |
+			  ( OFF << HALT_OFFSET );
+	}
+	else if ( DMAMode == SM2P)
+	{
+		  /* Ch0 set for M2P transfer from memory to peripheral. */
+		  LPC_GPDMACH0->CSrcAddr = (uint32_t)&singleData;
+		  /* write data to SSP0 */
+		  LPC_GPDMACH0->CDestAddr = SSP0_DMA_TX_DST;
+		  /* don't use a linked list */
+		  LPC_GPDMACH0->CLLI = 0x0;
+		  /* Control set up */
+		  LPC_GPDMACH0->CControl = (size & 0x07FF) |
+				  ( BURST_SIZE_1 << SOURCE_BURST_SIZE_OFFSET ) |
+				  ( BURST_SIZE_1 << DESTINATION_BURST_SIZE_OFFSET ) |
+				  ( TRANSFER_WIDTH_8_BIT << SOURCE_WIDTH_OFFSET ) |
+				  ( TRANSFER_WIDTH_8_BIT << DESTINATION_WIDTH_OFFSET ) |
+				  ( OFF << DESTINATION_INCREMENT_OFFSET ) |
+				  ( OFF << SOURCE_INCREMENT_OFFSET ) |
+				  ( ON << TERMINAL_COUNT_INTERRUPT_OFFSET );
+
+		  LPC_GPDMACH0->CConfig = ( ON ) |
+				  0x0C001 |
+				  ( OFF << SOURCE_PERIPHERAL_OFFSET ) |
+				  ( DMA_SSP0_TX << DESTINATION_PERIPHERAL_OFFSET ) |
+				  ( M2P << TRANSFER_TYPE_OFFSET ) |
+				  ( ON << INTERRUPT_ERROR_OFFSET ) |
+				  ( ON << INTERRUPT_TERMINAL_COUNT_OFFSET ) |
+				  ( OFF << LOCK_OFFSET ) |
+				  ( OFF << HALT_OFFSET );
+	}
+	else if ( DMAMode == P2M )
+	{
+	  /* read data from SSP0 */
+	  LPC_GPDMACH0->CSrcAddr = SSP0_DMA_RX_SRC;
+	  /* Ch1 set for P2M transfer from peripheral to memory. */
+	  LPC_GPDMACH0->CDestAddr = data;
+
+	  /* don't use a linked list */
+	  LPC_GPDMACH0->CLLI = 0x0;
+
+	  /* Control set up */
+	  LPC_GPDMACH0->CControl = (size & 0x07FF) |
+			  ( BURST_SIZE_1 << SOURCE_BURST_SIZE_OFFSET ) |
+			  ( BURST_SIZE_1 << DESTINATION_BURST_SIZE_OFFSET ) |
+			  ( TRANSFER_WIDTH_8_BIT << SOURCE_WIDTH_OFFSET ) |
+			  ( TRANSFER_WIDTH_8_BIT << DESTINATION_WIDTH_OFFSET ) |
+			  ( ON << DESTINATION_INCREMENT_OFFSET ) |
+			  ( OFF << SOURCE_INCREMENT_OFFSET ) |
+			  ( ON << TERMINAL_COUNT_INTERRUPT_OFFSET );
+
+	  LPC_GPDMACH0->CConfig = ( ON ) |
+			  0x0C001 |
+			  ( DMA_SSP0_RX << SOURCE_PERIPHERAL_OFFSET ) |
+			  ( OFF << DESTINATION_PERIPHERAL_OFFSET ) |
+			  ( P2M << TRANSFER_TYPE_OFFSET ) |
+			  ( ON << INTERRUPT_ERROR_OFFSET ) |
+			  ( ON << INTERRUPT_TERMINAL_COUNT_OFFSET ) |
+			  ( OFF << LOCK_OFFSET ) |
+			  ( OFF << HALT_OFFSET );
+	}
+	else
+	{
+	  return ( FALSE );
+	}
+  }
+  else if ( ChannelNum == 1 )
+  {
+	SSP1DMADone = 0;
+	if ( DMAMode == M2P )
+	{
+	  /* Ch0 set for M2P transfer from memory to peripheral. */
+	  LPC_GPDMACH1->CSrcAddr = data;
+	  /* write data to SSP0 */
+	  LPC_GPDMACH1->CDestAddr = SSP0_DMA_TX_DST;
+	  /* don't use a linked list */
+	  LPC_GPDMACH1->CLLI = 0x0;
+	  /* Control set up */
+	  LPC_GPDMACH1->CControl = (size & 0x07FF) |
+			  ( BURST_SIZE_1 << SOURCE_BURST_SIZE_OFFSET ) |
+			  ( BURST_SIZE_1 << DESTINATION_BURST_SIZE_OFFSET ) |
+			  ( TRANSFER_WIDTH_8_BIT << SOURCE_WIDTH_OFFSET ) |
+			  ( TRANSFER_WIDTH_8_BIT << DESTINATION_WIDTH_OFFSET ) |
+			  ( OFF << DESTINATION_INCREMENT_OFFSET ) |
+			  ( ON << SOURCE_INCREMENT_OFFSET ) |
+			  ( ON << TERMINAL_COUNT_INTERRUPT_OFFSET );
+
+	  LPC_GPDMACH1->CConfig = ( ON ) |
+			  0x0C001 |
+			  ( OFF << SOURCE_PERIPHERAL_OFFSET ) |
+			  ( DMA_SSP0_TX << DESTINATION_PERIPHERAL_OFFSET ) |
+			  ( M2P << TRANSFER_TYPE_OFFSET ) |
+			  ( ON << INTERRUPT_ERROR_OFFSET ) |
+			  ( ON << INTERRUPT_TERMINAL_COUNT_OFFSET ) |
+			  ( OFF << LOCK_OFFSET ) |
+			  ( OFF << HALT_OFFSET );
+	}
+	else if ( DMAMode == SM2P)
+	{
+		  /* Ch0 set for M2P transfer from memory to peripheral. */
+		  LPC_GPDMACH0->CSrcAddr = (uint32_t)&singleData;
+		  /* write data to SSP0 */
+		  LPC_GPDMACH1->CDestAddr = SSP0_DMA_TX_DST;
+		  /* don't use a linked list */
+		  LPC_GPDMACH1->CLLI = 0x0;
+		  /* Control set up */
+		  LPC_GPDMACH1->CControl = (size & 0x07FF) |
+				  ( BURST_SIZE_1 << SOURCE_BURST_SIZE_OFFSET ) |
+				  ( BURST_SIZE_1 << DESTINATION_BURST_SIZE_OFFSET ) |
+				  ( TRANSFER_WIDTH_8_BIT << SOURCE_WIDTH_OFFSET ) |
+				  ( TRANSFER_WIDTH_8_BIT << DESTINATION_WIDTH_OFFSET ) |
+				  ( OFF << DESTINATION_INCREMENT_OFFSET ) |
+				  ( OFF << SOURCE_INCREMENT_OFFSET ) |
+				  ( ON << TERMINAL_COUNT_INTERRUPT_OFFSET );
+
+		  LPC_GPDMACH1->CConfig = ( ON ) |
+				  0x0C001 |
+				  ( OFF << SOURCE_PERIPHERAL_OFFSET ) |
+				  ( DMA_SSP0_TX << DESTINATION_PERIPHERAL_OFFSET ) |
+				  ( M2P << TRANSFER_TYPE_OFFSET ) |
+				  ( ON << INTERRUPT_ERROR_OFFSET ) |
+				  ( ON << INTERRUPT_TERMINAL_COUNT_OFFSET ) |
+				  ( OFF << LOCK_OFFSET ) |
+				  ( OFF << HALT_OFFSET );
+
+	}	else if ( DMAMode == P2M )
+	{
+	  /* read data from SSP0 */
+	  LPC_GPDMACH1->CSrcAddr = SSP0_DMA_RX_SRC;
+	  /* Ch1 set for P2M transfer from peripheral to memory. */
+	  LPC_GPDMACH1->CDestAddr = data;
+
+	  /* don't use a linked list */
+	  LPC_GPDMACH1->CLLI = 0x0;
+	  /* Control set up */
+	  LPC_GPDMACH1->CControl = (size & 0x07FF) |
+			  ( BURST_SIZE_1 << SOURCE_BURST_SIZE_OFFSET ) |
+			  ( BURST_SIZE_1 << DESTINATION_BURST_SIZE_OFFSET ) |
+			  ( TRANSFER_WIDTH_8_BIT << SOURCE_WIDTH_OFFSET ) |
+			  ( TRANSFER_WIDTH_8_BIT << DESTINATION_WIDTH_OFFSET ) |
+			  ( ON << DESTINATION_INCREMENT_OFFSET ) |
+			  ( OFF << SOURCE_INCREMENT_OFFSET ) |
+			  ( ON << TERMINAL_COUNT_INTERRUPT_OFFSET );
+
+	  LPC_GPDMACH1->CConfig = ( ON ) |
+			  0x0C001 |
+			  ( DMA_SSP0_RX << SOURCE_PERIPHERAL_OFFSET ) |
+			  ( OFF << DESTINATION_PERIPHERAL_OFFSET ) |
+			  ( P2M << TRANSFER_TYPE_OFFSET ) |
+			  ( ON << INTERRUPT_ERROR_OFFSET ) |
+			  ( ON << INTERRUPT_TERMINAL_COUNT_OFFSET ) |
+			  ( OFF << LOCK_OFFSET ) |
+			  ( OFF << HALT_OFFSET );
+	}
+	else
+	{
+	  return ( FALSE );
+	}
+  }
+  else
+  {
+	return ( FALSE );
+  }
+  return( TRUE );
+}
+
+portBASE_TYPE DMAChannel_TransferComplete( uint32_t ChannelNum, portTickType timeout_ms)
+{
+	portBASE_TYPE rv = pdFALSE;
+	switch(ChannelNum)
+	{
+	case 0:
+		rv = xSemaphoreTake( SSP0DMADoneSemaphore , timeout_ms );
+		break;
+	case 1:
+		rv = xSemaphoreTake( SSP1DMADoneSemaphore , timeout_ms );
+		break;
+	case 2:
+		rv = xSemaphoreTake( SSP2DMADoneSemaphore , timeout_ms );
+		break;
+	case 3:
+		rv = xSemaphoreTake( SSP3DMADoneSemaphore , timeout_ms );
+		break;
+	}
+	return rv;
+}
+
+
+/******************************************************************************
+**                            End Of File
+******************************************************************************/

@@ -1,0 +1,44 @@
+17:59:46 **** Incremental Build of configuration Debug for project FirmwareImageForTFTPUpdate ****
+make -r clean all 
+rm -rf  ./src/cr_startup_lpc17.o ./src/main.o  ./src/cr_startup_lpc17.d ./src/main.d  FirmwareImageForTFTPUpdate.axf
+ 
+Building file: ../src/cr_startup_lpc17.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DDEBUG -I"C:\nxp\WS\CMSIS_LPC1758\HardwareSupport\include" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOS_V7.1.0\include" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOS_V7.1.0\src\portable\GCC\ARM_CM3" -I"C:\nxp\WS\CMSIS_LPC1758\Configuration" -I"C:\nxp\WS\CMSIS_LPC1758\CMSIS_CORE_LPC17xx\inc" -I"C:\nxp\WS\CMSIS_LPC1758\ApplicationSupport" -I"C:\nxp\WS\CMSIS_LPC1758\ApplicationSupport\inc" -I"C:\nxp\WS\CMSIS_LPC1758\ApplicationSupport\src\MQTT\MQTTPacket\src" -I"C:\nxp\WS\CMSIS_LPC1758\ApplicationSupport\src\MQTT\MQTTClient-C\src" -I"C:\nxp\WS\CMSIS_LPC1758\ApplicationSupport\src\IP" -I"C:\nxp\WS\CMSIS_LPC1758\ApplicationSupport\src\HTTP" -I"C:\nxp\WS\CMSIS_LPC1758\ApplicationSupport\src\TFTP_IAP" -I"C:\nxp\WS\CMSIS_LPC1758\ApplicationSupport\src\CLI\include" -I"C:\nxp\WS\CMSIS_LPC1758\ApplicationSupport\src\MQTT\MQTTClient-C\src\lpc1758" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\FreeRTOSConfig.h" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\greenPhyModuleConfig.h" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\netConfig.h" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -D__REDLIB__ -specs=redlib.specs -MMD -MP -MF"src/cr_startup_lpc17.d" -MT"src/cr_startup_lpc17.o" -MT"src/cr_startup_lpc17.d" -o "src/cr_startup_lpc17.o" "../src/cr_startup_lpc17.c"
+Finished building: ../src/cr_startup_lpc17.c
+ 
+Building file: ../src/main.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DDEBUG -I"C:\nxp\WS\CMSIS_LPC1758\HardwareSupport\include" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOS_V7.1.0\include" -I"C:\nxp\WS\CMSIS_LPC1758\FreeRTOS_V7.1.0\src\portable\GCC\ARM_CM3" -I"C:\nxp\WS\CMSIS_LPC1758\Configuration" -I"C:\nxp\WS\CMSIS_LPC1758\CMSIS_CORE_LPC17xx\inc" -I"C:\nxp\WS\CMSIS_LPC1758\ApplicationSupport" -I"C:\nxp\WS\CMSIS_LPC1758\ApplicationSupport\inc" -I"C:\nxp\WS\CMSIS_LPC1758\ApplicationSupport\src\MQTT\MQTTPacket\src" -I"C:\nxp\WS\CMSIS_LPC1758\ApplicationSupport\src\MQTT\MQTTClient-C\src" -I"C:\nxp\WS\CMSIS_LPC1758\ApplicationSupport\src\IP" -I"C:\nxp\WS\CMSIS_LPC1758\ApplicationSupport\src\HTTP" -I"C:\nxp\WS\CMSIS_LPC1758\ApplicationSupport\src\TFTP_IAP" -I"C:\nxp\WS\CMSIS_LPC1758\ApplicationSupport\src\CLI\include" -I"C:\nxp\WS\CMSIS_LPC1758\ApplicationSupport\src\MQTT\MQTTClient-C\src\lpc1758" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\FreeRTOSConfig.h" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\greenPhyModuleConfig.h" -include"C:\nxp\WS\CMSIS_LPC1758\Configuration\netConfig.h" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -D__REDLIB__ -specs=redlib.specs -MMD -MP -MF"src/main.d" -MT"src/main.o" -MT"src/main.d" -o "src/main.o" "../src/main.c"
+Finished building: ../src/main.c
+ 
+Building target: FirmwareImageForTFTPUpdate.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -L"C:\nxp\WS\CMSIS_LPC1758\FreeRTOS_V7.1.0\Debug" -L"C:\nxp\WS\CMSIS_LPC1758\Configuration\Debug" -Xlinker -Map="FirmwareImageForTFTPUpdate.map" -Xlinker --gc-sections -mcpu=cortex-m3 -mthumb -T "../linkerscripts/FirmwareImageForTFTPUpdate.ld" -o "FirmwareImageForTFTPUpdate.axf"  ./src/cr_startup_lpc17.o ./src/main.o   -lFreeRTOS_V7.1.0 -lConfiguration
+./src/cr_startup_lpc17.o:(.isr_vector+0xb0): undefined reference to `vEMAC_ISR'
+./src/main.o: In function `vApplicationMallocFailedHook':
+C:\nxp\WS\CMSIS_LPC1758\FirmwareImageForTFTPUpdate\Debug/../src/main.c:34: undefined reference to `printToUart'
+./src/main.o: In function `vApplicationTickHook':
+C:\nxp\WS\CMSIS_LPC1758\FirmwareImageForTFTPUpdate\Debug/../src/main.c:60: undefined reference to `debug_print'
+./src/main.o: In function `main':
+C:\nxp\WS\CMSIS_LPC1758\FirmwareImageForTFTPUpdate\Debug/../src/main.c:143: undefined reference to `LPC_UseOscillator'
+C:\nxp\WS\CMSIS_LPC1758\FirmwareImageForTFTPUpdate\Debug/../src/main.c:144: undefined reference to `LPC_SetPLL0'
+C:\nxp\WS\CMSIS_LPC1758\FirmwareImageForTFTPUpdate\Debug/../src/main.c:146: undefined reference to `printInit'
+C:\nxp\WS\CMSIS_LPC1758\FirmwareImageForTFTPUpdate\Debug/../src/main.c:147: undefined reference to `debug_init'
+C:\nxp\WS\CMSIS_LPC1758\FirmwareImageForTFTPUpdate\Debug/../src/main.c:149: undefined reference to `printToUart'
+C:\nxp\WS\CMSIS_LPC1758\FirmwareImageForTFTPUpdate\Debug/../src/main.c:152: undefined reference to `printToUart'
+C:\nxp\WS\CMSIS_LPC1758\FirmwareImageForTFTPUpdate\Debug/../src/main.c:153: undefined reference to `printToUart'
+C:\nxp\WS\CMSIS_LPC1758\FirmwareImageForTFTPUpdate\Debug/../src/main.c:154: undefined reference to `printToUart'
+C:\nxp\WS\CMSIS_LPC1758\FirmwareImageForTFTPUpdate\Debug/../src/main.c:155: undefined reference to `printToUart'
+./src/main.o:C:\nxp\WS\CMSIS_LPC1758\FirmwareImageForTFTPUpdate\Debug/../src/main.c:156: more undefined references to `printToUart' follow
+./src/main.o: In function `main':
+C:\nxp\WS\CMSIS_LPC1758\FirmwareImageForTFTPUpdate\Debug/../src/main.c:188: undefined reference to `initRelay'
+C:\nxp\WS\CMSIS_LPC1758\FirmwareImageForTFTPUpdate\Debug/../src/main.c:196: undefined reference to `greenPhyInitNetdevice'
+C:\nxp\WS\CMSIS_LPC1758\FirmwareImageForTFTPUpdate\Debug/../src/main.c:228: undefined reference to `printToUart'
+C:\nxp\WS\CMSIS_LPC1758\FirmwareImageForTFTPUpdate\Debug/../src/main.c:233: undefined reference to `printToUart'
+C:\nxp\WS\CMSIS_LPC1758\FirmwareImageForTFTPUpdate\Debug/../src/main.c:238: undefined reference to `vuIP_Task'
+collect2.exe: error: ld returned 1 exit status
+make: *** [FirmwareImageForTFTPUpdate.axf] Error 1
+
+17:59:46 Build Finished (took 769ms)
+

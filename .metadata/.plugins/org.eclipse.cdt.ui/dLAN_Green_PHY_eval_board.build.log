@@ -1,0 +1,6 @@
+14:13:43 **** Incremental Build of configuration Debug for project dLAN_Green_PHY_eval_board ****
+make -r all 
+make: Nothing to be done for `all'.
+
+14:13:43 Build Finished (took 109ms)
+

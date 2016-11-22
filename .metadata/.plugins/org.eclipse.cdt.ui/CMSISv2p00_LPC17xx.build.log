@@ -1,0 +1,6 @@
+16:25:03 **** Incremental Build of configuration Debug for project CMSISv2p00_LPC17xx ****
+make -r all 
+make: Nothing to be done for `all'.
+
+16:25:03 Build Finished (took 140ms)
+
