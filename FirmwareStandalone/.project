@@ -9,6 +9,7 @@
 		<project>Configuration</project>
 		<project>FreeRTOS-Plus-TCP</project>
 		<project>CMSIS_CORE_LPC17xx</project>
+		<project>Libraries</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

@@ -5,6 +5,8 @@
 	<projects>
 		<project>HardwareSupport</project>
 		<project>FreeRTOSv9.0.0</project>
+		<project>Configuration</project>
+		<project>Libraries</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

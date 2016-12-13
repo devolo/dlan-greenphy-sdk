@@ -73,7 +73,7 @@ struct netdeviceQueueElement * qcaspi_create_get_sw_version_mme(struct qcaspi *q
 
 	if(rv)
 	{
-		data_t data = getDataFromQueueElement(rv);
+		uint8_t *  data = getDataFromQueueElement(rv);
 		struct SwVerReq* sw_ver_req_mme;
 		uint16_t temp_16;
 		struct CCMMEFrame* mme_frame;
@@ -115,7 +115,7 @@ struct netdeviceQueueElement * qcaspi_create_get_property_host_q_info(struct qca
 
 	if(rv)
 	{
-		data_t data = getDataFromQueueElement(rv);
+		uint8_t * data = getDataFromQueueElement(rv);
 		struct PropertyReq* property_req_mme;
 		uint16_t temp_16;
 		uint32_t temp;
@@ -177,7 +177,7 @@ struct netdeviceQueueElement * qcaspi_create_get_property_host_q_info(struct qca
  * Returns -1 on error, 0 on success, 1 on expected MME.
  */
 
-int process_rx_mme_frame(struct qcaspi* qca, data_t data)
+int process_rx_mme_frame(struct qcaspi* qca, uint8_t * data)
 {
 	int rv = 0;
 
@@ -317,7 +317,7 @@ int process_rx_mme_frame(struct qcaspi* qca, data_t data)
 	return rv;
 }
 
-int is_frame_mme(data_t pFrame)
+int is_frame_mme(uint8_t * pFrame)
 {
 	int rv = 0;
 	/* check the received frame ... if it is an MME, process it */
@@ -342,7 +342,7 @@ void filter_rx_mme(struct qcaspi* qca, struct netdeviceQueueElement **rxBuffer)
 {
 	if(expecting_mme(qca))
 	{
-		data_t pFrame = getDataFromQueueElement(*rxBuffer);
+		uint8_t * pFrame = getDataFromQueueElement(*rxBuffer);
 		if(is_frame_mme(pFrame))
 		{
 			if(process_rx_mme_frame(qca, pFrame))

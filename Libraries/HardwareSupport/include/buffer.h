@@ -40,7 +40,7 @@
 /* Hardware specific includes. */
 #include "EthDev_LPC17xx.h"
 
-#include <lpc_types.h>
+#include "lpc_types.h"
 
 /* If no buffers are available, then wait this long before looking again.... */
 #define emacBUFFER_WAIT_DELAY	( 1 / portTICK_RATE_MS )
@@ -69,7 +69,7 @@ struct netdeviceQueueElement;
  * @param length of data in the buffer
  * @return New queue element, NULL on failure.
  */
-struct netdeviceQueueElement * getQueueElementByBuffer(data_t, length_t);
+struct netdeviceQueueElement * getQueueElementByBuffer(uint8_t * , uint16_t);
 
 /*-----------------------------------------------------------*/
 
@@ -89,7 +89,7 @@ struct netdeviceQueueElement * getQueueElement(void);
  * @param element itself
  * @return data.
  */
-data_t getDataFromQueueElement(struct netdeviceQueueElement * element);
+uint8_t * getDataFromQueueElement(struct netdeviceQueueElement * element);
 
 
 /**
@@ -98,7 +98,7 @@ data_t getDataFromQueueElement(struct netdeviceQueueElement * element);
  * @param element itself
  * @return data.
  */
-data_t removeDataFromQueueElement(struct netdeviceQueueElement ** element);
+uint8_t * removeDataFromQueueElement(struct netdeviceQueueElement ** element);
 
 /*-----------------------------------------------------------*/
 /*-----------------------------------------------------------*/
@@ -109,7 +109,7 @@ data_t removeDataFromQueueElement(struct netdeviceQueueElement ** element);
  * @param element itself
  * @return length.
  */
-length_t getLengthFromQueueElement(struct netdeviceQueueElement * element);
+uint16_t getLengthFromQueueElement(struct netdeviceQueueElement * element);
 
 /**
  * Sets the length of data of a queue element.
@@ -117,7 +117,7 @@ length_t getLengthFromQueueElement(struct netdeviceQueueElement * element);
  * @param element itself
  * @param length of the element
  */
- void setLengthOfQueueElement(struct netdeviceQueueElement * element, length_t length);
+ void setLengthOfQueueElement(struct netdeviceQueueElement * element, uint16_t length);
 
 
  /**
@@ -126,7 +126,7 @@ length_t getLengthFromQueueElement(struct netdeviceQueueElement * element);
   * @param element itself
   * @param length to be removed from the element
   */
-void removeBytesFromFrontOfQueueElement(struct netdeviceQueueElement * pElement, length_t toRemove);
+void removeBytesFromFrontOfQueueElement(struct netdeviceQueueElement * pElement, uint16_t toRemove);
 
 /*-----------------------------------------------------------*/
 
@@ -144,7 +144,7 @@ void returnQueueElement(struct netdeviceQueueElement ** element);
  * Return an allocated buffer extracted by removeDataFromQueueElement()
  * to the pool of free buffers.
  */
-void prvReturnBuffer( data_t );
+void prvReturnBuffer( uint8_t * );
 
 /*-----------------------------------------------------------*/
 

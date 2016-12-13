@@ -416,17 +416,17 @@ static void UART_1_IRQHandler (struct UART * uart)
 
 	if(giveSemaphore)
 	{
-		if(xTaskGetSchedulerState() == taskSCHEDULER_RUNNING)
-		{
-			xSemaphoreGiveFromISR( uart->rxSemaphore, &lHigherPriorityTaskWoken );
-		}
+		//TF   if(xTaskGetSchedulerState() == taskSCHEDULER_RUNNING)
+		//TF   {
+		//TF   xSemaphoreGiveFromISR( uart->rxSemaphore, &lHigherPriorityTaskWoken );
+		//TF   }
 		uart->rx = 1;
 	}
 
-	if(xTaskGetSchedulerState() != taskSCHEDULER_RUNNING)
-	{
-		DEBUG_PRINT(DEBUG_ALL,"Scheduler not running:(1)%s\r\n",__func__);
-	}
+	//TF   if(xTaskGetSchedulerState() != taskSCHEDULER_RUNNING)
+	//TF   {
+	//TF   DEBUG_PRINT(DEBUG_ALL,"Scheduler not running:(1)%s\r\n",__func__);
+	//TF   }
 
 	portEND_SWITCHING_ISR( lHigherPriorityTaskWoken );
 }
@@ -514,17 +514,17 @@ static void UART_0_2_3_IRQHandler (struct UART * uart)
 
 	if(giveSemaphore)
 	{
-		if(xTaskGetSchedulerState() == taskSCHEDULER_RUNNING)
-		{
-			xSemaphoreGiveFromISR( uart->rxSemaphore, &lHigherPriorityTaskWoken );
-		}
+		//TF   if(xTaskGetSchedulerState() == taskSCHEDULER_RUNNING)
+		//TF   {
+		//TF   xSemaphoreGiveFromISR( uart->rxSemaphore, &lHigherPriorityTaskWoken );
+		//TF   }
 		uart->rx = 1;
 	}
 
-	if(xTaskGetSchedulerState() == taskSCHEDULER_RUNNING)
-	{
-		portEND_SWITCHING_ISR( lHigherPriorityTaskWoken );
-	}
+	//TF   if(xTaskGetSchedulerState() == taskSCHEDULER_RUNNING)
+	//TF   {
+	//TF   portEND_SWITCHING_ISR( lHigherPriorityTaskWoken );
+	//TF   }
 }
 
 /*****************************************************************************
@@ -627,7 +627,7 @@ void UARTSend( uint32_t portNum, uint8_t *BufferPtr, uint32_t Length )
 ** Returned value:		Number of bytes received, negative on overflow
 **
 *****************************************************************************/
-int UARTReceive( uint32_t portNum, uint8_t *buffer, uint16_t length, timeout_t timeout_ms)
+int UARTReceive( uint32_t portNum, uint8_t *buffer, uint16_t length, unsigned long  timeout_ms)
 {
 	int rv = 0;
 

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>Libraries</name>
+	<name>ClickboardIO</name>
 	<comment></comment>
 	<projects>
-		<project>Configuration</project>
-		<project>ApplicationSupport</project>
+		<project>Libraries</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

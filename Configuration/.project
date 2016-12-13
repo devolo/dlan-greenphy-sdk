@@ -5,6 +5,8 @@
 	<projects>
 		<project>FreeRTOS-Plus-TCP</project>
 		<project>CMSIS_CORE_LPC17xx</project>
+		<project>ApplicationSupport</project>
+		<project>Libraries</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

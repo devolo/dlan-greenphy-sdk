@@ -70,6 +70,9 @@
 #ifndef INC_FREERTOS_H
 #define INC_FREERTOS_H
 
+#define configSUPPORT_DYNAMIC_ALLOCATION 1
+//TF 7.12.2016 devolo test definition of configSUPPORT_DYNAMIC_ALLOCATION 1
+
 /*
  * Include the generic headers required for the FreeRTOS port being used.
  */

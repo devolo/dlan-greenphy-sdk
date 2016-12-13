@@ -373,7 +373,7 @@ static int greenPhyNetdeviceExit (struct netDeviceInterface ** pdev)
 
 /*-----------------------------------------------------------*/
 
-static struct netdeviceQueueElement * 	greenPhyNetdeviceRxWithTimeout (struct netDeviceInterface * dev,timeout_t timeout_ms)
+static struct netdeviceQueueElement * 	greenPhyNetdeviceRxWithTimeout (struct netDeviceInterface * dev,unsigned long  timeout_ms)
 {
 	struct netdeviceQueueElement * rv = NULL;
 

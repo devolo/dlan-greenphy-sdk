@@ -202,7 +202,7 @@ enable_spi_interrupts(struct qcaspi *qca, uint32_t intr_enable)
  * used for classifying the traffic into CAP priorities.
  */
 
-uint32_t qcaspi_get_qid_from_eth_frame_data(data_t ptmp)
+uint32_t qcaspi_get_qid_from_eth_frame_data(uint8_t * ptmp)
 {
 	uint32_t qid=0;
 	if(ptmp)
@@ -279,7 +279,7 @@ uint32_t qcaspi_get_qid_from_eth_frame_data(data_t ptmp)
  */
 
 uint32_t
-qcaspi_dma_write_burst(struct qcaspi *qca, data_t src, length_t len)
+qcaspi_dma_write_burst(struct qcaspi *qca, uint8_t * src, uint16_t len)
 {
 	qcaspi_tx_cmd(qca, QCA7K_SPI_WRITE | QCA7K_SPI_EXTERNAL);
 
@@ -360,7 +360,7 @@ uint16_t qcaspi_tx_frame(struct qcaspi *qca,struct netdeviceQueueElement * txBuf
 
 	if(txBuffer)
 	{
-		length_t len;
+		uint16_t len;
 		uint8_t pad_len = 0;
 
 		int status;
@@ -381,7 +381,7 @@ uint16_t qcaspi_tx_frame(struct qcaspi *qca,struct netdeviceQueueElement * txBuf
 
 		status = SSP_SSELToggle(qca->SSPx,0);
 
-		data_t pData = getDataFromQueueElement(txBuffer);
+		uint8_t * pData = getDataFromQueueElement(txBuffer);
 
 		DEBUG_PRINT(GREEN_PHY_TX,"(GREEN_PHY) tx buffer: 0x%x length %d\r\n",pData,len);
 		DEBUG_DUMP(GREEN_PHY_TX_BINARY,pData,len,"GREEN PHY TX");

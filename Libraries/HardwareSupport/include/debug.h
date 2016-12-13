@@ -111,7 +111,7 @@ void debug_print(int level,const char * __restrict format, ...);
  * @param[in] 	message		to be displayed
  * @return 		-
  ***********************************************************************/
-void dump (const int level, constData_t mem, length_t size, const char const * message);
+void dump (const int level, uint8_t * mem, uint16_t size, const char const * message);
 
 /*********************************************************************//**
  * @brief 		Set the current debug level
@@ -134,7 +134,7 @@ uint32_t debug_level_get(void);
  * @param[in] 	message		to be displayed
  * @return 		-
  ***********************************************************************/
-void dumpIcmpFrame(const int level, data_t frame, length_t length, char * message);
+void dumpIcmpFrame(const int level, uint8_t * frame, uint16_t length, char * message);
 
 /*------------------------------DEBUG-DEFINITIONS------------------------*/
 

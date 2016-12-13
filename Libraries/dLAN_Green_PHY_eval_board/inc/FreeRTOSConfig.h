@@ -56,6 +56,8 @@
 #ifndef FREERTOS_CONFIG_H
 #define FREERTOS_CONFIG_H
 
+
+
 #include "LPC17xx.h"
 
 /*-----------------------------------------------------------
@@ -67,6 +69,29 @@
  * THESE PARAMETERS ARE DESCRIBED WITHIN THE 'CONFIGURATION' SECTION OF THE
  * FreeRTOS API DOCUMENTATION AVAILABLE ON THE FreeRTOS.org WEB SITE.
  *----------------------------------------------------------*/
+
+
+
+
+/* Priorities passed to NVIC_SetPriority() do not require shifting as the
+function does the shifting itself.  Note these priorities need to be equal to
+or lower than configMAX_SYSCALL_INTERRUPT_PRIORITY - therefore the numeric
+value needs to be equal to or greater than 5 (on the Cortex-M3 the lower the
+numeric value the higher the interrupt priority). */
+#define configGPIO_INTERRUPT_PRIORITY		6   /*old stuff */
+#define configDMA_INTERRUPT_PRIORITY		7 /*old stuff */
+#define configSPI_INTERRUPT_PRIORITY		8 /*old stuff */
+#define configSPI_INTERRUPT_TASK_PRIORITY	9 /*old stuff */
+#define configEMAC_INTERRUPT_PRIORITY		10 /*old stuff */
+#define configUART0_INTERRUPT_PRIORITY		12 /*old stuff */
+#define configUART1_INTERRUPT_PRIORITY		13 /*old stuff */
+#define configUART2_INTERRUPT_PRIORITY		14 /*old stuff */
+#define configUART3_INTERRUPT_PRIORITY		15 /*old stuff */
+#define configMAIN_IDLE_TASK_PRIORITY		29 /*old stuff */
+#define configTIMER_PRIORITY				3 /*old stuff */
+
+
+
 
 #define configUSE_PREEMPTION		1
 #define configUSE_IDLE_HOOK			0

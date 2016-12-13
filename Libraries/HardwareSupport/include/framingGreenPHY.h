@@ -150,9 +150,9 @@ struct read_from_chip_s {
 	/* number of bytes to read from QCA7k memory */
 	uint32_t toRead;
 	/* buffer to store the read data */
-	data_t   greenPhyRxBuffer;
+	uint8_t *   greenPhyRxBuffer;
 	/* to read new data to greenPhyRxBuffer*/
-	data_t   current_position;
+	uint8_t *   current_position;
 	/* state of sync */
 	receiveState_t state;
 	/* function used to process the current state */

@@ -1,32 +1,12 @@
 /*
- * @brief NXP LPC1769 XPresso board file
+ * @brief devolo dLAN Green PHY Module eval board
  *
  * @note
- * Copyright(C) NXP Semiconductors, 2012
+ * Copyright(C) devolo AG, 2016
  * All rights reserved.
  *
- * @par
- * Software that is described herein is for illustrative purposes only
- * which provides customers with programming information regarding the
- * LPC products.  This software is supplied "AS IS" without any warranties of
- * any kind, and NXP Semiconductors and its licensor disclaim any and
- * all warranties, express or implied, including all implied warranties of
- * merchantability, fitness for a particular purpose and non-infringement of
- * intellectual property rights.  NXP Semiconductors assumes no responsibility
- * or liability for the use of the software, conveys no license or rights under any
- * patent, copyright, mask work right, or any other intellectual property rights in
- * or to any products. NXP Semiconductors reserves the right to make changes
- * in the software without notification. NXP Semiconductors also makes no
- * representation or warranty that such application will be suitable for the
- * specified use without further testing or modification.
  *
- * @par
- * Permission to use, copy, modify, and distribute this software and its
- * documentation is hereby granted, under NXP Semiconductors' and its
- * licensor's relevant copyrights in the software, without fee, provided that it
- * is used in conjunction with NXP Semiconductors microcontrollers.  This
- * copyright, permission, and disclaimer notice must appear in all copies of
- * this code.
+ *
  */
 
 #ifndef __BOARD_H_
@@ -38,7 +18,7 @@
 extern "C" {
 #endif
 
-/** @defgroup BOARD_dLAN_Green_PHY_Module devolo LPC1769 board software API functions
+/** @defgroup BOARD_dLAN_Green_PHY_Module devolo LPC1758 board software API functions
  * @ingroup BOARD_dLAN_Green_PHY_Module
  * The board support software API functions provide some simple abstracted
  * functions used across multiple LPCOpen board examples. See @ref BOARD_COMMON_API
@@ -46,7 +26,7 @@ extern "C" {
  * @{
  */
 
-/** @defgroup BOARD_dLAN_Green_PHY_Module BOARD: devolo LPC1769 board build options
+/** @defgroup BOARD_dLAN_Green_PHY_Module BOARD: devolo LPC1758 board build options
  * This board has options that configure its operation at build-time.<br>
  * @{
  */
@@ -82,9 +62,9 @@ extern "C" {
  * LED defines
  */
 #define LEDS_LED1           0x01
-#define LEDS_LED2           0x02
-#define LEDS_LED3           0x04
-#define LEDS_LED4           0x08
+//#define LEDS_LED2           0x02 //not used on devolo evaluation board
+//#define LEDS_LED3           0x04 //not used on devolo evaluation board
+//#define LEDS_LED4           0x08 //not used on devolo evaluation board
 #define LEDS_NO_LEDS        0x00
 
 /**
@@ -96,17 +76,17 @@ extern "C" {
 /**
  * Joystick defines
  */
-#define JOY_UP              0x01
-#define JOY_DOWN            0x02
-#define JOY_LEFT            0x04
-#define JOY_RIGHT           0x08
-#define JOY_PRESS           0x10
+//#define JOY_UP              0x01 //not used on devolo evaluation board
+//#define JOY_DOWN            0x02 //not used on devolo evaluation board
+//#define JOY_LEFT            0x04 //not used on devolo evaluation board
+//#define JOY_RIGHT           0x08 //not used on devolo evaluation board
+//#define JOY_PRESS           0x10 //not used on devolo evaluation board
 
 /**
  * Dummy audio input selection values enum
  */
-#define MCB_17XX_AUDIO_MIC_SELECT       0x00
-#define MCB_17XX_AUDIO_LINE_IN_SELECT   0x00
+//#define MCB_17XX_AUDIO_MIC_SELECT       0x00 //not used on devolo evaluation board
+//#define MCB_17XX_AUDIO_LINE_IN_SELECT   0x00 //not used on devolo evaluation board
 
 /**
  * @brief	Initialize pin muxing for a UART
@@ -130,7 +110,7 @@ void Board_ENET_GetMacADDR(uint8_t *mcaddr);
  *          LINE_IN will be used as input to Audio Codec.
  * @return	Nothing
  */
-void Board_Audio_Init(LPC_I2S_T *pI2S, int micIn);
+//void Board_Audio_Init(LPC_I2S_T *pI2S, int micIn);  //not used on devolo evaluation board
 
 /**
  * @brief	Initialize pin muxing for SSP interface
@@ -205,13 +185,13 @@ uint32_t Buttons_GetStatus(void);
  * @brief	Initialize Joystick
  * @return	Nothing
  */
-void Board_Joystick_Init(void);
+//void Board_Joystick_Init(void); //not used on devolo evaluation board
 
 /**
  * @brief	Get Joystick status
  * @return	status of Joystick
  */
-uint8_t Joystick_GetStatus(void);
+//uint8_t Joystick_GetStatus(void); //not used on devolo evaluation board
 
 /**
  * @brief	Create Serial Stream
@@ -231,6 +211,9 @@ void Board_USBD_Init(uint32_t port);
 /**
  * @}
  */
+
+#define LPC_USART0 0
+
 
 #include "board_api.h"
 #include "lpc_phy.h"

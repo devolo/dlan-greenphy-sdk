@@ -461,7 +461,7 @@ struct netdeviceQueueElement * ulGetEMACRxDataGreenPhy( struct emacNetdevice * d
 	{
 		long lIndex;
 
-		rv = getQueueElementByBuffer((( data_t ) RX_DESC_PACKET( LPC_EMAC->RxConsumeIndex )),(( RX_STAT_INFO( LPC_EMAC->RxConsumeIndex ) & RINFO_SIZE ) - 3));
+		rv = getQueueElementByBuffer((( uint8_t *  ) RX_DESC_PACKET( LPC_EMAC->RxConsumeIndex )),(( RX_STAT_INFO( LPC_EMAC->RxConsumeIndex ) & RINFO_SIZE ) - 3));
 
 		if (rv)
 		{
@@ -480,7 +480,7 @@ struct netdeviceQueueElement * ulGetEMACRxDataGreenPhy( struct emacNetdevice * d
 			/* Allocate a new buffer to the descriptor. */
 			struct netdeviceQueueElement * tmp = getQueueElement();
 			DEBUG_PRINT(DEBUG_BUFFER,"[#I2#]\r\n");
-			data_t pData = removeDataFromQueueElement(&tmp);
+			uint8_t * pData = removeDataFromQueueElement(&tmp);
 			DEBUG_PRINT(ETHERNET_RX,"(ETHERNET) new buffer: 0x%x\r\n",pData);
 
 			if(pData)
@@ -634,7 +634,7 @@ void vEMAC_ISR( void )
 		DEBUG_PRINT(ETHERNET_INTERUPT,"t");
 		{
 			/* The Tx buffer is no longer required. */
-			DEBUG_PRINT(DEBUG_BUFFER,"0x%x",( data_t ) TX_DESC_PACKET( emacTX_DESC_INDEX ) );
+			DEBUG_PRINT(DEBUG_BUFFER,"0x%x",( uint8_t * ) TX_DESC_PACKET( emacTX_DESC_INDEX ) );
 			prvReturnBuffer(  eth0.pBuffer[emacTX_DESC_INDEX] );
 			eth0.pBuffer[emacTX_DESC_INDEX] = NULL;
 			TX_DESC_PACKET( emacTX_DESC_INDEX ) = ( unsigned long ) NULL;
@@ -915,19 +915,19 @@ static int emacNetdevicePutElementToHw(struct emacNetdevice * eth, struct netdev
 			/* Something has gone wrong as the Tx descriptor is still in use.
 			Clear it down manually, the data it was sending will probably be
 			lost. */
-			DEBUG_PRINT(ETHERNET_TX|DEBUG_ERR|DEBUG_BUFFER,"rTX 0x%x\r\n",( data_t )TX_DESC_PACKET( emacTX_DESC_INDEX ));
+			DEBUG_PRINT(ETHERNET_TX|DEBUG_ERR|DEBUG_BUFFER,"rTX 0x%x\r\n",( uint8_t * )TX_DESC_PACKET( emacTX_DESC_INDEX ));
 			// todo this is not failsave, returnQueueElement() must be used, or reset the system .... I never have seen this code to be executed ....
-			prvReturnBuffer( ( data_t ) TX_DESC_PACKET( emacTX_DESC_INDEX ) );
+			prvReturnBuffer( ( uint8_t *  ) TX_DESC_PACKET( emacTX_DESC_INDEX ) );
 			break;
 		}
 	}
 
 	/* Setup the Tx descriptor for transmission. */
 
-	length_t length = getLengthFromQueueElement(element)-1;
-	data_t pFrame = getDataFromQueueElement(element);
+	uint16_t length = getLengthFromQueueElement(element)-1;
+	uint8_t * pFrame = getDataFromQueueElement(element);
 	DEBUG_PRINT(DEBUG_BUFFER,"[#I4#]\r\n");
-	data_t pData = removeDataFromQueueElement(&element);
+	uint8_t * pData = removeDataFromQueueElement(&element);
 	DEBUG_PRINT(ETHERNET_TX,"(ETHERNET) tx buffer: 0x%x length : %d\r\n",pData,length);
 
 	DEBUG_DUMP(ETHERNET_TX_BINARY,pFrame,length,"(ETHERNET) TX");
@@ -951,7 +951,7 @@ static int emacNetdevicePutElementToHw(struct emacNetdevice * eth, struct netdev
 
 /*-----------------------------------------------------------*/
 
-static struct netdeviceQueueElement * 	emacNetdeviceRxWithTimeout(struct netDeviceInterface * dev, timeout_t timeout_ms)
+static struct netdeviceQueueElement * 	emacNetdeviceRxWithTimeout(struct netDeviceInterface * dev, unsigned long  timeout_ms)
 {
 	struct netdeviceQueueElement * rv;
 

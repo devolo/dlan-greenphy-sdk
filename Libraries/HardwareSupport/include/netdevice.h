@@ -44,7 +44,7 @@
  * Before opening the device with (*open)(), it has to be initialized
  * with (*init)() to work properly.
  * (*rxWithTimeout)() can then be used to receive Ethernet frames stored in
- * netdeviceQueueElement from the device. Use timeout_t to specify the time
+ * netdeviceQueueElement from the device. Use timeout_t (unsigned long) to specify the time
  * waited until the call returns.
  * Before shutting down the device with (*exit)(), it has to be closed with
  * (*close)().
@@ -58,7 +58,7 @@ struct netDeviceInterface {
 
 	void							(* reset)			(struct netDeviceInterface *);
 	int 							(* tx)				(struct netDeviceInterface *,struct netdeviceQueueElement *);
-	struct netdeviceQueueElement * 	(* rxWithTimeout)	(struct netDeviceInterface *,timeout_t);
+	struct netdeviceQueueElement * 	(* rxWithTimeout)	(struct netDeviceInterface *,unsigned long );
 };
 
 

@@ -35,6 +35,12 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+
+//typedef uint8_t content_t;
+//typedef content_t * data_t;
+//typedef const content_t * constData_t;
+//typedef uint16_t length_t;
+
 /** @defgroup LPC_Types CHIP: LPC Common Types
  * @ingroup CHIP_Common
  * @{
@@ -212,5 +218,7 @@ typedef bool BOOL_8;
 /**
  * @}
  */
+
+
 
 #endif /* __LPC_TYPES_H_ */

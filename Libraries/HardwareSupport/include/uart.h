@@ -60,7 +60,7 @@ void UART3_IRQHandler (void);
 
 uint32_t UARTInit( uint32_t portNum, uint32_t Baudrate );
 void UARTSend( uint32_t portNum, uint8_t *BufferPtr, uint32_t Length );
-int UARTReceive( uint32_t portNum, uint8_t *buffer, uint16_t length, timeout_t timeout_ms);
+int UARTReceive( uint32_t portNum, uint8_t *buffer, uint16_t length, unsigned long  timeout_ms);
 
 #endif /* end __UART_H */
 /*****************************************************************************

@@ -101,7 +101,7 @@ BaseType_t xStatus, xReturn;
 extern uint8_t ucMACAddress[ 6 ];
 
 	/* Enable Ethernet Pins */
-	boardCONFIGURE_ENET_PINS( xPinConfig );
+	//boardCONFIGURE_ENET_PINS( xPinConfig );
 
 	Emac_Config.Mode = EMAC_MODE_AUTO;
 	Emac_Config.pbEMAC_Addr = ucMACAddress;
@@ -154,13 +154,13 @@ extern void EMAC_SetNextPacketToSend( uint8_t * pucBuffer );
 			{
 				/* Assign the buffer to the Tx descriptor that is now known to
 				be free. */
-				EMAC_SetNextPacketToSend( pxDescriptor->pucEthernetBuffer );
+				// TF EMAC_SetNextPacketToSend( pxDescriptor->pucEthernetBuffer );
 
 				/* The EMAC now owns the buffer. */
 				pxDescriptor->pucEthernetBuffer = NULL;
 
 				/* Initiate the Tx. */
-				EMAC_StartTransmitNextBuffer( pxDescriptor->xDataLength );
+				// TF EMAC_StartTransmitNextBuffer( pxDescriptor->xDataLength );
 				iptraceNETWORK_INTERFACE_TRANSMIT();
 
 				/* The Tx has been initiated. */
@@ -256,7 +256,7 @@ extern uint8_t *EMAC_NextPacketToRead( void );
 
 				if( pxDescriptor != NULL )
 				{
-					pxDescriptor->pucEthernetBuffer = EMAC_NextPacketToRead();
+					// TF pxDescriptor->pucEthernetBuffer = EMAC_NextPacketToRead();
 					pxDescriptor->xDataLength = xDataLength;
 					xRxEvent.pvData = ( void * ) pxDescriptor;
 

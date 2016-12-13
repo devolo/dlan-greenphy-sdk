@@ -6,6 +6,8 @@
  */
 
 #include "LPC17xx.h"
+//ToDo TF replace LPC17xx.h with board.h
+//#include "board.h"
 #include "lpc_types.h"
 #include "lpc17xx_iap.h"
 #include "string.h"

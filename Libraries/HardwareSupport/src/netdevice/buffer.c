@@ -47,15 +47,15 @@
  * Search the pool of buffers to find one that is free. If a buffer is found
  * mark it as in use before returning its address.
  */
-static data_t prvGetNextBuffer( void );
+static uint8_t * prvGetNextBuffer( void );
 
 /*-----------------------------------------------------------*/
 
 
 struct netdeviceQueueElement {
-	data_t pData;			   /* pointer to data stored in the queue element */
-	length_t length;		   /* size of the data */
-	length_t removedFromFront; /* */
+	uint8_t * pData;			   /* pointer to data stored in the queue element */
+	uint16_t length;		   /* size of the data */
+	uint16_t removedFromFront; /* */
 	unsigned char inUse;	   /* flag */
 };
 
@@ -93,7 +93,7 @@ static void checkElement(struct netdeviceQueueElement * element)
 }
 #endif
 
-struct netdeviceQueueElement * getQueueElementByBuffer(	data_t pData, length_t length)
+struct netdeviceQueueElement * getQueueElementByBuffer(	uint8_t * pData, uint16_t length)
 {
 	struct netdeviceQueueElement * rv = NULL;
 
@@ -151,13 +151,13 @@ struct netdeviceQueueElement * getQueueElementByBuffer(	data_t pData, length_t l
 	return rv;
 }
 
-data_t getDataFromQueueElement(struct netdeviceQueueElement * element)
+uint8_t * getDataFromQueueElement(struct netdeviceQueueElement * element)
 {
-	data_t rv = NULL;
+	uint8_t * rv = NULL;
 	if(element)
 	{
 		DEBUG_EXECUTE(checkElement(element));
-		length_t offset = element->removedFromFront;
+		uint16_t offset = element->removedFromFront;
 		if(offset > element->length)
 		{
 			offset = 0;
@@ -168,9 +168,9 @@ data_t getDataFromQueueElement(struct netdeviceQueueElement * element)
 	return rv;
 }
 
-data_t removeDataFromQueueElement(struct netdeviceQueueElement ** ppelement)
+uint8_t * removeDataFromQueueElement(struct netdeviceQueueElement ** ppelement)
 {
-	data_t rv = NULL;
+	uint8_t * rv = NULL;
 	if(ppelement)
 	{
 		struct netdeviceQueueElement * pelement = *ppelement;
@@ -195,9 +195,9 @@ data_t removeDataFromQueueElement(struct netdeviceQueueElement ** ppelement)
 	return rv;
 }
 
-length_t getLengthFromQueueElement(struct netdeviceQueueElement * element)
+uint16_t getLengthFromQueueElement(struct netdeviceQueueElement * element)
 {
-	length_t rv = 0x0;
+	uint16_t rv = 0x0;
 	if(element)
 	{
 		DEBUG_EXECUTE(checkElement(element));
@@ -240,7 +240,7 @@ void returnQueueElement(struct netdeviceQueueElement ** ppElement)
 }
 
 
-void removeBytesFromFrontOfQueueElement(struct netdeviceQueueElement * pElement, length_t toRemove)
+void removeBytesFromFrontOfQueueElement(struct netdeviceQueueElement * pElement, uint16_t toRemove)
 {
 	pElement->removedFromFront += toRemove;
 }
@@ -249,10 +249,10 @@ void removeBytesFromFrontOfQueueElement(struct netdeviceQueueElement * pElement,
 If the index contains a 1 then the buffer within pool is in use, if it
 contains a 0 then the buffer is free. */
 static unsigned char ucBufferInUse[ NUMBER_OF_BUFFERS ] = { pdFALSE };
-static data_t prvGetNextBuffer( void )
+static uint8_t * prvGetNextBuffer( void )
 {
 long x;
-data_t pucReturn = NULL;
+uint8_t * pucReturn = NULL;
 #ifdef WAIT_FOR_BUFFER
 unsigned long ulAttempts = 0;
 #endif
@@ -272,7 +272,7 @@ unsigned long ulAttempts = 0;
 			if( ucBufferInUse[ x ] == pdFALSE )
 			{
 				ucBufferInUse[ x ] = pdTRUE;
-				pucReturn = ( data_t ) ETH_BUF( x );
+				pucReturn = ( uint8_t * ) ETH_BUF( x );
 				break;
 			}
 		}
@@ -302,7 +302,7 @@ unsigned long ulAttempts = 0;
 }
 /*-----------------------------------------------------------*/
 
-void prvReturnBuffer( data_t pucBuffer )
+void prvReturnBuffer( uint8_t * pucBuffer )
 {
 	if (pucBuffer)
 	{
@@ -316,7 +316,7 @@ void prvReturnBuffer( data_t pucBuffer )
 		/* Return a buffer to the pool of free buffers. */
 		for( x = 0; x < NUMBER_OF_BUFFERS; x++ )
 		{
-			if (( data_t ) ETH_BUF( x ) == pucBuffer )
+			if (( uint8_t * ) ETH_BUF( x ) == pucBuffer )
 			{
 				ucBufferInUse[ x ] = pdFALSE;
 				found = 1;
@@ -343,7 +343,7 @@ void prvReturnBuffer( data_t pucBuffer )
 struct netdeviceQueueElement * getQueueElement(void)
 {
 	struct netdeviceQueueElement * rv = NULL;
-	data_t pData = prvGetNextBuffer();
+	uint8_t * pData = prvGetNextBuffer();
 	if (pData)
 	{
 		rv = getQueueElementByBuffer(pData,0);
@@ -358,7 +358,7 @@ struct netdeviceQueueElement * getQueueElement(void)
 
 /*-----------------------------------------------------------*/
 
-void setLengthOfQueueElement(struct netdeviceQueueElement * element, length_t length)
+void setLengthOfQueueElement(struct netdeviceQueueElement * element, uint16_t length)
 {
 	element->length = length;
 }

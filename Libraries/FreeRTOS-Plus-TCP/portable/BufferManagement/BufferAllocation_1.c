@@ -203,7 +203,7 @@ BaseType_t xReturn, x;
 		here */
 		ipconfigBUFFER_ALLOC_INIT();
 
-		xNetworkBufferSemaphore = xSemaphoreCreateCounting( ( UBaseType_t ) ipconfigNUM_NETWORK_BUFFER_DESCRIPTORS, ( UBaseType_t ) ipconfigNUM_NETWORK_BUFFER_DESCRIPTORS );
+		// TF xNetworkBufferSemaphore = xSemaphoreCreateCounting( ( UBaseType_t ) ipconfigNUM_NETWORK_BUFFER_DESCRIPTORS, ( UBaseType_t ) ipconfigNUM_NETWORK_BUFFER_DESCRIPTORS );
 		configASSERT( xNetworkBufferSemaphore );
 
 		if( xNetworkBufferSemaphore != NULL )
@@ -213,7 +213,7 @@ BaseType_t xReturn, x;
 			/* Initialise all the network buffers.  The buffer storage comes
 			from the network interface, and different hardware has different
 			requirements. */
-			vNetworkInterfaceAllocateRAMToBuffers( xNetworkBuffers );
+			// TF vNetworkInterfaceAllocateRAMToBuffers( xNetworkBuffers );
 			for( x = 0; x < ipconfigNUM_NETWORK_BUFFER_DESCRIPTORS; x++ )
 			{
 				/* Initialise and set the owner of the buffer list items. */

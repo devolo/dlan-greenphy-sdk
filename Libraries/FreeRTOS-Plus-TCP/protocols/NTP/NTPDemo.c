@@ -83,10 +83,10 @@
 /* Use the date & time functions from +FAT. */
 #include "ff_time.h"
 
-#include "NTPDemo.h"
-#include "ntpClient.h"
+//TF #include "NTPDemo.h"
+//TF #include "ntpClient.h"
 
-#include "date_and_time.h"
+//TF #include "date_and_time.h"
 
 enum EStatus {
 	EStatusLookup,

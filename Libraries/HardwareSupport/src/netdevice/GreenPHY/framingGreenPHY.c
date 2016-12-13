@@ -320,7 +320,7 @@ QcaCheckSyncResult(struct read_from_chip_s *rxStatus)
 	int rv = 0;
 
 	uint32_t i;
-	data_t data;
+	uint8_t * data;
 	int syncFound;
 
 	/* search the sync pattern, can be made faster by searching not 0xaa at data but 0xaa at (data+3) as first step */

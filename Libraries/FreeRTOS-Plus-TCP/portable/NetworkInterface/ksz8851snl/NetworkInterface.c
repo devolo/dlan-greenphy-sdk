@@ -74,16 +74,16 @@
 #include "NetworkBufferManagement.h"
 #include "NetworkInterface.h"
 
-#include "sam4e_xplained_pro.h"
-#include "hr_gettime.h"
-#include "conf_eth.h"
-#include "ksz8851snl.h"
-#include "ksz8851snl_reg.h"
-
-/* Some files from the Atmel Software Framework */
-#include <sysclk.h>
-#include <pdc/pdc.h>
-#include <spi/spi.h>
+//#include "sam4e_xplained_pro.h"
+//#include "hr_gettime.h"
+//#include "conf_eth.h"
+//#include "ksz8851snl.h"
+//#include "ksz8851snl_reg.h"
+//
+///* Some files from the Atmel Software Framework */
+//#include <sysclk.h>
+//#include <pdc/pdc.h>
+//#include <spi/spi.h>
 
 /*
 	Sending a packet:

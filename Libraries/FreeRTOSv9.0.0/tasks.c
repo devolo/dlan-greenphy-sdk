@@ -2629,7 +2629,7 @@ BaseType_t xSwitchRequired = pdFALSE;
 			count is being unwound (when the scheduler is being unlocked). */
 			if( uxPendedTicks == ( UBaseType_t ) 0U )
 			{
-				vApplicationTickHook();
+				//TF   vApplicationTickHook();
 			}
 			else
 			{
@@ -2646,7 +2646,7 @@ BaseType_t xSwitchRequired = pdFALSE;
 		scheduler is locked. */
 		#if ( configUSE_TICK_HOOK == 1 )
 		{
-			vApplicationTickHook();
+			//TF   vApplicationTickHook();
 		}
 		#endif
 	}
