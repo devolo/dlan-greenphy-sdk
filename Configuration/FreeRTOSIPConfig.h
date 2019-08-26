@@ -66,7 +66,7 @@ extern int printf( const char *pcFormatString, ... );
 /* Set to 1 to print out debug messages.  If ipconfigHAS_DEBUG_PRINTF is set to
 1 then FreeRTOS_debug_printf should be defined to the function used to print
 out the debugging messages. */
-#define ipconfigHAS_DEBUG_PRINTF                 1
+#define ipconfigHAS_DEBUG_PRINTF                 0
 #if( ipconfigHAS_DEBUG_PRINTF == 1 )
 	#define FreeRTOS_debug_printf(X)             printf X
 #endif
@@ -75,7 +75,7 @@ out the debugging messages. */
 FreeRTOS_netstat() command, and ping replies.  If ipconfigHAS_PRINTF is set to 1
 then FreeRTOS_printf should be set to the function used to print out the
 messages. */
-#define ipconfigHAS_PRINTF                       1
+#define ipconfigHAS_PRINTF                       0
 #if( ipconfigHAS_PRINTF == 1 )
 	#define FreeRTOS_printf(X)                   printf X
 #endif
@@ -334,10 +334,10 @@ be divisible by 8. */
 
 /* Each TCP socket has a circular buffers for Rx and Tx, which have a fixed
 maximum size.  Define the size of Rx buffer for TCP sockets. */
-#define ipconfigTCP_TX_BUFFER_LENGTH             ( 2 * ipconfigTCP_MSS )
+#define ipconfigTCP_TX_BUFFER_LENGTH             ( 1 * ipconfigTCP_MSS )
 
 /* Define the size of Tx buffer for TCP sockets. */
-#define ipconfigTCP_RX_BUFFER_LENGTH             ( 2 * ipconfigTCP_MSS )
+#define ipconfigTCP_RX_BUFFER_LENGTH             ( 1 * ipconfigTCP_MSS )
 
 /* Set to 1 or 0 to include/exclude FTP and HTTP functionality from the standard
 server task. */

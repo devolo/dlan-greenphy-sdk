@@ -50,6 +50,10 @@
 #include "http_request.h"
 #include "clickboard_config.h"
 #include "color2click.h"
+#include "save_config.h"
+
+/* MQTT includes */
+#include "mqtt.h"
 
 /* Task-Delay in ms, change to your preference */
 #define TASKWAIT_COLOR2 1000 /* 1s */
@@ -272,6 +276,21 @@ static void vClickTask(void *pvParameters) {
 const TickType_t xDelay = pdMS_TO_TICKS( TASKWAIT_COLOR2 );
 BaseType_t xTime = ( portGET_RUN_TIME_COUNTER_VALUE() / 10000UL );
 
+#if( netconfigUSEMQTT != 0 )
+	char buffer[60];
+	QueueHandle_t xMqttQueue = xGetMQTTQueueHandle();
+	MqttJob_t xJob;
+	MqttPublishMsg_t xPublish;
+
+	/* Set all connection details only once */
+	xJob.eJobType = ePublish;
+	xJob.data = (void *) &xPublish;
+
+	xPublish.xMessage.qos = 0;
+	xPublish.xMessage.retained = 0;
+	xPublish.xMessage.payload = NULL;
+#endif /* #if( netconfigUSEMQTT != 0 ) */
+
 	for(;;)
 	{
 		/* Obtain Mutex. If not possible after 1 Second, write Debug and proceed */
@@ -290,6 +309,21 @@ BaseType_t xTime = ( portGET_RUN_TIME_COUNTER_VALUE() / 10000UL );
 						color.green, color.blue);
 				PrintStatus();
 				DEBUGOUT("\r\n");
+			#if( netconfigUSEMQTT != 0 )
+				xMqttQueue = xGetMQTTQueueHandle();
+				if( xMqttQueue != NULL )
+				{
+					if(xPublish.xMessage.payload == NULL)
+					{
+						/* _CD_ set payload each time, because mqtt task set payload to NULL, so calling task knows package is sent.*/
+						xPublish.xMessage.payload = buffer;
+						xPublish.pucTopic = (char *)pvGetConfig( eConfigColorTopic, NULL );
+						sprintf(buffer, "{\"meaning\":\"color\",\"value\":\"r:%d,g:%d,b:%d\"}", color.red, color.green, color.blue);
+						xPublish.xMessage.payloadlen = strlen(buffer);
+						xQueueSendToBack( xMqttQueue, &xJob, 0 );
+					}
+				}
+			#endif /* #if( netconfigUSEMQTT != 0 ) */
 				xTime = ( portGET_RUN_TIME_COUNTER_VALUE() / 10000UL );
 			}
 
@@ -308,9 +342,26 @@ BaseType_t xTime = ( portGET_RUN_TIME_COUNTER_VALUE() / 10000UL );
 	static BaseType_t xClickHTTPRequestHandler( char *pcBuffer, size_t uxBufferLength, QueryParam_t *pxParams, BaseType_t xParamCount )
 	{
 		BaseType_t xCount = 0;
+		QueryParam_t *pxParam;
+
+		pxParam = pxFindKeyInQueryParams( "ctopic", pxParams, xParamCount );
+		if( pxParam != NULL )
+			pvSetConfig( eConfigColorTopic, strlen(pxParam->pcValue) + 1, pxParam->pcValue );
+
 
 		xCount += sprintf( pcBuffer, "{\"r\":%d,\"g\":%d,\"b\":%d}",
 				color.red, color.green, color.blue );
+
+	#if( netconfigUSEMQTT != 0 )
+		char buffer[50];
+		char *pcTopic = (char *)pvGetConfig( eConfigColorTopic, NULL );
+		if( pcTopic != NULL )
+		{
+			strcpy( buffer, pcTopic );
+			vCleanTopic( buffer );
+			xCount += sprintf( pcBuffer + ( xCount -1 ), ",\"ctopic\":\"%s\"}", buffer );
+		}
+	#endif /* #if( netconfigUSEMQTT != 0 ) */
 
 		return xCount;
 	}

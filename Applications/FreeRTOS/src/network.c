@@ -48,6 +48,8 @@
 /* GreenPHY SDK includes. */
 #include "GreenPhySDKNetConfig.h"
 #include "network.h"
+#include "mqtt.h"
+#include "save_config.h"
 
 
 /* Verify network configuration is sane. */
@@ -145,6 +147,25 @@ void vApplicationIPNetworkEventHook( eIPCallbackEvent_t eNetworkEvent, NetworkEn
 				/*
 				 * Create the tasks here.
 				 */
+				vStartEthTasks();
+
+			#if( netconfigUSEMQTT != 0 )
+				char *cMqtt = NULL;
+				cMqtt = (char *)pvGetConfig( eConfigNetworkMqttOnPwr, NULL );
+				if( (*cMqtt) > 0 )
+				{
+					// Start MQTT Task
+					xInitMQTT();
+					// Wait for Task to initialize
+					vTaskDelay( pdMS_TO_TICKS( 500 ) );
+					// Connect MQTT Broker
+					MqttJob_t xJob;
+					xJob.eJobType = eConnect;
+					QueueHandle_t xMqttQueue = xGetMQTTQueueHandle();
+					if( xMqttQueue != NULL )
+						xQueueSendToBack( xMqttQueue, &xJob, 0 );
+				}
+			#endif /* #if( netconfigUSEMQTT != 0 ) */
 
 				#define	mainTCP_SERVER_STACK_SIZE						240 /* Not used in the Win32 simulator. */
 

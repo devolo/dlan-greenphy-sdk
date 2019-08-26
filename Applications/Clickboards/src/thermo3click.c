@@ -46,13 +46,20 @@
 
 /* GreenPHY SDK includes. */
 #include "GreenPhySDKConfig.h"
+#include "GreenPhySDKNetConfig.h"
 #include "http_query_parser.h"
 #include "http_request.h"
 #include "clickboard_config.h"
 #include "thermo3click.h"
+#include "save_config.h"
+
+
+/* MQTT includes */
+#include "mqtt.h"
+
 
 /* Task-Delay in ms, change to your preference */
-#define TASKWAIT_THERMO3 1000 /* 1s */
+#define TASKWAIT_THERMO3 pdMS_TO_TICKS( 1000UL ) /* 1s */
 
 /* Temperature offset used to calibrate the sensor. */
 #define TEMP_OFFSET  -2.0
@@ -112,6 +119,20 @@ static void vClickTask(void *pvParameters)
 {
 const TickType_t xDelay = pdMS_TO_TICKS( TASKWAIT_THERMO3 );
 BaseType_t xTime = ( portGET_RUN_TIME_COUNTER_VALUE() / 10000UL );
+#if( netconfigUSEMQTT != 0 )
+	char buffer[42];
+	QueueHandle_t xMqttQueue = xGetMQTTQueueHandle();
+	MqttJob_t xJob;
+	MqttPublishMsg_t xPublish;
+
+	/* Set all connection details only once */
+	xJob.eJobType = ePublish;
+	xJob.data = (void *) &xPublish;
+
+	xPublish.xMessage.qos = 0;
+	xPublish.xMessage.retained = 0;
+	xPublish.xMessage.payload = NULL;
+#endif /* #if( netconfigUSEMQTT != 0 ) */
 
 	for(;;)
 	{
@@ -138,6 +159,21 @@ BaseType_t xTime = ( portGET_RUN_TIME_COUNTER_VALUE() / 10000UL );
 			if( ( portGET_RUN_TIME_COUNTER_VALUE() / 10000UL ) > xTime + 10 )
 			{
 				DEBUGOUT("Thermo3 - Temperature Current: %d, High: %d, Low: %d\n", temp_cur, temp_high, temp_low );
+			#if( netconfigUSEMQTT != 0 )
+				xMqttQueue = xGetMQTTQueueHandle();
+				if( xMqttQueue != NULL )
+				{
+					if(xPublish.xMessage.payload == NULL)
+					{
+						/* _CD_ set payload each time, because mqtt task set payload to NULL, so calling task knows package is sent.*/
+						xPublish.xMessage.payload = buffer;
+						xPublish.pucTopic = (char *)pvGetConfig( eConfigThermoTopic, NULL );
+						sprintf(buffer, "{\"meaning\":\"temperature\",\"value\":%6.2f}", ( (float)temp_cur / 100 ));
+						xPublish.xMessage.payloadlen = strlen(buffer);
+						xQueueSendToBack( xMqttQueue, &xJob, 0 );
+					}
+				}
+			#endif /* #if( netconfigUSEMQTT != 0 ) */
 				xTime = ( portGET_RUN_TIME_COUNTER_VALUE() / 10000UL );
 			}
 
@@ -169,9 +205,26 @@ BaseType_t xTime = ( portGET_RUN_TIME_COUNTER_VALUE() / 10000UL );
 
 		}
 
+		pxParam = pxFindKeyInQueryParams( "ttopic", pxParams, xParamCount );
+		if( pxParam != NULL )
+			pvSetConfig( eConfigThermoTopic, strlen(pxParam->pcValue) + 1, pxParam->pcValue );
+
 		xCount += snprintf( pcBuffer, uxBufferLength,
-				"{\"temp_cur\":%d,\"temp_high\":%d,\"temp_low\":%d,\"temp_high_time\":%d,\"temp_low_time\":%d}",
+				"{\"temp_cur\":%d,\"temp_high\":%d,\"temp_low\":%d,\"temp_high_time\":%d,\"temp_low_time\":%d",
 				temp_cur, temp_high, temp_low, ( time - temp_high_time ), ( time - temp_low_time ) );
+
+	#if( netconfigUSEMQTT != 0 )
+		char buffer[50];
+		char *pcTopic = (char *)pvGetConfig( eConfigThermoTopic, NULL );
+		if( pcTopic != NULL )
+		{
+			strcpy( buffer, pcTopic );
+			vCleanTopic( buffer );
+			xCount += sprintf( pcBuffer + xCount , ",\"ttopic\":\"%s\"", buffer );
+		}
+	#endif /* #if( netconfigUSEMQTT != 0 ) */
+
+		xCount += sprintf( pcBuffer + xCount, "}");
 		return xCount;
 	}
 #endif

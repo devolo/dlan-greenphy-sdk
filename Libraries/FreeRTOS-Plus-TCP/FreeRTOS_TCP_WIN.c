@@ -242,7 +242,7 @@ extern void vListInsertGeneric( List_t * const pxList, ListItem_t * const pxNewL
 #endif
 
 /* Logging verbosity level. */
-BaseType_t xTCPWindowLoggingLevel = 4;
+BaseType_t xTCPWindowLoggingLevel = 1;
 
 #if( ipconfigUSE_TCP_WIN == 1 )
 	/* Some 32-bit arithmetic: comparing sequence numbers */
