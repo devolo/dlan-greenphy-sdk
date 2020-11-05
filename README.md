@@ -37,7 +37,7 @@ module](https://www.codico.com/shop/media/catalog/product/cache/1/image/9df78eab
 ## Requirements
 * [dLAN® Green PHY module](https://www.codico.com/shop/de/powerline-modules/broad-band-plc/homeplug-green-phy/dlan-green-phy-module.html) with a development board, e.g. the [dLAN® 
 Green PHY eval board II](https://www.codico.com/shop/de/powerline-modules/broad-band-plc/homeplug-green-phy/dlan-green-phy-eval-board-eu-ii.html), or your own design
-* [MCUXpresso 
+* [MCUXpresso (tested for v11.1.0, not working with v11.2.1)
 IDE](https://www.nxp.com/products/developer-resources/run-time-software/mcuxpresso-software-and-tools/mcuxpresso-integrated-development-environment-ide-v10.0.2:MCUXpresso-IDE)
 * JTAG-Debugger, recommended [LPC-Link 
 2](https://www.nxp.com/products/developer-resources/software-development-tools/developer-resources-/lpcopen-libraries-and-examples/lpc-link2:OM13054) 
