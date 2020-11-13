@@ -1,6 +1,6 @@
 # devolo dLAN® Green PHY Module SDK
 
-This project contains the SDK for the devolo [dLAN® Green PHY module](https://www.codico.com/shop/de/powerline-modules/broad-band-plc/homeplug-green-phy/hersteller/devolo.html).
+This project contains the SDK for the devolo [dLAN® Green PHY module](https://www.devolo.de/dlan-green-phy-module).
 
 It is ideal for installation in all electrical devices of a smart home. From the heating system to the refrigerator - Green PHY enables seamless 
 integration into the networked home. The open standard makes smart energy applications, sensor solutions and automation systems efficient to set up and 
@@ -19,11 +19,11 @@ The following options are available within the QCA7000 devolo firmware package:
 ## LPC1758 Firmware
 The SDK is based on [LPCOpen 
 v2.10](https://www.nxp.com/products/developer-resources/software-development-tools/developer-resources-/lpcopen-libraries-and-examples/lpcopen-software-development-platform-lpc17xx:LPCOPEN-SOFTWARE-FOR-LPC17XX) 
-and [FreeRTOS v9.0.0](http://www.freertos.org/).
+and [FreeRTOS v10.4.1](http://www.freertos.org/).
 
 
 ![devolo dLAN® Green PHY 
-module](https://www.codico.com/shop/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/d/l/dlan_green_phy_eval_board_eu_ii_bild_1_10.jpg)
+module](https://www.codico.com/media/catalog/product/cache/c59ee43e27a3fd6035149ee08efef60b/i/m/image_3_4.jpg)
 
 *The dLAN® Green PHY module*
 
@@ -35,8 +35,8 @@ module](https://www.codico.com/shop/media/catalog/product/cache/1/image/9df78eab
 * Compatible to [microBUS™ socket](https://www.mikroe.com/mikrobus/) and MikroElektronika [Click Boards](https://shop.mikroe.com/click)
 
 ## Requirements
-* [dLAN® Green PHY module](https://www.codico.com/shop/de/powerline-modules/broad-band-plc/homeplug-green-phy/dlan-green-phy-module.html) with a development board, e.g. the [dLAN® 
-Green PHY eval board II](https://www.codico.com/shop/de/powerline-modules/broad-band-plc/homeplug-green-phy/dlan-green-phy-eval-board-eu-ii.html), or your own design
+* [dLAN® Green PHY module](https://www.codico.com/de/dlan-green-phy-module) with a development board, e.g. the [dLAN® 
+Green PHY eval board II](https://www.codico.com/de/dlan-green-phy-eval-board-eu-ii), or your own design
 * [MCUXpresso IDE](https://www.nxp.com/products/developer-resources/run-time-software/mcuxpresso-software-and-tools/mcuxpresso-integrated-development-environment-ide-v10.0.2:MCUXpresso-IDE) *(tested for v11.1.0, not working with v11.2.1)*
 * JTAG-Debugger, recommended [LPC-Link 
 2](https://www.nxp.com/products/developer-resources/software-development-tools/developer-resources-/lpcopen-libraries-and-examples/lpc-link2:OM13054) 
