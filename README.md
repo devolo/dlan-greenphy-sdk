@@ -35,8 +35,8 @@ module](https://www.codico.com/media/catalog/product/cache/c59ee43e27a3fd6035149
 * Compatible to [microBUS™ socket](https://www.mikroe.com/mikrobus/) and MikroElektronika [Click Boards](https://shop.mikroe.com/click)
 
 ## Requirements
-* [dLAN® Green PHY module](https://www.codico.com/de/dlan-green-phy-module) with a development board, e.g. the [dLAN® 
-Green PHY eval board II](https://www.codico.com/de/dlan-green-phy-eval-board-eu-ii), or your own design
+* [dLAN® Green PHY module](https://www.devolo.de/dlan-green-phy-module) with a development board, e.g. the [dLAN® 
+Green PHY eval board II](https://www.devolo.de/dlan-green-phy-eval-board-ii), or your own design
 * [MCUXpresso IDE](https://www.nxp.com/products/developer-resources/run-time-software/mcuxpresso-software-and-tools/mcuxpresso-integrated-development-environment-ide-v10.0.2:MCUXpresso-IDE) *(tested for v11.1.0, not working with v11.2.1)*
 * JTAG-Debugger, recommended [LPC-Link 
 2](https://www.nxp.com/products/developer-resources/software-development-tools/developer-resources-/lpcopen-libraries-and-examples/lpc-link2:OM13054) 
