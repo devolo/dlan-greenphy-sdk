@@ -58,7 +58,7 @@ void vApplicationIdleHook(void) {
 }
 /*-----------------------------------------------------------*/
 
-void vApplicationStackOverflowHook(xTaskHandle pxTask, signed char *pcTaskName) {
+void vApplicationStackOverflowHook(xTaskHandle pxTask, char *pcTaskName) {
 	/* This function will get called if a task overflows its stack. */
 
 	(void) pxTask;

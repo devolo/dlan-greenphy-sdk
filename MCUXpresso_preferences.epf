@@ -1,0 +1,81 @@
+#Thu Nov 05 12:03:31 CET 2020
+\!/=
+/configuration/org.eclipse.core.net/org.eclipse.core.net.hasMigrated=true
+/configuration/org.eclipse.ui.ide/MAX_RECENT_WORKSPACES=10
+/configuration/org.eclipse.ui.ide/RECENT_WORKSPACES=C\:\\Users\\caroline.toebben\\Documents\\MCUXpressoIDE_11.1.0_3209\\singleworkspace\nC\:\\Users\\caroline.toebben\\Documents\\MCUXpressoIDE_11.1.0_3209\\workspacenew\nC\:\\Users\\caroline.toebben\\Documents\\MCUXpressoIDE_11.1.0_3209\\workspace
+/configuration/org.eclipse.ui.ide/RECENT_WORKSPACES_PROTOCOL=3
+/configuration/org.eclipse.ui.ide/SHOW_RECENT_WORKSPACES=false
+/configuration/org.eclipse.ui.ide/SHOW_WORKSPACE_SELECTION_DIALOG=true
+/instance/com.crt.quickstart/indexerInitialised=true
+/instance/com.nxp.mcuxpresso.core.datamodels/sdk.paths.pref=C\:\\Users\\caroline.toebben\\mcuxpresso\\02\\SDKPackages;;
+/instance/org.eclipse.cdt.core.prj-Applications/indexer/preferenceScope=0
+/instance/org.eclipse.cdt.core.prj-Configuration/indexer/preferenceScope=0
+/instance/org.eclipse.cdt.core.prj-FirmwareStandalone/indexer/preferenceScope=0
+/instance/org.eclipse.cdt.core.prj-Libraries/indexer/preferenceScope=0
+/instance/org.eclipse.cdt.core/macros/workspace=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<macros>\r\n<stringMacro name\="project.flashdriver.dir" type\="VALUE_PATH_DIR" value\=""/>\r\n<stringMacro name\="SDK_LPC_RESOURCES" type\="VALUE_PATH_DIR" value\="C\:\\nxp\\MCUXpressoIDE_11.1.0_3209\\ide\\plugins\\com.nxp.mcuxpresso.core.datamodels.resources_11.1.0.201911151119\\override"/>\r\n</macros>\r\n
+/instance/org.eclipse.cdt.debug.core/org.eclipse.cdt.debug.core.cDebug.default_source_containers=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<sourceLookupDirector>\r\n<sourceContainers duplicates\="false">\r\n<container memento\="AbsolutePath" typeId\="org.eclipse.cdt.debug.core.containerType.absolutePath"/>\r\n<container memento\="programRelativePath" typeId\="org.eclipse.cdt.debug.core.containerType.programRelativePath"/>\r\n<container memento\="&lt;?xml version\=&quot;1.0&quot; encoding\=&quot;UTF-8&quot; standalone\=&quot;no&quot;?&gt;&\#13;&\#10;&lt;project referencedProjects\=&quot;true&quot;/&gt;&\#13;&\#10;" typeId\="org.eclipse.cdt.debug.core.containerType.project"/>\r\n</sourceContainers>\r\n</sourceLookupDirector>\r\n
+/instance/org.eclipse.cdt.dsf.gdb/defaultNonStop=true
+/instance/org.eclipse.cdt.dsf.ui/useAnnotationsPrefPage=true
+/instance/org.eclipse.cdt.managedbuilder.core/properties/Applications.com.crt.advproject.projecttype.lib.1821204519/com.crt.advproject.config.lib.debug.1946804125=com.crt.advproject.toolchain.lib.debug.1694679205\=rebuildState\\\=false\\r\\n\r\ncom.crt.advproject.config.lib.debug.1946804125\=rcState\\\=0\\r\\nrebuildState\\\=false\\r\\n\r\ncom.crt.advproject.ar.lib.debug.1960059227\=rebuildState\\\=false\\r\\n\r\ncom.crt.advproject.gas.lib.debug.369198596\=rebuildState\\\=false\\r\\n\r\ncom.crt.advproject.cpp.lib.debug.2014658319\=rebuildState\\\=false\\r\\n\r\ncom.crt.advproject.gcc.lib.debug.1686032182\=rebuildState\\\=false\\r\\n\r\n
+/instance/org.eclipse.cdt.managedbuilder.core/properties/Configuration.com.crt.advproject.projecttype.lib.1208115039/com.crt.advproject.config.lib.debug.1897047041=com.crt.advproject.toolchain.lib.debug.1381305551\=rebuildState\\\=true\\r\\n\r\ncom.crt.advproject.ar.lib.debug.1291836978\=rebuildState\\\=true\\r\\n\r\ncom.crt.advproject.gas.lib.debug.1799475604\=rebuildState\\\=true\\r\\n\r\ncom.crt.advproject.gcc.lib.debug.1396952493\=rebuildState\\\=true\\r\\n\r\ncom.crt.advproject.cpp.lib.debug.1845623170\=rebuildState\\\=true\\r\\n\r\n
+/instance/org.eclipse.cdt.managedbuilder.core/properties/FirmwareStandalone.com.crt.advproject.projecttype.exe.1602017921/com.crt.advproject.config.exe.debug.1338686539=com.crt.advproject.gas.exe.debug.81871065\=rebuildState\\\=false\\r\\n\r\ncom.crt.advproject.cpp.exe.debug.137857486\=rebuildState\\\=false\\r\\n\r\ncom.crt.advproject.link.exe.debug.1335566526\=rebuildState\\\=false\\r\\n\r\ncom.crt.advproject.config.exe.debug.1338686539\=rcState\\\=0\\r\\nrebuildState\\\=false\\r\\n\r\ncom.crt.advproject.toolchain.exe.debug.1993392176\=rebuildState\\\=false\\r\\n\r\ncom.crt.advproject.tool.debug.debug.683607329\=rebuildState\\\=false\\r\\n\r\ncom.crt.advproject.link.cpp.exe.debug.81729518\=rebuildState\\\=false\\r\\n\r\ncom.crt.advproject.gcc.exe.debug.2132976197\=rebuildState\\\=false\\r\\n\r\n
+/instance/org.eclipse.cdt.managedbuilder.core/properties/FirmwareStandalone.com.crt.advproject.projecttype.exe.1602017921/com.crt.advproject.config.exe.release.365776310=com.crt.advproject.gcc.exe.release.385199563\=rebuildState\\\=true\\r\\n\r\ncom.crt.advproject.tool.debug.release.1488025498\=rebuildState\\\=true\\r\\n\r\ncom.crt.advproject.link.cpp.exe.release.345759552\=rebuildState\\\=true\\r\\n\r\ncom.crt.advproject.link.exe.release.1651372647\=rebuildState\\\=true\\r\\n\r\ncom.crt.advproject.toolchain.exe.release.264778777\=rebuildState\\\=true\\r\\n\r\ncom.crt.advproject.gas.exe.release.1645838796\=rebuildState\\\=true\\r\\n\r\ncom.crt.advproject.cpp.exe.release.1909360916\=rebuildState\\\=true\\r\\n\r\n
+/instance/org.eclipse.cdt.managedbuilder.core/properties/Libraries.com.crt.advproject.projecttype.lib.1236685087/com.crt.advproject.config.lib.debug.690962840=com.crt.advproject.ar.lib.debug.1712184440\=rebuildState\\\=false\\r\\n\r\ncom.crt.advproject.gcc.lib.debug.42021523\=rebuildState\\\=false\\r\\n\r\ncom.crt.advproject.cpp.lib.debug.887431058\=rebuildState\\\=false\\r\\n\r\ncom.crt.advproject.config.lib.debug.690962840\=rcState\\\=0\\r\\nrebuildState\\\=false\\r\\n\r\ncom.crt.advproject.gas.lib.debug.600111742\=rebuildState\\\=false\\r\\n\r\ncom.crt.advproject.toolchain.lib.debug.398285226\=rebuildState\\\=false\\r\\n\r\n
+/instance/org.eclipse.cdt.ui/spelling_locale_initialized=true
+/instance/org.eclipse.cdt.ui/useAnnotationsPrefPage=true
+/instance/org.eclipse.cdt.ui/useQuickDiffPrefPage=true
+/instance/org.eclipse.core.net/org.eclipse.core.net.hasMigrated=true
+/instance/org.eclipse.core.resources/pathvariable.SDK_LPC_RESOURCES=C\:/nxp/MCUXpressoIDE_11.1.0_3209/ide/plugins/com.nxp.mcuxpresso.core.datamodels.resources_11.1.0.201911151119/override
+/instance/org.eclipse.core.resources/version=1
+/instance/org.eclipse.debug.core//org.eclipse.debug.core.PREFERRED_DELEGATES/org.eclipse.cdt.launch.applicationLaunchType=org.eclipse.cdt.dsf.gdb.launch.localCLaunch,debug,;org.eclipse.cdt.cdi.launch.localCLaunch,run,;
+/instance/org.eclipse.debug.core//org.eclipse.debug.core.PREFERRED_DELEGATES/org.eclipse.cdt.launch.attachLaunchType=org.eclipse.cdt.dsf.gdb.launch.attachCLaunch,debug,;
+/instance/org.eclipse.debug.core//org.eclipse.debug.core.PREFERRED_DELEGATES/org.eclipse.cdt.launch.postmortemLaunchType=org.eclipse.cdt.dsf.gdb.launch.coreCLaunch,debug,;
+/instance/org.eclipse.debug.ui/org.eclipse.debug.ui.MemoryView.orientation=0
+/instance/org.eclipse.debug.ui/org.eclipse.debug.ui.PREF_LAUNCH_PERSPECTIVES=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<launchPerspectives/>\r\n
+/instance/org.eclipse.egit.core/GitRepositoriesView.GitDirectories=C\:\\Users\\caroline.toebben\\Documents\\Green_phy_module\\dlan-greenphy-sdk\\.git;
+/instance/org.eclipse.egit.core/GitRepositoriesView.GitDirectories.relative=C\:\\Users\\caroline.toebben\\Documents\\Green_phy_module\\dlan-greenphy-sdk\\.git;
+/instance/org.eclipse.jdt.ui/content_assist_proposals_background=255,255,255
+/instance/org.eclipse.jdt.ui/content_assist_proposals_foreground=0,0,0
+/instance/org.eclipse.jdt.ui/org.eclipse.jdt.internal.ui.navigator.layout=2
+/instance/org.eclipse.jdt.ui/org.eclipse.jdt.internal.ui.navigator.librariesnode=true
+/instance/org.eclipse.jdt.ui/org.eclipse.jdt.ui.formatterprofiles.version=16
+/instance/org.eclipse.jdt.ui/org.eclipse.jdt.ui.text.code_templates_migrated=true
+/instance/org.eclipse.jdt.ui/org.eclipse.jdt.ui.text.custom_code_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
+/instance/org.eclipse.jdt.ui/spelling_locale_initialized=true
+/instance/org.eclipse.jdt.ui/useAnnotationsPrefPage=true
+/instance/org.eclipse.jdt.ui/useQuickDiffPrefPage=true
+/instance/org.eclipse.jsch.core/org.eclipse.jsch.core.hasChangedDefaultWin32SshHome=true
+/instance/org.eclipse.jsch.core/org.eclipse.jsch.core.hasMigratedSsh2Preferences=true
+/instance/org.eclipse.launchbar.core/LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86_64
+/instance/org.eclipse.launchbar.core/LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
+/instance/org.eclipse.launchbar.core/LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=win32
+/instance/org.eclipse.launchbar.core/configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:FirmwareStandalone LinkServer Debug,org.eclipse.launchbar.core.descriptorType.default\:FirmwareStandalone LinkServer Debug (1)
+/instance/org.eclipse.launchbar.core/org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:FirmwareStandalone\ LinkServer\ Debug/activeLaunchMode=debug
+/instance/org.eclipse.launchbar.core/org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:FirmwareStandalone\ LinkServer\ Debug/activeLaunchTarget=null\:---
+/instance/org.eclipse.launchbar.core/org.eclipse.launchbar.core.descriptorType.default\:FirmwareStandalone\ LinkServer\ Debug\ (1)/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
+/instance/org.eclipse.ui.editors/overviewRuler_migration=migrated_3.1
+/instance/org.eclipse.ui.ide/platformState=1604411127423
+/instance/org.eclipse.ui.ide/quickStart=false
+/instance/org.eclipse.ui.ide/tipsAndTricks=true
+/instance/org.eclipse.ui.workbench/ENABLED_DECORATORS=org.eclipse.ui.LinkedResourceDecorator\:true,org.eclipse.ui.SymlinkDecorator\:true,org.eclipse.ui.VirtualResourceDecorator\:true,org.eclipse.ui.ContentTypeDecorator\:true,org.eclipse.ui.ResourceFilterDecorator\:false,org.eclipse.debug.ui.prototype.decorator\:true,org.eclipse.cdt.ui.indexedFiles\:false,org.eclipse.cdt.managedbuilder.ui.excludedFile\:true,org.eclipse.cdt.managedbuilder.ui.includeFolder\:true,org.eclipse.cdt.internal.ui.CustomBuildSettingsDecorator\:false,org.eclipse.team.cvs.ui.decorator\:false,com.crt.advproject.gui.CRTCustomBuildSettingsDecorator\:true,org.eclipse.jdt.ui.override.decorator\:true,org.eclipse.jdt.ui.interface.decorator\:true,org.eclipse.jdt.ui.buildpath.decorator\:true,org.eclipse.jdt.internal.ui.without.test.code.decorator\:true,com.nxp.mcuxpresso.core.datamodels.sdkNatureDecorator\:true,com.nxp.mcuxpresso.core.datamodels.ui.multicoreProjectDecorator\:true,com.nxp.mcuxpresso.core.debug.support.linkserver.launch.\:true,org.eclipse.egit.ui.internal.decorators.GitLightweightDecorator\:true,org.eclipse.egit.ui.internal.repository.RepositoryTreeNodeDecorator\:true,com.nxp.mcuxpresso.addons.docsupport.ui.decorators.projectdecorator\:true,
+/instance/org.eclipse.ui.workbench/UIActivities.org.eclipse.cdt.debug.dsfgdbActivity=true
+@com.crt.quickstart=11.1.0.201912101558
+@com.nxp.mcuxpresso.core.datamodels=11.1.0.201912021734
+@org.eclipse.cdt.core=6.8.1.201907021957
+@org.eclipse.cdt.debug.core=8.3.200.201905162046
+@org.eclipse.cdt.dsf.gdb=5.7.1.201906211704
+@org.eclipse.cdt.dsf.ui=2.5.100.201904261715
+@org.eclipse.cdt.managedbuilder.core=8.7.0.201905240831
+@org.eclipse.cdt.ui=6.5.1.201906210145
+@org.eclipse.core.net=1.3.500.v20190519-2354
+@org.eclipse.core.resources=3.13.400.v20190505-1655
+@org.eclipse.debug.core=3.13.300.v20190514-0832
+@org.eclipse.debug.ui=3.14.100.v20190518-2143
+@org.eclipse.egit.core=5.4.0.201906121030-r
+@org.eclipse.jdt.ui=3.18.0.v20190601-2139
+@org.eclipse.jsch.core=1.3.500.v20190413-1338
+@org.eclipse.launchbar.core=2.3.0.201906102002
+@org.eclipse.ui.editors=3.11.500.v20190519-2344
+@org.eclipse.ui.ide=3.15.200.v20190519-2104
+@org.eclipse.ui.workbench=3.115.0.v20190521-1602
+file_export_version=3.0
