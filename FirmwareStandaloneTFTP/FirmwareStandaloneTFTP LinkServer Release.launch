@@ -7,11 +7,10 @@
 <booleanAttribute key="com.crt.ctrlcenter.crtInit" value="true"/>
 <stringAttribute key="com.crt.ctrlcenter.currentWireType" value="SWD"/>
 <booleanAttribute key="com.crt.ctrlcenter.mainBreakIsHardware" value="true"/>
-<booleanAttribute key="com.crt.ctrlcenter.saveState" value="true"/>
 <stringAttribute key="com.crt.ctrlcenter.serialNumber" value="LinkServerNXPLPC-Link-II CMSIS-DAPA000000001"/>
 <mapAttribute key="com.crt.ctrlcenter.symbolsGroupSettings"/>
 <intAttribute key="com.crt.ctrlcenter.version" value="6"/>
-<stringAttribute key="com.nxp.mcuxpresso.flash.base.address" value="0x0"/>
+<stringAttribute key="com.nxp.mcuxpresso.flash.base.address" value="0x10000"/>
 <booleanAttribute key="com.nxp.mcuxpresso.flash.clear.console" value="true"/>
 <booleanAttribute key="com.nxp.mcuxpresso.flash.confirm" value="false"/>
 <stringAttribute key="com.nxp.mcuxpresso.flash.erase.algorithm" value="Mass erase"/>
@@ -68,13 +67,13 @@
 <intAttribute key="org.eclipse.cdt.launch.ATTR_BUILD_BEFORE_LAUNCH_ATTR" value="2"/>
 <stringAttribute key="org.eclipse.cdt.launch.DEBUGGER_ID" value="gdb"/>
 <stringAttribute key="org.eclipse.cdt.launch.DEBUGGER_START_MODE" value="remote"/>
-<stringAttribute key="org.eclipse.cdt.launch.PROGRAM_NAME" value="Debug\FirmwareStandalone.axf"/>
-<stringAttribute key="org.eclipse.cdt.launch.PROJECT_ATTR" value="FirmwareStandalone"/>
+<stringAttribute key="org.eclipse.cdt.launch.PROGRAM_NAME" value="Release\FirmwareStandaloneTFTP.axf"/>
+<stringAttribute key="org.eclipse.cdt.launch.PROJECT_ATTR" value="FirmwareStandaloneTFTP"/>
 <booleanAttribute key="org.eclipse.cdt.launch.PROJECT_BUILD_CONFIG_AUTO_ATTR" value="false"/>
-<stringAttribute key="org.eclipse.cdt.launch.PROJECT_BUILD_CONFIG_ID_ATTR" value="com.crt.advproject.config.exe.debug.1338686539"/>
+<stringAttribute key="org.eclipse.cdt.launch.PROJECT_BUILD_CONFIG_ID_ATTR" value="com.crt.advproject.config.exe.release.365776310"/>
 <booleanAttribute key="org.eclipse.cdt.launch.use_terminal" value="false"/>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
-<listEntry value="/FirmwareStandalone"/>
+<listEntry value="/FirmwareStandaloneTFTP"/>
 </listAttribute>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
 <listEntry value="4"/>
