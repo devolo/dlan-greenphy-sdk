@@ -15,6 +15,7 @@ The following options are available within the QCA7000 devolo firmware package:
  *  iot-conform    IoT over mains, optimized for conformity: 50561 on (SLAC off)
  *  emob-charger   e-mobility use as charging station: SLAC in EVSE mode (50561 off)
  *  emob-vehicle   e-mobility use as vehicle: SLAC in PEV mode (50561 off)
+ 
 
 ## LPC1758 Firmware
 The SDK is based on [LPCOpen 
@@ -54,7 +55,7 @@ convert HTML files for the WebUI)*
    * Leave all projects marked for import and click *Finish*.
 
 3. Now you should be able to see the SDK's folders in the Project Explorer.
-   Select the *FirmwareStandalone* project and click on the blue debug icon or use *Debug 'FirmwareStandalone' [Debug]* in the Quickstart Panel. 
+   Select the *FirmwareStandalone* project and click on the blue debug icon or use *Debug 'FirmwareStandalone' [Debug]* in the Quickstart Panel and click the resume button. 
 4. Get the GreenPHY module's IP address from your local DHCP server and access it's WebUI in your Browser.
 
 ![greenphy-sdk-webui](https://user-images.githubusercontent.com/10745701/30339626-ecc350ca-97ef-11e7-96c5-5e3ad115d538.png)
