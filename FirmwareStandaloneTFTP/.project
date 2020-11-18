@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>FirmwareStandalone</name>
+	<name>FirmwareStandaloneTFTP</name>
 	<comment></comment>
 	<projects>
 		<project>Libraries</project>

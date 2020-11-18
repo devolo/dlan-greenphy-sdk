@@ -2,6 +2,7 @@
  * Copyright (c) 2017, devolo AG, Aachen, Germany.
  * All rights reserved.
  *
+ *
  * This Software is part of the devolo GreenPHY-SDK.
  *
  * Usage in source form and redistribution in binary form, with or without

@@ -1,0 +1,1 @@
+LIBS := -Wl,--whole-archive $(LIBS) -Wl,--no-whole-archive
