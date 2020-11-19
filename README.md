@@ -32,6 +32,7 @@ This repository contains two FirmwareStandalone projects.
 The *FirmwareStandalone* projekt which starts at baseaddress 0x0 and the *FirmwareStandaloneTFTP* project which starts at baseaddress 0x10000 to leave space for the bootloader on 0x0 to 0x10000.
 The FirmwareStandalone therefor will *override(!)* an existing Bootloader while flashing. 
 If you know about an existing bootloader on your Green PHY module and you want to keep the TFTP update function, the StandaloneFirmwareTFTP should be used.
+There are also binaries of the stock-firmware (v1.0.16) with the bootloader and FirmwareStandaloneTFTP included in the releases, which can be flashed via MCUXpressos *GUI Flash Tool*.
 
 ## Features
 * HTTP server with webinterface
