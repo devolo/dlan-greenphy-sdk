@@ -15,6 +15,7 @@ The following options are available within the QCA7000 devolo firmware package:
  *  iot-conform    IoT over mains, optimized for conformity: 50561 on (SLAC off)
  *  emob-charger   e-mobility use as charging station: SLAC in EVSE mode (50561 off)
  *  emob-vehicle   e-mobility use as vehicle: SLAC in PEV mode (50561 off)
+ 
 
 ## LPC1758 Firmware
 The SDK is based on [LPCOpen 
@@ -26,6 +27,12 @@ and [FreeRTOS v10.4.1](http://www.freertos.org/).
 module](https://www.codico.com/media/catalog/product/cache/c59ee43e27a3fd6035149ee08efef60b/i/m/image_3_4.jpg)
 
 *The dLAN® Green PHY module*
+
+This repository contains two FirmwareStandalone projects. 
+The *FirmwareStandalone* projekt which starts at baseaddress 0x0 and the *FirmwareStandaloneTFTP* project which starts at baseaddress 0x10000 to leave space for the bootloader on 0x0 to 0x10000.
+The FirmwareStandalone therefor will *override(!)* an existing Bootloader while flashing. 
+If you know about an existing bootloader on your Green PHY module and you want to keep the TFTP update function, the StandaloneFirmwareTFTP should be used.
+There are also binaries of the stock-firmware (v1.0.16) with the bootloader and FirmwareStandaloneTFTP included in the releases, which can be flashed via MCUXpressos *GUI Flash Tool*.
 
 ## Features
 * HTTP server with webinterface
@@ -54,7 +61,7 @@ convert HTML files for the WebUI)*
    * Leave all projects marked for import and click *Finish*.
 
 3. Now you should be able to see the SDK's folders in the Project Explorer.
-   Select the *FirmwareStandalone* project and click on the blue debug icon or use *Debug 'FirmwareStandalone' [Debug]* in the Quickstart Panel.
+   Select the *wanted project (FirmwareStandalone or FirmwareStandaloneTFTP)* and click on the blue debug icon or use *Debug 'FirmwareStandalone(TFTP)' [Debug]* in the Quickstart Panel and click the *Resume* button to start. 
 4. Get the GreenPHY module's IP address from your local DHCP server and access it's WebUI in your Browser.
 
 ![greenphy-sdk-webui](https://user-images.githubusercontent.com/10745701/30339626-ecc350ca-97ef-11e7-96c5-5e3ad115d538.png)
