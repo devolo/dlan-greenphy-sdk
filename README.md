@@ -28,6 +28,11 @@ module](https://www.codico.com/media/catalog/product/cache/c59ee43e27a3fd6035149
 
 *The dLAN® Green PHY module*
 
+This repository contains two FirmwareStandalone projects. 
+The *FirmwareStandalone* projekt which starts at baseaddress 0x0 and the *FirmwareStandaloneTFTP* project which starts at baseaddress 0x10000 to leave space for the bootloader on 0x0 to 0x10000.
+The FirmwareStandalone therefor will *override(!)* an existing Bootloader while flashing. 
+If you know about an existing bootloader on your Green PHY module and you want to keep the TFTP update function, the StandaloneFirmwareTFTP should be used.
+
 ## Features
 * HTTP server with webinterface
 * TCP/IP stack with many protocols ready to use, e.g. DNS, DHCP, ICMP
@@ -55,7 +60,7 @@ convert HTML files for the WebUI)*
    * Leave all projects marked for import and click *Finish*.
 
 3. Now you should be able to see the SDK's folders in the Project Explorer.
-   Select the *FirmwareStandalone* project and click on the blue debug icon or use *Debug 'FirmwareStandalone' [Debug]* in the Quickstart Panel and click the resume button. 
+   Select the *wanted project (FirmwareStandalone or FirmwareStandaloneTFTP)* and click on the blue debug icon or use *Debug 'FirmwareStandalone(TFTP)' [Debug]* in the Quickstart Panel and click the *Resume* button to start. 
 4. Get the GreenPHY module's IP address from your local DHCP server and access it's WebUI in your Browser.
 
 ![greenphy-sdk-webui](https://user-images.githubusercontent.com/10745701/30339626-ecc350ca-97ef-11e7-96c5-5e3ad115d538.png)
