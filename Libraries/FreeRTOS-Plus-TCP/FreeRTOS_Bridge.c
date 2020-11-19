@@ -262,7 +262,7 @@ BaseType_t xIsBroadcast = pdFALSE;
 	{
 		/* Send frame to all interfaces except the receiving one. */
 
-		for( pxInterface = FreeRTOS_FirstNetworkInterfaceInBridge();
+		for( pxInterface = FreeRTOS_FirstNetworkInterface();
 			 pxInterface != NULL;
 			 pxInterface = FreeRTOS_NextNetworkInterfaceInBridge( pxInterface ) )
 		{
