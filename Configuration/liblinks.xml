@@ -22,6 +22,18 @@
 	<setting id="linker.paths" buildType="Release">
 		<value>${workspace_loc:/Configuration/Release}</value>
 	</setting>
+	<setting id="linker.paths" buildType="Debug">
+		<value>${workspace_loc:/Libraries/Debug}</value>
+	</setting>
+	<setting id="linker.paths" buildType="Release">
+		<value>${workspace_loc:/Libraries/Release}</value>
+	</setting>
+	<setting id="linker.paths" buildType="Debug">
+		<value>${workspace_loc:/Applications/Debug}</value>
+	</setting>
+	<setting id="linker.paths" buildType="Release">
+		<value>${workspace_loc:/Applications/Release}</value>
+	</setting>
 	<requires msg="Library project `Configuration` not found">
 		<value>Configuration</value>
 	</requires>
