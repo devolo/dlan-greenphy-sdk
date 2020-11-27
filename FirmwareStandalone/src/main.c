@@ -41,7 +41,7 @@
 #include "task.h"
 
 /* FreeRTOS +TCP includes. */
-#include "FreeRTOS_IP.h"
+#include <FreeRTOS_IP.h>
 #include "FreeRTOS_Sockets.h"
 
 /* GreenPHY SDK includes. */

@@ -388,6 +388,8 @@ because it is stale. ipconfigUSE_FORWARDING_TABLE is specified in tens of
 seconds, so a value of 30 is equal to 300 seconds (or 5 minutes). */
 #define ipconfigMAX_FORWARDING_TABLE_AGE         30
 
+#define ipconfigMULTI_INTERFACE                   1
+
 /* Defines how often the forwarding table timer callback function is executed.  The time is
 shorted in the Windows simulator as simulated time is not real time. */
 #define ipFORWARDING_TABLE_TIMER_PERIOD_MS       10000

@@ -43,7 +43,7 @@
 #include "FreeRTOS_IP.h"
 #include "FreeRTOS_Sockets.h"
 #include "FreeRTOS_Routing.h"
-#include "FreeRTOS_HTTP_server.h"
+#include "FreeRTOS_TCP_server.h"
 
 /* GreenPHY SDK includes. */
 #include "GreenPhySDKNetConfig.h"
@@ -100,7 +100,7 @@
 	static void prvServerWorkTask( void *pvParameters )
 	{
 	const TickType_t xInitialBlockTime = pdMS_TO_TICKS( 200UL );
-	HTTPServer_t *pxHTTPServer = NULL;
+	TCPServer_t *pxHTTPServer = NULL;
 
 	/* A structure that defines the servers to be created.  Which servers are
 	included in the structure depends on the mainCREATE_HTTP_SERVER and
@@ -108,19 +108,19 @@
 	static const struct xSERVER_CONFIG xServerConfiguration =
 
 		/* Server type,		port number,	backlog, 	root dir. */
-		{ 					80, 			0, 		"" }
+		{ eSERVER_HTTP,		80, 			2, 		"" }
 	;
 
 		/* Remove compiler warning about unused parameter. */
 		( void ) pvParameters;
 
 		/* Create the servers defined by the xServerConfiguration array above. */
-		pxHTTPServer = FreeRTOS_CreateHTTPServer( &xServerConfiguration );
+		pxHTTPServer = FreeRTOS_CreateTCPServer( &xServerConfiguration, 1 );
 		configASSERT( pxHTTPServer );
 
 		for( ;; )
 		{
-			FreeRTOS_HTTPServerWork( pxHTTPServer, xInitialBlockTime );
+			FreeRTOS_TCPServerWork( pxHTTPServer, xInitialBlockTime );
 		}
 	}
 #endif
@@ -156,11 +156,11 @@ void vApplicationIPNetworkEventHook( eIPCallbackEvent_t eNetworkEvent, NetworkEn
 
 			/* The network is up and configured.  Print out the configuration,
 			which may have been obtained from a DHCP server. */
-			FreeRTOS_GetAddressConfiguration( pxEndPoint,
-											  &ulIPAddress,
-											  &ulNetMask,
-											  &ulGatewayAddress,
-											  &ulDNSServerAddress );
+			FreeRTOS_GetEndPointConfiguration( &ulIPAddress,
+											   &ulNetMask,
+											   &ulGatewayAddress,
+											   &ulDNSServerAddress,
+											   pxEndPoint );
 
 			/* Convert the IP address to a string then print it out. */
 			FreeRTOS_inet_ntoa( ulIPAddress, cBuffer );
@@ -246,26 +246,13 @@ void vNetworkInit( void )
 	#endif
 
 	#if( netconfigUSE_IP != 0 )
-		FreeRTOS_FillEndPoint(&xEndPoint, ucIPAddress, ucNetMask, ucGatewayAddress, ucDNSServerAddress, ucMACAddress);
+		FreeRTOS_FillEndPoint(&xBridgeInterface, &xEndPoint, ucIPAddress, ucNetMask, ucGatewayAddress, ucDNSServerAddress, ucMACAddress);
 		xEndPoint.bits.bIsDefault = pdTRUE_UNSIGNED;
 		#if( netconfigUSE_DHCP != 0 )
 		{
 			xEndPoint.bits.bWantDHCP = pdTRUE_UNSIGNED;
 		}
 		#endif
-		#if( netconfigIP_INTERFACE == netconfigETH_INTERFACE )
-		{
-			FreeRTOS_AddEndPoint(&xEthInterface, &xEndPoint);
-		}
-		#elif( netconfigIP_INTERFACE == netconfigPLC_INTERFACE )
-		{
-			FreeRTOS_AddEndPoint(&xPlcInterface, &xEndPoint);
-		}
-		#elif( netconfigIP_INTERFACE == netconfigBRIDGE_INTERFACE )
-		{
-			FreeRTOS_AddEndPoint(&xBridgeInterface, &xEndPoint);
-		}
-		#endif /* netconfigIP_INTERFACE */
 	#endif /* netconfigUSE_IP */
 
 	FreeRTOS_IPStart();

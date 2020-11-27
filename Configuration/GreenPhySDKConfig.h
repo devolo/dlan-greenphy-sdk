@@ -33,7 +33,7 @@
  */
 
 /* version string of the firmware */
-#define SDK_VERSION "3.1.0"
+#define SDK_VERSION "3.2.0"
 #define VERSION_STRING "SDK v" SDK_VERSION
 #define BUILD_STRING VERSION_STRING " - " __DATE__ " " __TIME__
 

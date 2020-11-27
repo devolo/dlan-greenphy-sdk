@@ -113,11 +113,11 @@ int8_t cBuffer[ 16 ];
 				pxEndPoint->xMACAddress.ucBytes[5]
 		);
 
-		FreeRTOS_GetAddressConfiguration( pxEndPoint,
-										  &ulIPAddress,
-										  &ulNetMask,
-										  &ulGatewayAddress,
-										  &ulDNSServerAddress );
+		FreeRTOS_GetEndPointConfiguration( &ulIPAddress,
+										   &ulNetMask,
+										   &ulGatewayAddress,
+										   &ulDNSServerAddress,
+										   pxEndPoint );
 
 		FreeRTOS_inet_ntoa( ulIPAddress, cBuffer );
 		xCount += snprintf( pcBuffer + xCount, uxBufferLength - xCount, "\"ip\":\"%s\",", cBuffer);
