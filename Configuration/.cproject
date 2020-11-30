@@ -42,15 +42,13 @@
 								<option id="gnu.c.compiler.option.misc.other.134121364" name="Other flags" superClass="gnu.c.compiler.option.misc.other" useByScannerDiscovery="false" value="-c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections" valueType="string"/>
 								<option id="com.crt.advproject.gcc.hdrlib.309708723" name="Library headers" superClass="com.crt.advproject.gcc.hdrlib" useByScannerDiscovery="false" value="com.crt.advproject.gcc.hdrlib.codered" valueType="enumerated"/>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.c.compiler.option.include.paths.661293705" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries/FreeRTOS-Plus-TCP-multi-master/source/portable/FileSystem/httpd-fs}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries/FreeRTOS-Plus-TCP-multi-master/source/protocols/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries/FreeRTOS-Plus-TCP-multi-master/source/portable/Compiler/GCC}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries/FreeRTOS-Plus-TCP-multi-master/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries/dLAN_Green_PHY_eval_board/inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries/lpc_chip_175x_6x/inc}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries/FreeRTOSv10.4.1/portable/GCC/ARM_CM3}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries/FreeRTOSv10.4.1/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries/FreeRTOS-Plus-TCP-multi-master/source/portable/FileSystem/httpd-fs}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries/FreeRTOS-Plus-TCP-multi-master/source/protocols/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Configuration}&quot;"/>
 								</option>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.c.compiler.option.preprocessor.def.symbols.1783528360" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
@@ -68,15 +66,13 @@
 								<option id="gnu.both.asm.option.flags.crt.1722340146" name="Assembler flags" superClass="gnu.both.asm.option.flags.crt" value="-c -x assembler-with-cpp -D__REDLIB__ -DDEBUG -D__CODE_RED" valueType="string"/>
 								<option id="com.crt.advproject.gas.hdrlib.503884498" name="Library headers" superClass="com.crt.advproject.gas.hdrlib" value="com.crt.advproject.gas.hdrlib.codered" valueType="enumerated"/>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.both.asm.option.include.paths.818730641" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries/FreeRTOS-Plus-TCP-multi-master/source/portable/FileSystem/httpd-fs}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries/FreeRTOS-Plus-TCP-multi-master/source/protocols/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries/FreeRTOS-Plus-TCP-multi-master/source/portable/Compiler/GCC}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries/FreeRTOS-Plus-TCP-multi-master/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries/dLAN_Green_PHY_eval_board/inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries/lpc_chip_175x_6x/inc}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries/FreeRTOSv10.4.1/portable/GCC/ARM_CM3}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries/FreeRTOSv10.4.1/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries/FreeRTOS-Plus-TCP-multi-master/source/portable/FileSystem/httpd-fs}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries/FreeRTOS-Plus-TCP-multi-master/source/protocols/include}&quot;"/>
 								</option>
 								<option id="com.crt.advproject.gas.fpu.1471672868" name="Floating point" superClass="com.crt.advproject.gas.fpu" useByScannerDiscovery="false"/>
 								<inputType id="com.crt.advproject.assembler.input.633318433" name="Additional Assembly Source Files" superClass="com.crt.advproject.assembler.input"/>
@@ -90,20 +86,18 @@
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings">
 				<externalSettings containerId="Libraries;" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier">
 					<externalSetting>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="includePath" name="/Libraries/FreeRTOS-Plus-TCP-multi-master/source/portable/FileSystem/httpd-fs"/>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="includePath" name="/Libraries/FreeRTOS-Plus-TCP-multi-master/source/protocols/include"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/Libraries"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="includePath" name="/Libraries/FreeRTOS-Plus-TCP-multi-master/source/portable/Compiler/GCC"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="includePath" name="/Libraries/FreeRTOS-Plus-TCP-multi-master/include"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="includePath" name="/Libraries/dLAN_Green_PHY_eval_board/inc"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="includePath" name="/Libraries/lpc_chip_175x_6x/inc"/>
-						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/Libraries"/>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="includePath" name="/Libraries/FreeRTOSv10.4.1/portable/GCC/ARM_CM3"/>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="includePath" name="/Libraries/FreeRTOSv10.4.1/include"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="includePath" name="/Libraries/FreeRTOS-Plus-TCP-multi-master/source/portable/FileSystem/httpd-fs"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="includePath" name="/Libraries/FreeRTOS-Plus-TCP-multi-master/source/protocols/include"/>
 						<entry flags="RESOLVED" kind="macro" name="CORE_M3" value=""/>
 						<entry flags="RESOLVED" kind="macro" name="__USE_LPCOPEN" value=""/>
 						<entry flags="RESOLVED" kind="macro" name="__REDLIB__" value=""/>
 						<entry flags="RESOLVED" kind="macro" name="__CODE_RED" value=""/>
-						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/Libraries/Debug"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/Libraries/Release"/>
 						<entry flags="RESOLVED" kind="libraryFile" name="Libraries" srcPrefixMapping="" srcRootPath=""/>
 					</externalSetting>
 				</externalSettings>
@@ -150,15 +144,13 @@
 								<option id="gnu.c.compiler.option.misc.other.73425088" name="Other flags" superClass="gnu.c.compiler.option.misc.other" useByScannerDiscovery="false" value="-c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections" valueType="string"/>
 								<option id="com.crt.advproject.gcc.hdrlib.1525087634" name="Library headers" superClass="com.crt.advproject.gcc.hdrlib" useByScannerDiscovery="false" value="com.crt.advproject.gcc.hdrlib.codered" valueType="enumerated"/>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.c.compiler.option.include.paths.470357365" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries/FreeRTOS-Plus-TCP-multi-master/source/portable/FileSystem/httpd-fs}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries/FreeRTOS-Plus-TCP-multi-master/source/protocols/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries/FreeRTOS-Plus-TCP-multi-master/source/portable/Compiler/GCC}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries/FreeRTOS-Plus-TCP-multi-master/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries/dLAN_Green_PHY_eval_board/inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries/lpc_chip_175x_6x/inc}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries/FreeRTOSv10.4.1/portable/GCC/ARM_CM3}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries/FreeRTOSv10.4.1/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries/FreeRTOS-Plus-TCP-multi-master/source/portable/FileSystem/httpd-fs}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries/FreeRTOS-Plus-TCP-multi-master/source/protocols/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Configuration}&quot;"/>
 								</option>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.c.compiler.option.preprocessor.def.symbols.1188065388" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
@@ -176,15 +168,13 @@
 								<option id="gnu.both.asm.option.flags.crt.1438827966" name="Assembler flags" superClass="gnu.both.asm.option.flags.crt" value="-c -x assembler-with-cpp -D__REDLIB__ -DDEBUG -D__CODE_RED" valueType="string"/>
 								<option id="com.crt.advproject.gas.hdrlib.1493746463" name="Library headers" superClass="com.crt.advproject.gas.hdrlib" value="com.crt.advproject.gas.hdrlib.codered" valueType="enumerated"/>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.both.asm.option.include.paths.1830455919" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries/FreeRTOS-Plus-TCP-multi-master/source/portable/FileSystem/httpd-fs}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries/FreeRTOS-Plus-TCP-multi-master/source/protocols/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries/FreeRTOS-Plus-TCP-multi-master/source/portable/Compiler/GCC}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries/FreeRTOS-Plus-TCP-multi-master/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries/dLAN_Green_PHY_eval_board/inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries/lpc_chip_175x_6x/inc}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries/FreeRTOSv10.4.1/portable/GCC/ARM_CM3}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries/FreeRTOSv10.4.1/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries/FreeRTOS-Plus-TCP-multi-master/source/portable/FileSystem/httpd-fs}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Libraries/FreeRTOS-Plus-TCP-multi-master/source/protocols/include}&quot;"/>
 								</option>
 								<option id="com.crt.advproject.gas.fpu.2101493497" name="Floating point" superClass="com.crt.advproject.gas.fpu"/>
 								<inputType id="com.crt.advproject.assembler.input.1120514693" name="Additional Assembly Source Files" superClass="com.crt.advproject.assembler.input"/>
@@ -198,20 +188,18 @@
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings">
 				<externalSettings containerId="Libraries;" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier">
 					<externalSetting>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="includePath" name="/Libraries/FreeRTOS-Plus-TCP-multi-master/source/portable/FileSystem/httpd-fs"/>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="includePath" name="/Libraries/FreeRTOS-Plus-TCP-multi-master/source/protocols/include"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/Libraries"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="includePath" name="/Libraries/FreeRTOS-Plus-TCP-multi-master/source/portable/Compiler/GCC"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="includePath" name="/Libraries/FreeRTOS-Plus-TCP-multi-master/include"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="includePath" name="/Libraries/dLAN_Green_PHY_eval_board/inc"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="includePath" name="/Libraries/lpc_chip_175x_6x/inc"/>
-						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/Libraries"/>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="includePath" name="/Libraries/FreeRTOSv10.4.1/portable/GCC/ARM_CM3"/>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="includePath" name="/Libraries/FreeRTOSv10.4.1/include"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="includePath" name="/Libraries/FreeRTOS-Plus-TCP-multi-master/source/portable/FileSystem/httpd-fs"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="includePath" name="/Libraries/FreeRTOS-Plus-TCP-multi-master/source/protocols/include"/>
 						<entry flags="RESOLVED" kind="macro" name="CORE_M3" value=""/>
 						<entry flags="RESOLVED" kind="macro" name="__USE_LPCOPEN" value=""/>
 						<entry flags="RESOLVED" kind="macro" name="__REDLIB__" value=""/>
 						<entry flags="RESOLVED" kind="macro" name="__CODE_RED" value=""/>
-						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/Libraries/Debug"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/Libraries/Release"/>
 						<entry flags="RESOLVED" kind="libraryFile" name="Libraries" srcPrefixMapping="" srcRootPath=""/>
 					</externalSetting>
 				</externalSettings>
