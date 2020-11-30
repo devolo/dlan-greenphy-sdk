@@ -3,7 +3,7 @@
 <stringAttribute key=".gdbinit" value=""/>
 <booleanAttribute key="attach" value="false"/>
 <stringAttribute key="bootrom.stall" value=""/>
-<stringAttribute key="com.crt.ctrlcenter.OFSemuDetails" value="LinkServerJQD4BWGX"/>
+<stringAttribute key="com.crt.ctrlcenter.OFSemuDetails" value="LinkServerFTUBDFC5A"/>
 <booleanAttribute key="com.crt.ctrlcenter.crtInit" value="true"/>
 <stringAttribute key="com.crt.ctrlcenter.currentWireType" value="SWD"/>
 <booleanAttribute key="com.crt.ctrlcenter.mainBreakIsHardware" value="true"/>
