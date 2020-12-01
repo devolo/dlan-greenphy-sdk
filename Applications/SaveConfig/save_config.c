@@ -373,7 +373,7 @@ uint16_t usBufferPos, usBytesCopied, usBytesAvailable, usBytesToCopy;
 
 				/* Copy TLV to buffer. */
 				memcpy( ( pxWriteHandle->pucBuffer + usBufferPos ),
-						( ppxConfigCacheTLVList[ x ] + usBytesCopied ),
+						( ( (uint8_t *) ppxConfigCacheTLVList[ x ] ) + usBytesCopied ),
 						usBytesToCopy );
 
 				usBufferPos += usBytesToCopy;

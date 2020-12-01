@@ -35,7 +35,7 @@
 #ifndef INC_EXPAND2CLICK_H_
 #define INC_EXPAND2CLICK_H_
 
-
+//#define EXPAND_TEST
 
 #define BANK 0
 #define AddressCode (0b0010 << 4)

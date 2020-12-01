@@ -63,6 +63,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Applications/ClickboardConfig}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Applications/Clickboards/inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Applications/FreeRTOS/inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Applications/MQTT/inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Applications/SaveConfig}&quot;"/>
 								</option>
 								<option id="com.crt.advproject.gcc.hdrlib.12815943" name="Library headers" superClass="com.crt.advproject.gcc.hdrlib" useByScannerDiscovery="false"/>
@@ -88,7 +89,6 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Applications/ClickboardConfig}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Applications/Clickboards/inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Applications/FreeRTOS/inc}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Applications/SaveConfig}&quot;"/>
 								</option>
 								<option id="com.crt.advproject.gas.hdrlib.1061099484" name="Library headers" superClass="com.crt.advproject.gas.hdrlib"/>
 								<option id="com.crt.advproject.gas.fpu.1941261054" name="Floating point" superClass="com.crt.advproject.gas.fpu"/>
@@ -98,8 +98,11 @@
 							<tool id="com.crt.advproject.ar.lib.debug.1960059227" name="MCU Archiver" superClass="com.crt.advproject.ar.lib.debug"/>
 						</toolChain>
 					</folderInfo>
+					<fileInfo id="com.crt.advproject.config.lib.debug.1946804125.854571622" name="mqtt.h" rcbsApplicability="disable" resourcePath="MQTT/inc/mqtt.h" toolsToInvoke=""/>
+					<fileInfo id="com.crt.advproject.config.lib.debug.1946804125.584275731" name="mqtt_old.h" rcbsApplicability="disable" resourcePath="MQTT/inc/mqtt_old.h" toolsToInvoke=""/>
+					<fileInfo id="com.crt.advproject.config.lib.debug.1946804125.392794613" name="MQTTEcho_Test.h" rcbsApplicability="disable" resourcePath="MQTT/inc/MQTTEcho_Test.h" toolsToInvoke=""/>
 					<sourceEntries>
-						<entry excluding="JSON|Clickboards/src/clickboardIO.c|Clickboards/src/main.c|Clickboards/src/crp.c|Clickboards/src/RelayClick.c|Clickboards/src/cr_startup_lpc175x_6x.c|Clickboards/src/sysinit.c|Clickboards/src/lcdDevoloClick.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="Clickboards/src/lcdDevoloClick.c|Clickboards/src/RelayClick.c|MQTT/inc/mqtt_old.h|MQTT/src/mqtt_old.c|MQTT/inc/MQTTEcho_Test.h|MQTT/src/MQTTEcho_Test.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -213,7 +216,6 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Applications/ClickboardConfig}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Applications/Clickboards/inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Applications/FreeRTOS/inc}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Applications/SaveConfig}&quot;"/>
 								</option>
 								<option id="com.crt.advproject.gas.hdrlib.819347448" name="Library headers" superClass="com.crt.advproject.gas.hdrlib"/>
 								<option id="com.crt.advproject.gas.fpu.1952320062" name="Floating point" superClass="com.crt.advproject.gas.fpu"/>
@@ -279,7 +281,6 @@
 &lt;memoryInstance derived_from="RAM" id="RamAHB32" location="0x2007c000" size="0x8000"/&gt;&#13;
 &lt;prog_flash blocksz="0x1000" location="0" maxprgbuff="0x1000" progwithcode="TRUE" size="0x10000"/&gt;&#13;
 &lt;prog_flash blocksz="0x8000" location="0x10000" maxprgbuff="0x1000" progwithcode="TRUE" size="0x70000"/&gt;&#13;
-&lt;/chip&gt;&#13;
 &lt;processor&gt;&#13;
 &lt;name gcc_name="cortex-m3"&gt;Cortex-M3&lt;/name&gt;&#13;
 &lt;family&gt;Cortex-M&lt;/family&gt;&#13;

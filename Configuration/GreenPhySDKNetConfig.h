@@ -45,6 +45,7 @@
 #define netconfigUSE_DHCP              1
 #define netconfigUSE_BRIDGE            1
 #define netconfigIP_INTERFACE          netconfigBRIDGE_INTERFACE /* Select one of the three defines above. */
+#define netconfigUSEMQTT               1
 
 /* Hostname, used for DHCP */
 #define netconfigUSE_DYNAMIC_HOSTNAME  1  /* If defined hostname will be "devolo-MAC" with MAC being the last
@@ -82,5 +83,14 @@
 #define netconfigDNS_SERVER_ADDR1      8
 #define netconfigDNS_SERVER_ADDR2      8
 #define netconfigDNS_SERVER_ADDR3      8
+
+/* MQTT Credentials */
+/*
+#define netconfigMQTT_BROKER           "mqtt.relayr.io"
+#define netconfigMQTT_PORT             1883
+#define netconfigMQTT_CLIENT           "TCdqKfhZeQriWr/7PNmy4mw"
+#define netconfigMQTT_USER             "09da8a7e-165e-42b8-96af-fecf366cb89b"
+#define netconfigMQTT_PASSWORT         "wy5t6n.SQBQx"*/
+#define netconfigMQTT_TOPIC            "/v1/6c1e2951-47cf-458c-a8ba-221dbc8b8898/data"
 
 #endif /* GREENPHYSDKNETCONFIG_H_ */
