@@ -33,7 +33,7 @@
  */
 
 /* version string of the firmware */
-#define SDK_VERSION "3.2.0"
+#define SDK_VERSION "3.2.1"
 #define VERSION_STRING "SDK v" SDK_VERSION
 #define BUILD_STRING VERSION_STRING " - " __DATE__ " " __TIME__
 
@@ -44,3 +44,5 @@
 #define includeCOLOR2_CLICK    1
 #define includeTHERMO3_CLICK   1
 #define includeEXPAND2_CLICK   1
+//#define includeRELAY_CLICK   1 _CT_
+

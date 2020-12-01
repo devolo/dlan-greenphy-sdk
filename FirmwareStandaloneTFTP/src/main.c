@@ -62,6 +62,12 @@ static void prvTestTask( void *pvParameters )
 
 }
 
+void vStartEthTasks( void )
+{
+	xTaskCreate( prvTestTask, "Test", 240, NULL,  1, NULL );
+}
+
+
 int main(void) {
 	SystemCoreClockUpdate();
 	Board_Init();
@@ -92,7 +98,7 @@ int main(void) {
 
 	xClickboardsInit();
 
-	xTaskCreate( prvTestTask, "Test", 240, NULL,  1, NULL );
+	//xTaskCreate( prvTestTask, "Test", 240, NULL,  1, NULL );
 
 	vTaskStartScheduler();
 

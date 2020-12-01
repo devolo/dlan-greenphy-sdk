@@ -45,6 +45,7 @@ typedef enum eCLICKBOARD_IDS {
 	eClickboardIdExpand2 = 1838,
 	eClickboardIdThermo3 = 1885,
 	eClickboardIdColor2  = 1988
+	//eClickboardIdRelay = 1370 _CT_
 } eClickboardId_t;
 
 /*

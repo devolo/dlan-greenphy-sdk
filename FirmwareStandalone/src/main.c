@@ -136,7 +136,7 @@ int main(void) {
 
 	xClickboardsInit();
 
-	//xTaskCreate( prvTestTask, "Test", 240, NULL,  1, NULL );
+	xTaskCreate( prvTestTask, "Test", 240, NULL,  1, NULL );
 
 	vTaskStartScheduler();
 

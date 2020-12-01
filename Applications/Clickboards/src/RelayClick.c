@@ -32,6 +32,7 @@
  *
  */
 
+/* LPCOpen Includes. */
 #if defined (__USE_LPCOPEN)
 #if defined(NO_BOARD_LIB)
 #include "chip.h"
@@ -40,18 +41,30 @@
 #endif
 #endif
 
+//#include "clickboardIO.h"
+//#include "debug.h"
+
+/* Standard includes. */
 #include <string.h>
 #include <stdlib.h>
-#include "clickboardIO.h"
 
+
+/* FreeRTOS includes. */
 #include "FreeRTOS.h"
 #include "task.h"
 #include "queue.h"
-#include "debug.h"
+
+/* GreenPHY SDK includes. */
+#include "GreenPhySDKConfig.h"
+#include "GreenPhySDKNetConfig.h"
+#include "http_query_parser.h"
+#include "http_request.h"
+#include "clickboard_config.h"
 #include "RelayClick.h"
+#include "save_config.h"
 
-
-
+/* MQTT includes */
+#include "mqtt.h"
 
 
 
@@ -63,13 +76,17 @@ void Relay_Click_Task(void *pvParameters){
 	/* Init */
 	if ((int)pvParameters == SLOT1)
 		{
-		Chip_GPIO_WriteDirBit(LPC_GPIO, CLICKBOARD1_CS_GPIO_PORT_NUM, CLICKBOARD1_CS_GPIO_BIT_NUM, GPIO_OUTPUT);
-		Chip_GPIO_WriteDirBit(LPC_GPIO, CLICKBOARD1_PWM_GPIO_PORT_NUM, CLICKBOARD1_PWM_GPIO_BIT_NUM, GPIO_OUTPUT);
+		Chip_GPIO_SetPinDIROutput(LPC_GPIO, CLICKBOARD1_CS_GPIO_PORT_NUM,CLICKBOARD1_CS_GPIO_BIT_NUM);
+		Chip_GPIO_SetPinDIROutput(LPC_GPIO, CLICKBOARD1_PWM_GPIO_PORT_NUM, CLICKBOARD1_PWM_GPIO_BIT_NUM);
+		//Chip_GPIO_WriteDirBit(LPC_GPIO, CLICKBOARD1_CS_GPIO_PORT_NUM, CLICKBOARD1_CS_GPIO_BIT_NUM, GPIO_OUTPUT);
+		//Chip_GPIO_WriteDirBit(LPC_GPIO, CLICKBOARD1_PWM_GPIO_PORT_NUM, CLICKBOARD1_PWM_GPIO_BIT_NUM, GPIO_OUTPUT);
 	}
 	else if ((int)pvParameters == SLOT2)
 		{
-		Chip_GPIO_WriteDirBit(LPC_GPIO, CLICKBOARD2_CS_GPIO_PORT_NUM, CLICKBOARD2_CS_GPIO_BIT_NUM, GPIO_OUTPUT);
-		Chip_GPIO_WriteDirBit(LPC_GPIO, CLICKBOARD2_PWM_GPIO_PORT_NUM, CLICKBOARD2_PWM_GPIO_BIT_NUM, GPIO_OUTPUT);
+		Chip_GPIO_SetPinDIROutput(LPC_GPIO, CLICKBOARD2_CS_GPIO_PORT_NUM,CLICKBOARD2_CS_GPIO_BIT_NUM);
+		Chip_GPIO_SetPinDIROutput(LPC_GPIO, CLICKBOARD2_PWM_GPIO_PORT_NUM, CLICKBOARD2_PWM_GPIO_BIT_NUM);
+//		Chip_GPIO_WriteDirBit(LPC_GPIO, CLICKBOARD2_CS_GPIO_PORT_NUM, CLICKBOARD2_CS_GPIO_BIT_NUM, GPIO_OUTPUT);
+//		Chip_GPIO_WriteDirBit(LPC_GPIO, CLICKBOARD2_PWM_GPIO_PORT_NUM, CLICKBOARD2_PWM_GPIO_BIT_NUM, GPIO_OUTPUT);
 	}
 
 

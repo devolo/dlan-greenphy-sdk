@@ -74,6 +74,10 @@
 	extern BaseType_t xExpand2Click_Init( const char *pcName, BaseType_t xPort );
 	extern BaseType_t xExpand2Click_Deinit( void );
 #endif
+//#if ( includeRELAY_CLICK != 0 ) _CT_
+//	extern BaseType_t xRelayClick_Init( const char *pcName, BaseType_t xPort );
+//	extern BaseType_t xRelayClick_Deinit( void );
+//#endif
 
 /* An array that holds all available clickboards, so they can be activated and
 deactivated through the clickboard config interface. */
@@ -88,6 +92,9 @@ static Clickboard_t pxClickboards[ ] =
 #if( includeEXPAND2_CLICK != 0 )
 	{ eClickboardIdExpand2, "expand2", xExpand2Click_Init, xExpand2Click_Deinit, eClickboardAllPorts, eClickboardInactive },
 #endif
+//#if( includeRELAY_CLICK != 0 ) _CT_
+//	{ eClickboardIdRelay, "relay", xRelayClick_Init, xRelayClick_Deinit, eClickboardAllPorts, eClickboardInactive },
+//#endif
 };
 
 /***************************************
