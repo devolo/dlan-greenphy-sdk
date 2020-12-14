@@ -48,7 +48,9 @@ Green PHY eval board II](https://www.devolo.de/dlan-green-phy-eval-board-ii), or
 * JTAG-Debugger, recommended [LPC-Link 
 2](https://www.nxp.com/products/developer-resources/software-development-tools/developer-resources-/lpcopen-libraries-and-examples/lpc-link2:OM13054) 
 with [ARM-JTAG-20-10 Adapter](https://www.olimex.com/Products/ARM/JTAG/ARM-JTAG-20-10/)
-* Python3, [beautifulsoup4](https://pypi.python.org/pypi/beautifulsoup4), [css-html-js-minify](https://pypi.python.org/pypi/css-html-js-minify) *(to 
+* Python3 (make sure *py* command is configured, e.g. linked to *python3*)
+* [beautifulsoup4](https://pypi.python.org/pypi/beautifulsoup4)
+* [css-html-js-minify](https://pypi.org/project/css-html-js-minify/2.2.2/) *(tested for v2.2.2, not working with v2.5.5) (to 
 convert HTML files for the WebUI)*
 
 ## Usage
