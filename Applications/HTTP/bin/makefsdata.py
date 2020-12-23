@@ -7,8 +7,8 @@ from css_html_js_minify import html_minify, js_minify, css_minify
 import zlib
 import bs4
 
-fsdir = Path('../HTTP/httpd-fs/')
-outfile = Path('../HTTP/src/httpd-fsdata.c')
+fsdir = Path('../httpd-fs/')
+outfile = Path('../src/httpd-fsdata.c')
 outfile.touch(exist_ok=True)
 extensions = ['.html', '.css', '.js', '.svg', '.shtml', '.json', '.png', '.gif', '.jpg']
 unify = True
