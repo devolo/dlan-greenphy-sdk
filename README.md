@@ -44,7 +44,7 @@ There are also binaries of the stock-firmware (v1.0.16) with the bootloader and 
 ## Requirements
 * [dLAN® Green PHY module](https://www.devolo.de/dlan-green-phy-module) with a development board, e.g. the [dLAN® 
 Green PHY eval board II](https://www.devolo.de/dlan-green-phy-eval-board-ii), or your own design
-* [MCUXpresso IDE](https://www.nxp.com/products/developer-resources/run-time-software/mcuxpresso-software-and-tools/mcuxpresso-integrated-development-environment-ide-v10.0.2:MCUXpresso-IDE) *(tested for v11.1.0, not working with v11.2.1)*
+* [MCUXpresso IDE](https://www.nxp.com/design/software/development-software/mcuxpresso-software-and-tools-/mcuxpresso-integrated-development-environment-ide:MCUXpresso-IDE)
 * JTAG-Debugger, recommended [LPC-Link 
 2](https://www.nxp.com/products/developer-resources/software-development-tools/developer-resources-/lpcopen-libraries-and-examples/lpc-link2:OM13054) 
 with [ARM-JTAG-20-10 Adapter](https://www.olimex.com/Products/ARM/JTAG/ARM-JTAG-20-10/)
