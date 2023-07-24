@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017, devolo AG, Aachen, Germany.
+ * Copyright (c) 2023, devolo GmbH, Aachen, Germany.
  * All rights reserved.
  *
  *
@@ -9,12 +9,12 @@
  * modification, are permitted provided that the following conditions
  * are met:
  * 1. Usage in source form is subject to a current end user license agreement
- *    with the devolo AG.
- * 2. Neither the name of the devolo AG nor the names of its contributors
+ *    with the devolo GmbH.
+ * 2. Neither the name of the devolo GmbH nor the names of its contributors
  *    may be used to endorse or promote products derived from this software
  *    without specific prior written permission.
  * 3. Redistribution in binary form is limited to the usage on the GreenPHY
- *    module of the devolo AG.
+ *    module of the devolo GmbH.
  * 4. Redistribution in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in the
  *    documentation and/or other materials provided with the distribution.
