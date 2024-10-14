@@ -8,7 +8,7 @@ use. Another advantage: The dLAN® Green PHY module is particularly energy-savin
 consumption.
 
 ## QCA7000 Firmware
-The module contains a QCA7000 GreenPHY processor and a LPC1758 MCU. This project mainly covers the SDK for the MCU, while the latest firmware (version 1.2.5) for the GreenPHY chip itself can be found in the directory QCA7000_GreenPHY_Firmware.
+The module contains a QCA7000 GreenPHY processor and a LPC1758 MCU. This project mainly covers the SDK for the MCU. The firmware for the GreenPHY is not part of this repository and must be obtained via another source (e.g. [devolo support](mailto:support@devolo.de?subject=Firmware%20GreenPHY)).
 
 The following options are available within the QCA7000 devolo firmware package:
  *  iot-generic    IoT generic, optimized for performance: 50561 off (SLAC off)
