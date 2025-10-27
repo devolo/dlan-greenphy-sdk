@@ -55,82 +55,85 @@
 
 BaseType_t xRequestHandler_Status( char *pcBuffer, size_t uxBufferLength, QueryParam_t *pxParams, BaseType_t xParamCount )
 {
-BaseType_t xCount = 0;
-QueryParam_t *pxParam;
-NetworkEndPoint_t *pxEndPoint;
-uint32_t ulIPAddress, ulNetMask, ulGatewayAddress, ulDNSServerAddress;
-int8_t cBuffer[ 16 ];
+    BaseType_t xCount = 0;
+    QueryParam_t *pxParam;
+    NetworkEndPoint_t *pxEndPoint;
+    uint32_t ulIPAddress, ulNetMask, ulGatewayAddress, ulDNSServerAddress;
+    int8_t cBuffer[ 16 ];
 
-	pxParam = pxFindKeyInQueryParams( "reset", pxParams, xParamCount );
-	if( pxParam != NULL )
-	{
-		NVIC_SystemReset();
-	}
+    // 기존 리셋, LED 제어 로직 그대로 유지
+    pxParam = pxFindKeyInQueryParams( "reset", pxParams, xParamCount );
+    if( pxParam != NULL ) NVIC_SystemReset();
 
-	pxParam = pxFindKeyInQueryParams( "led", pxParams, xParamCount );
-	if( pxParam != NULL )
-	{
-		if( strcmp(pxParam->pcValue, "on") == 0 )
-		{
-			Board_LED_Set( LEDS_LED0, TRUE );
-		}
-		else if( strcmp(pxParam->pcValue, "off") == 0 )
-		{
-			Board_LED_Set( LEDS_LED0, FALSE );
-		}
-		else if( strcmp(pxParam->pcValue, "toggle") == 0 )
-		{
-			Board_LED_Toggle( LEDS_LED0 );
-		}
-	}
+    pxParam = pxFindKeyInQueryParams( "led", pxParams, xParamCount );
+    if( pxParam != NULL )
+    {
+        if( strcmp(pxParam->pcValue, "on") == 0 )
+            Board_LED_Set( LEDS_LED0, TRUE );
+        else if( strcmp(pxParam->pcValue, "off") == 0 )
+            Board_LED_Set( LEDS_LED0, FALSE );
+        else if( strcmp(pxParam->pcValue, "toggle") == 0 )
+            Board_LED_Toggle( LEDS_LED0 );
+    }
 
-	xCount = snprintf( pcBuffer, uxBufferLength,
-			"{"
-				"\"uptime\":"    "%d,"
-				"\"free_heap\":" "%d,"
-				"\"led\":"       "%s,"
-				"\"button\":"    "%s,"
-				"\"build\":"     "\"%s\","
-				"\"hostname\":"  "\"%s\",",
-			( portGET_RUN_TIME_COUNTER_VALUE() / 10000UL ),
-			xPortGetFreeHeapSize(),
-			( Board_LED_Test( LEDS_LED0 ) ? "true" : "false" ),
-			( ( Buttons_GetStatus() != 0 ) ? "true" : "false" ),
-			BUILD_STRING,
-			pcApplicationHostnameHook()
-	);
+    // 📌 기존 JSON 생성부
+    xCount = snprintf( pcBuffer, uxBufferLength,
+        "{"
+            "\"uptime\":%d,"
+            "\"free_heap\":%d,"
+            "\"led\":%s,"
+            "\"button\":%s,"
+            "\"build\":\"%s\","
+            "\"hostname\":\"%s\",",
+        ( portGET_RUN_TIME_COUNTER_VALUE() / 10000UL ),
+        xPortGetFreeHeapSize(),
+        ( Board_LED_Test( LEDS_LED0 ) ? "true" : "false" ),
+        ( ( Buttons_GetStatus() != 0 ) ? "true" : "false" ),
+        BUILD_STRING,
+        pcApplicationHostnameHook()
+    );
 
-	pxEndPoint = FreeRTOS_FirstEndPoint( NULL );
-	if( pxEndPoint != NULL )
-	{
-		xCount += snprintf( pcBuffer + xCount, uxBufferLength - xCount,
-				"\"mac\":\"%02x:%02x:%02x:%02x:%02x:%02x\",",
-				pxEndPoint->xMACAddress.ucBytes[0],
-				pxEndPoint->xMACAddress.ucBytes[1],
-				pxEndPoint->xMACAddress.ucBytes[2],
-				pxEndPoint->xMACAddress.ucBytes[3],
-				pxEndPoint->xMACAddress.ucBytes[4],
-				pxEndPoint->xMACAddress.ucBytes[5]
-		);
+    // 📍 여기에 추가 — safety, pwm, battery JSON 필드 삽입
+    xCount += snprintf( pcBuffer + xCount, uxBufferLength - xCount,
+        "\"safety_flag\":%d,"
+        "\"pwm_state\":%d,"
+        "\"battery\":%d,",
+        g_vehicle_status.safety_flag,
+        g_vehicle_status.pwm_state,
+        g_vehicle_status.battery_percent
+    );
 
-		FreeRTOS_GetEndPointConfiguration( &ulIPAddress,
-										   &ulNetMask,
-										   &ulGatewayAddress,
-										   &ulDNSServerAddress,
-										   pxEndPoint );
+    // MAC/IP 정보 부분 (기존 그대로)
+    pxEndPoint = FreeRTOS_FirstEndPoint( NULL );
+    if( pxEndPoint != NULL )
+    {
+        xCount += snprintf( pcBuffer + xCount, uxBufferLength - xCount,
+                "\"mac\":\"%02x:%02x:%02x:%02x:%02x:%02x\",",
+                pxEndPoint->xMACAddress.ucBytes[0],
+                pxEndPoint->xMACAddress.ucBytes[1],
+                pxEndPoint->xMACAddress.ucBytes[2],
+                pxEndPoint->xMACAddress.ucBytes[3],
+                pxEndPoint->xMACAddress.ucBytes[4],
+                pxEndPoint->xMACAddress.ucBytes[5]
+        );
 
-		FreeRTOS_inet_ntoa( ulIPAddress, cBuffer );
-		xCount += snprintf( pcBuffer + xCount, uxBufferLength - xCount, "\"ip\":\"%s\",", cBuffer);
-		FreeRTOS_inet_ntoa( ulNetMask, cBuffer );
-		xCount += snprintf( pcBuffer + xCount, uxBufferLength - xCount, "\"netmask\":\"%s\",", cBuffer);
-		FreeRTOS_inet_ntoa( ulGatewayAddress, cBuffer );
-		xCount += snprintf( pcBuffer + xCount, uxBufferLength - xCount, "\"gateway\":\"%s\",", cBuffer);
-		FreeRTOS_inet_ntoa( ulDNSServerAddress, cBuffer );
-		xCount += snprintf( pcBuffer + xCount, uxBufferLength - xCount, "\"dns\":\"%s\"", cBuffer);
-	}
+        FreeRTOS_GetEndPointConfiguration( &ulIPAddress,
+                                           &ulNetMask,
+                                           &ulGatewayAddress,
+                                           &ulDNSServerAddress,
+                                           pxEndPoint );
 
-	xCount += snprintf( pcBuffer + xCount, uxBufferLength - xCount, "}" );
+        FreeRTOS_inet_ntoa( ulIPAddress, cBuffer );
+        xCount += snprintf( pcBuffer + xCount, uxBufferLength - xCount, "\"ip\":\"%s\",", cBuffer);
+        FreeRTOS_inet_ntoa( ulNetMask, cBuffer );
+        xCount += snprintf( pcBuffer + xCount, uxBufferLength - xCount, "\"netmask\":\"%s\",", cBuffer);
+        FreeRTOS_inet_ntoa( ulGatewayAddress, cBuffer );
+        xCount += snprintf( pcBuffer + xCount, uxBufferLength - xCount, "\"gateway\":\"%s\",", cBuffer);
+        FreeRTOS_inet_ntoa( ulDNSServerAddress, cBuffer );
+        xCount += snprintf( pcBuffer + xCount, uxBufferLength - xCount, "\"dns\":\"%s\"", cBuffer);
+    }
 
+    xCount += snprintf( pcBuffer + xCount, uxBufferLength - xCount, "}" );
 
-	return xCount;
+    return xCount;
 }

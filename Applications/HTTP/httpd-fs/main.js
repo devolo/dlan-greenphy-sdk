@@ -15,6 +15,42 @@ templates['status'] = `
             <td>{{build}}</td>
           </tr>
         </table>
+
+        <h3>EV Charger Status</h3>
+        <table class="mui-table mui-table--bordered">
+          <tr>
+            <td><b>Safety Relay</b></td>
+            <td>
+              {{#safety_flag}}
+                <span style="color:green;font-weight:bold;">ON</span>
+              {{/safety_flag}}
+              {{^safety_flag}}
+                <span style="color:red;font-weight:bold;">OFF</span>
+              {{/safety_flag}}
+            </td>
+          </tr>
+          <tr>
+            <td><b>PWM Signal</b></td>
+            <td>
+              {{#pwm_state}}
+                <span style="color:green;">Charging</span>
+              {{/pwm_state}}
+              {{^pwm_state}}
+                <span style="color:gray;">Idle</span>
+              {{/pwm_state}}
+            </td>
+          </tr>
+          <tr>
+            <td><b>Battery Level</b></td>
+            <td>
+              {{battery}}%
+              <div style="width:100%;background:#ddd;border-radius:4px;height:12px;margin-top:4px;">
+                <div style="width:{{battery}}%;background:#4CAF50;height:12px;border-radius:4px;"></div>
+              </div>
+            </td>
+          </tr>
+        </table>
+
         <h3>EvalBoard</h3>
         <table class="mui-table mui-table--bordered">
           <tr>
@@ -40,33 +76,6 @@ templates['status'] = `
                 </label>
               </div>
             </td>
-          </tr>
-        </table>
-        <h3>Network</h3>
-        <table class="mui-table mui-table--bordered">
-          <tr>
-            <td><b>Hostname</b></td>
-            <td>{{hostname}}</td>
-          </tr>
-          <tr>
-            <td><b>MAC</b></td>
-            <td>{{mac}}</td>
-          </tr>
-          <tr>
-            <td><b>IP</b></td>
-            <td>{{ip}}</td>
-          </tr>
-          <tr>
-            <td><b>Netmask</b></td>
-            <td>{{netmask}}</td>
-          </tr>
-          <tr>
-            <td><b>Gateway</b></td>
-            <td>{{gateway}}</td>
-          </tr>
-          <tr>
-            <td><b>DNS</b></td>
-            <td>{{dns}}</td>
           </tr>
         </table>
 `;
